@@ -60,9 +60,13 @@ if (!class_exists('AM_GDPR_WP')) {
         am_gdpr_include('admin');
       }
       
-      // add_option('am_lottieplayer_pro_license', null);
-      // add_option('am_lottieplayer_pro_license_activated', false);
-      // add_option('am_lottieplayer_pro_load_light', true);
+      add_option('am_gdpr_tracking_id', null);
+      add_option('am_gdpr_font_family', 'sans-serif');
+      add_option('am_gdpr_color', '#000');
+      add_option('am_gdpr_accent_color', '#FFF');
+      add_option('am_gdpr_background_color', '#FFF');
+      add_option('am_gdpr_border_width', 2);
+      add_option('am_gdpr_text', null);
     }
   }
 
@@ -84,4 +88,4 @@ if (!class_exists('AM_GDPR_WP')) {
   }
 
   am_gdpr();
-} // class_exists check end
+}

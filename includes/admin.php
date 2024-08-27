@@ -42,29 +42,27 @@ if (!class_exists('AM_GDPR_Admin')) {
     {
       wp_enqueue_style('am-backend-style', AM_GDPR_URL . 'styles/admin.css');
 
-      // $assets = require AM_GDPR_PATH . 'build/settings.asset.php';
+      $assets = require AM_GDPR_PATH . 'build/settings.asset.php';
 
-      // // Enable native WP Media API for settings page
-      // if ($page === 'toplevel_page_am-gdpr-wp') {
-      //   // wp_enqueue_media();
-      //   wp_enqueue_script(
-      //     'am-gdpr-wp-options',
-      //     AM_GDPR_URL . 'build/settings.js',
-      //     $assets['dependencies'],
-      //     '1.00',
-      //     true
-      //   );
-      //   // Add variables to be used inside script
-      //   // wp_localize_script(
-      //   //   'am-gdpr-wp-options',
-      //   //   'amPhpVars',
-      //   //   [
-      //   //     'pluginUrl' => AM_GDPR_URL,
-      //   //     'endpoint' => esc_url_raw(rest_url('/wp/v2/media/')),
-      //   //     'nonce' => wp_create_nonce('wp_rest'),
-      //   //   ]         
-      //   // );
-      // }
+      if ($page === 'toplevel_page_am-gdpr-wp') {
+        wp_enqueue_script(
+          'am-gdpr-wp-options',
+          AM_GDPR_URL . 'build/settings.js',
+          $assets['dependencies'],
+          '1.00',
+          true
+        );
+        // Add variables to be used inside script
+        // wp_localize_script(
+        //   'am-gdpr-wp-options',
+        //   'amPhpVars',
+        //   [
+        //     'pluginUrl' => AM_GDPR_URL,
+        //     'endpoint' => esc_url_raw(rest_url('/wp/v2/media/')),
+        //     'nonce' => wp_create_nonce('wp_rest'),
+        //   ]         
+        // );
+      }
     }
 
     public function render_settings()

@@ -55,11 +55,14 @@ if (!class_exists('AM_GDPR_Rest_API')) {
         );
       }
 
-      // TODO:
       $response = [];
-      // $response['am_lottieplayer_pro_license'] = get_option('am_lottieplayer_pro_license');
-      // $response['am_lottieplayer_pro_license_activated'] = get_option('am_lottieplayer_pro_license_activated');
-      // $response['am_lottieplayer_pro_load_light'] = get_option('am_lottieplayer_pro_load_light');
+      $response['am_gdpr_tracking_id'] = get_option('am_gdpr_tracking_id');
+      $response['am_gdpr_font_family'] = get_option('am_gdpr_font_family');
+      $response['am_gdpr_color'] = get_option('am_gdpr_color');
+      $response['am_gdpr_accent_color'] = get_option('am_gdpr_accent_color');
+      $response['am_gdpr_background_color'] = get_option('am_gdpr_background_color');
+      $response['am_gdpr_border_width'] = get_option('am_gdpr_border_width');
+      $response['am_gdpr_text'] = get_option('am_gdpr_text');
 
       $response = new WP_REST_Response($response);
 
@@ -83,14 +86,9 @@ if (!class_exists('AM_GDPR_Rest_API')) {
         'success' => true
       ]);
 
-      if ($request->get_param('am_lottieplayer_pro_load_light') !== null) {
-        $am_lottieplayer_pro_load_light = rest_sanitize_boolean($request->get_param('am_lottieplayer_pro_load_light'));
-        update_option('am_lottieplayer_pro_load_light', $am_lottieplayer_pro_load_light);
-      }
-
-      if ($request->get_param('am_lottieplayer_pro_license')) {
-        $am_lottieplayer_pro_license = sanitize_text_field($request->get_param('am_lottieplayer_pro_license'));
-        update_option('am_lottieplayer_pro_license', $am_lottieplayer_pro_license);
+      if ($request->get_param('am_gdpr_tracking_id') !== null) {
+        $am_gdpr_tracking_id = sanitize_text_field($request->get_param('am_gdpr_tracking_id'));
+        update_option('am_gdpr_tracking_id', $am_gdpr_tracking_id);
 
         $response = new WP_REST_Response([
           'wp_language' => get_locale(),
@@ -100,9 +98,35 @@ if (!class_exists('AM_GDPR_Rest_API')) {
           'php_version' => PHP_VERSION
         ]);
       }
-      if ($request->get_param('am_lottieplayer_pro_license_activated') !== null) {
-        $am_lottieplayer_pro_license_activated = rest_sanitize_boolean($request->get_param('am_lottieplayer_pro_license_activated'));
-        update_option('am_lottieplayer_pro_license_activated', $am_lottieplayer_pro_license_activated);
+
+      if ($request->get_param('am_gdpr_font_family')) {
+        $am_gdpr_font_family = sanitize_text_field($request->get_param('am_gdpr_font_family'));
+        update_option('am_gdpr_font_family', $am_gdpr_font_family);
+      }
+
+      if ($request->get_param('am_gdpr_color')) {
+        $am_gdpr_color = sanitize_hex_color($request->get_param('am_gdpr_color'));
+        update_option('am_gdpr_color', $am_gdpr_color);
+      }
+
+      if ($request->get_param('am_gdpr_accent_color')) {
+        $am_gdpr_accent_color = sanitize_hex_color($request->get_param('am_gdpr_accent_color'));
+        update_option('am_gdpr_accent_color', $am_gdpr_accent_color);
+      }
+
+      if ($request->get_param('am_gdpr_background_color')) {
+        $am_gdpr_background_color = sanitize_hex_color($request->get_param('am_gdpr_background_color'));
+        update_option('am_gdpr_background_color', $am_gdpr_background_color);
+      }
+
+      if ($request->get_param('am_gdpr_border_width')) {
+        $am_gdpr_border_width = sanitize_text_field($request->get_param('am_gdpr_border_width'));
+        update_option('am_gdpr_border_width', $am_gdpr_border_width);
+      }
+
+      if ($request->get_param('am_gdpr_text')) {
+        $am_gdpr_text = rest_sanitize_object($request->get_param('am_gdpr_text'));
+        update_option('am_gdpr_text', $am_gdpr_text);
       }
 
       return $response;
