@@ -33,7 +33,7 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
         backgroundColor="<?php echo esc_attr(get_option('am_gdpr_background_color')); ?>"
         fontFamily="<?php echo esc_attr(get_option('am_gdpr_font_family')); ?>"
         borderWidth="<?php echo esc_attr(get_option('am_gdpr_border_width')); ?>"
-        privacyPolicyURL="<?php echo esc_url(get_option(('am_gdpr_wp_privacy_policy_url'))); ?>"
+        privacyPolicyURL="<?php echo esc_attr(get_option(('am_gdpr_wp_privacy_policy_url'))); ?>"
       ></am-gdpr>
         <?php
       }
