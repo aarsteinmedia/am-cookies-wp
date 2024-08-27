@@ -21,28 +21,25 @@
 		"url": "https://github.com/aarsteinmedia/am-gdpr-wp"
 	},
 	"bugs": {
-		"url": "https://github.com/aarsteinmedia/am-lottieplayer-pro/issues",
+		"url": "https://github.com/aarsteinmedia/am-gdpr-wp/issues",
 		"email": "johan@aarstein.media"
 	},
 	"files": [
-		"assets",
 		"build",
 		"includes",
 		"scripts",
 		"styles",
-		"am-lottieplayer-pro.php"
+		"am-gdpr-wp.php"
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
-		"@aarsteinmedia/dotlottie-player": "^3.0.6",
-		"@aarsteinmedia/dotlottie-player-light": "^3.0.5",
 		"@types/node": "^22.5.0",
 		"@types/react": "^18.3.4",
 		"@types/webpack": "^5.28.5",
 		"@types/wordpress__block-editor": "^11.5.15",
 		"@types/wordpress__blocks": "^12.5.14",
-		"@typescript-eslint/eslint-plugin": "^5.62.0",
-		"@typescript-eslint/parser": "^5.62.0",
+		"@typescript-eslint/eslint-plugin": "^7.18.0",
+		"@typescript-eslint/parser": "^7.18.0",
 		"@wordpress/api-fetch": "^7.6.0",
 		"@wordpress/blob": "^4.6.0",
 		"@wordpress/components": "^28.6.0",
@@ -51,14 +48,13 @@
 		"@wordpress/data": "^10.6.0",
 		"@wordpress/element": "^6.6.0",
 		"@wordpress/i18n": "^5.6.0",
-		"@wordpress/scripts": "^26.19.0",
+		"@wordpress/scripts": "^28.6.0",
 		"classnames": "^2.5.1",
 		"eslint-import-resolver-typescript": "^3.6.3",
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-react": "^7.35.0",
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"glob": "^11.0.0",
-		"lottie-web": "^5.12.2",
 		"re-resizable": "^6.9.17",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
@@ -68,7 +64,7 @@
 		"typescript": "^5.5.4"
 	},
 	"scripts": {
-		"build": "wp-scripts build && pnpm dep && pnpm scss && wp-scripts plugin-zip",
+		"build": "wp-scripts build && pnpm scss && wp-scripts plugin-zip",
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
 		"format": "wp-scripts format",
@@ -81,11 +77,10 @@
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
-		"scss": "sass --no-source-map --style=compressed sass:styles",
-		"dep": "cp ./node_modules/@aarsteinmedia/dotlottie-player/dist/index.js ./scripts/dotlottie-player.min.js  && cp ./node_modules/@aarsteinmedia/dotlottie-player-light/dist/index.js ./scripts/dotlottie-player-light.min.js"
+		"scss": "sass --no-source-map --style=compressed sass:styles"
 	},
 	"cde": {
-		"gettext": "am-lottieplayer",
+		"gettext": "am-gdpr-wp",
 		"prefix": "am"
 	}
 }
