@@ -67,6 +67,7 @@
 
     .form-helper {
       display: block;
+      margin-bottom: .5em;
     }
   }
 
@@ -997,7 +998,7 @@
   .button {
     font-size: .9em;
     font-weight: bold;
-    padding: 5px 15px;
+    padding: 7px 15px 5px;
     margin: 15px;
     margin-left: 0;
     border-radius: 1.5em;
@@ -1033,7 +1034,7 @@
     &:active,
     &:focus,
     &:hover {
-      background-color: inherit!important;
+      // background-color: inherit!important;
       color: inherit!important;
       border-color: inherit!important;
       outline: none!important;

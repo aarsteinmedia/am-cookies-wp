@@ -15,6 +15,7 @@ interface Options {
 	am_gdpr_background_color: string;
 	am_gdpr_border_width: number;
 	am_gdpr_text: Text | null;
+	am_gdpr_wp_privacy_policy_url: string;
 }
 
 export default function Settings() {
@@ -26,6 +27,7 @@ export default function Settings() {
 			am_gdpr_background_color: '#ffffff',
 			am_gdpr_border_width: 2,
 			am_gdpr_text: null,
+			am_gdpr_wp_privacy_policy_url: 'privacy-policy',
 		} ),
 		[ loading, setLoading ] = useState( false ),
 		getData = useCallback( async () => {
@@ -108,6 +110,21 @@ export default function Settings() {
 									'am-gdpr-wp'
 								) }
 							</span>
+							<label
+								className="form-label"
+								htmlFor="am_gdpr_wp_privacy_policy_url"
+							>
+								{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
+							</label>
+							<input
+								id="am_gdpr_wp_privacy_policy_url"
+								name="am_gdpr_wp_privacy_policy_url"
+								value={
+									data.am_gdpr_wp_privacy_policy_url || ''
+								}
+								onChange={ onChangeHandler }
+								type="text"
+							/>
 						</fieldset>
 						<fieldset className="am-fieldset">
 							<h2 style={ { marginTop: '0' } }>

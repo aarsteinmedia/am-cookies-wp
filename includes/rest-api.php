@@ -63,6 +63,7 @@ if (!class_exists('AM_GDPR_Rest_API')) {
       $response['am_gdpr_background_color'] = get_option('am_gdpr_background_color');
       $response['am_gdpr_border_width'] = get_option('am_gdpr_border_width');
       $response['am_gdpr_text'] = get_option('am_gdpr_text');
+      $response['am_gdpr_wp_privacy_policy_url'] = get_option('am_gdpr_wp_privacy_policy_url');
 
       $response = new WP_REST_Response($response);
 
@@ -122,6 +123,11 @@ if (!class_exists('AM_GDPR_Rest_API')) {
       if ($request->get_param('am_gdpr_border_width')) {
         $am_gdpr_border_width = sanitize_text_field($request->get_param('am_gdpr_border_width'));
         update_option('am_gdpr_border_width', $am_gdpr_border_width);
+      }
+
+      if ($request->get_param('am_gdpr_wp_privacy_policy_url')) {
+        $am_gdpr_wp_privacy_policy_url = sanitize_text_field($request->get_param('am_gdpr_wp_privacy_policy_url'));
+        update_option('am_gdpr_wp_privacy_policy_url', $am_gdpr_wp_privacy_policy_url);
       }
 
       if ($request->get_param('am_gdpr_text')) {

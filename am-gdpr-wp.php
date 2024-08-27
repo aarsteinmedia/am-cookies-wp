@@ -67,6 +67,7 @@ if (!class_exists('AM_GDPR_WP')) {
       add_option('am_gdpr_background_color', '#ffffff');
       add_option('am_gdpr_border_width', 2);
       add_option('am_gdpr_text', null);
+      add_option('am_gdpr_wp_privacy_policy_url', 'privacy-policy');
     }
   }
 
