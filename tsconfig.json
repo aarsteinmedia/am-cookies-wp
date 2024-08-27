@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"rootDir": "./",
+		"outDir": "./build",
+		"target": "ES2021",
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"lib": [ "DOM", "DOM.Iterable", "ES2015", "ESNext" ],
+		"noImplicitAny": false,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"paths": {
+			"@/*": [ "./src/*" ],
+		}
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	},
+	"include": [ "./src/**/*" ],
+	"exclude": [
+		"**/svn",
+		"**/build",
+		"**/node_modules",
+		"**/assets",
+		"**/scripts"
+	]
+}

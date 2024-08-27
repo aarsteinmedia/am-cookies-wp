@@ -1,0 +1,91 @@
+{
+	"name": "am-gdpr-wp",
+	"version": "1.0.0",
+	"description": "GDPR Plugin for WordPress.",
+	"author": {
+		"name": "Aarstein Media",
+		"email": "johan@aarstein.media",
+		"url": "https://www.aarstein.media",
+		"organization": "Aarstein Media"
+	},
+	"license": "MIT",
+	"keywords": [
+		"gdpr",
+		"analytics",
+		"ga4",
+		"tagmanager"
+	],
+	"homepage": "https://www.aarstein.media/am-gdpr-wp",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aarsteinmedia/am-gdpr-wp"
+	},
+	"bugs": {
+		"url": "https://github.com/aarsteinmedia/am-lottieplayer-pro/issues",
+		"email": "johan@aarstein.media"
+	},
+	"files": [
+		"assets",
+		"build",
+		"includes",
+		"scripts",
+		"styles",
+		"am-lottieplayer-pro.php"
+	],
+	"main": "build/settings.js",
+	"devDependencies": {
+		"@aarsteinmedia/dotlottie-player": "^3.0.6",
+		"@aarsteinmedia/dotlottie-player-light": "^3.0.5",
+		"@types/node": "^22.5.0",
+		"@types/react": "^18.3.4",
+		"@types/webpack": "^5.28.5",
+		"@types/wordpress__block-editor": "^11.5.15",
+		"@types/wordpress__blocks": "^12.5.14",
+		"@typescript-eslint/eslint-plugin": "^5.62.0",
+		"@typescript-eslint/parser": "^5.62.0",
+		"@wordpress/api-fetch": "^7.6.0",
+		"@wordpress/blob": "^4.6.0",
+		"@wordpress/components": "^28.6.0",
+		"@wordpress/compose": "^7.6.0",
+		"@wordpress/core-data": "^7.6.0",
+		"@wordpress/data": "^10.6.0",
+		"@wordpress/element": "^6.6.0",
+		"@wordpress/i18n": "^5.6.0",
+		"@wordpress/scripts": "^26.19.0",
+		"classnames": "^2.5.1",
+		"eslint-import-resolver-typescript": "^3.6.3",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-react": "^7.35.0",
+		"eslint-plugin-react-hooks": "^4.6.2",
+		"glob": "^11.0.0",
+		"lottie-web": "^5.12.2",
+		"re-resizable": "^6.9.17",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sass": "^1.77.8",
+		"ts-loader": "^9.5.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.4"
+	},
+	"scripts": {
+		"build": "wp-scripts build && pnpm dep && pnpm scss && wp-scripts plugin-zip",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js",
+		"scss": "sass --no-source-map --style=compressed sass:styles",
+		"dep": "cp ./node_modules/@aarsteinmedia/dotlottie-player/dist/index.js ./scripts/dotlottie-player.min.js  && cp ./node_modules/@aarsteinmedia/dotlottie-player-light/dist/index.js ./scripts/dotlottie-player-light.min.js"
+	},
+	"cde": {
+		"gettext": "am-lottieplayer",
+		"prefix": "am"
+	}
+}
