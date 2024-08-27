@@ -8,10 +8,10 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
   {
     public function __construct()
     {
-      add_action('wp_enqueue_scripts', [$this, 'frontend_enqueue']);
+      add_action('wp_enqueue_scripts', [$this, 'init']);
     }
 
-    public function frontend_enqueue()
+    public function init()
     {
       if (is_admin()) {
         return;
@@ -19,9 +19,23 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
       wp_enqueue_script(
         'am-gdpr',
         AM_GDPR_URL . '/scripts/am-gdpr.min.js',
-        null,
+        [],
         '1.0.0'
       );
+
+      add_action('wp_body_open', 'add_gdpr_web_component');
+      function add_gdpr_web_component()
+      { ?>
+      <am-gdpr
+        trackingID="<?php echo esc_attr(get_option('am_gdpr_tracking_id')); ?>"
+        color="<?php echo esc_attr(get_option('am_gdpr_color')); ?>"
+        accentColor="<?php echo esc_attr(get_option('am_gdpr_accent_color')); ?>"
+        backgroundColor="<?php echo esc_attr(get_option('am_gdpr_background_color')); ?>"
+        fontFamily="<?php echo esc_attr(get_option('am_gdpr_font_family')); ?>"
+        borderWidth="<?php echo esc_attr(get_option('am_gdpr_border_width')); ?>"
+      ></am-gdpr>
+        <?php
+      }
     }
   }
 }
