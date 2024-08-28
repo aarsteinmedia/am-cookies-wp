@@ -33,7 +33,7 @@
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
-		"@types/node": "^22.5.0",
+		"@types/node": "^22.5.1",
 		"@types/react": "^18.3.4",
 		"@types/webpack": "^5.28.5",
 		"@types/wordpress__block-editor": "^11.5.15",

@@ -85,6 +85,12 @@ export default function Settings() {
 							{ __( 'GDPR Settings', 'am-gdpr-wp' ) }
 						</h1>
 					</div>
+					<p>
+						{ __(
+							'If you already have installed Analytics or Tag Manager on your page – remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which tracking ID you enter below. If you use other tags, i. e. MetaPixel, we reccomend you do it via Google Tag Manager.',
+							'am-gdpr-wp'
+						) }
+					</p>
 					<form onSubmit={ ( e ) => void saveChanges( e ) }>
 						<fieldset className="am-fieldset">
 							<label
@@ -139,9 +145,8 @@ export default function Settings() {
 							<input
 								id="am_gdpr_font_family"
 								name="am_gdpr_font_family"
-								value={
-									data.am_gdpr_font_family || 'sans-serif'
-								}
+								value={ data.am_gdpr_font_family }
+								placeholder="sans-serif"
 								onChange={ onChangeHandler }
 								type="text"
 							/>
