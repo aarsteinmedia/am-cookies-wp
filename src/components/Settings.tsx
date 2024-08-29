@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from '@wordpress/element';
-// import { ColorPicker } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import Loading from './Loading';
@@ -8,7 +7,10 @@ import type { ChangeEvent, FormEvent } from 'react';
 import type { Text } from '@/types';
 
 interface Options {
-	am_gdpr_tracking_id: string | null;
+	am_gdpr_google_id: string | null;
+	am_gdpr_meta_id: string | null;
+	am_gdpr_snap_id: string | null;
+	am_gdpr_tiktok_id: string | null;
 	am_gdpr_font_family: string;
 	am_gdpr_color: string;
 	am_gdpr_accent_color: string;
@@ -20,7 +22,10 @@ interface Options {
 
 export default function Settings() {
 	const [ data, setData ] = useState< Options >( {
-			am_gdpr_tracking_id: null,
+			am_gdpr_google_id: null,
+			am_gdpr_meta_id: null,
+			am_gdpr_snap_id: null,
+			am_gdpr_tiktok_id: null,
 			am_gdpr_font_family: 'sans-serif',
 			am_gdpr_color: '#000000',
 			am_gdpr_accent_color: '#ffffff',
@@ -87,7 +92,7 @@ export default function Settings() {
 					</div>
 					<p>
 						{ __(
-							'If you already have installed Analytics or Tag Manager on your page – remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which tracking ID you enter below. If you use other tags, i. e. MetaPixel, we reccomend you do it via Google Tag Manager.',
+							'If you already have installed Analytics or Tag Manager on your page – remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter below. If you use Google Tag Manager, we reccomend you use that to implement other tags, i. e. MetaPixel.',
 							'am-gdpr-wp'
 						) }
 					</p>
@@ -95,20 +100,17 @@ export default function Settings() {
 						<fieldset className="am-fieldset">
 							<label
 								className="form-label"
-								htmlFor="am_gdpr_wp_tracking_id"
+								htmlFor="am_gdpr_google_id"
 							>
-								{ __( 'Tracking ID', 'am-gdpr-wp' ) }
+								{ __( 'Google Tracking ID', 'am-gdpr-wp' ) }
 							</label>
 							<input
-								id="am_gdpr_wp_tracking_id"
-								name="am_gdpr_tracking_id"
-								value={ data.am_gdpr_tracking_id || '' }
+								id="am_gdpr_google_id"
+								name="am_gdpr_google_id"
+								value={ data.am_gdpr_google_id || '' }
 								onChange={ onChangeHandler }
 								type="text"
-								placeholder={ __(
-									'G-XXXXXXXXXX / GTM-XXXXXXXXXX',
-									'am-gdpr-wp'
-								) }
+								// placeholder="G-XXXXXXXXXX / GTM-XXXXXXXXXX"
 							/>
 							<span className="form-helper">
 								{ __(
@@ -116,6 +118,61 @@ export default function Settings() {
 									'am-gdpr-wp'
 								) }
 							</span>
+
+							<label
+								className="form-label"
+								htmlFor="am_gdpr_meta_id"
+							>
+								{ __( 'Meta/Facebook Pixel ID', 'am-gdpr-wp' ) }
+							</label>
+							<input
+								id="am_gdpr_meta_id"
+								name="am_gdpr_meta_id"
+								value={ data.am_gdpr_meta_id || '' }
+								onChange={ onChangeHandler }
+								type="text"
+								disabled={ data.am_gdpr_google_id?.startsWith(
+									'GTM-'
+								) }
+								// placeholder="000000000000000"
+							/>
+
+							<label
+								className="form-label"
+								htmlFor="am_gdpr_snap_id"
+							>
+								{ __( 'SnapChat Pixel ID', 'am-gdpr-wp' ) }
+							</label>
+							<input
+								id="am_gdpr_snap_id"
+								name="am_gdpr_snap_id"
+								value={ data.am_gdpr_snap_id || '' }
+								onChange={ onChangeHandler }
+								type="text"
+								disabled={ data.am_gdpr_google_id?.startsWith(
+									'GTM-'
+								) }
+								// placeholder="11a1111a-1a1a-111a-1a11-aa1aa111a1aa"
+							/>
+
+							<label
+								className="form-label"
+								htmlFor="am_gdpr_tiktok_id"
+							>
+								{ __( 'TikTok ID', 'am-gdpr-wp' ) }
+							</label>
+							<input
+								id="am_gdpr_tiktok_id"
+								name="am_gdpr_tiktok_id"
+								value={ data.am_gdpr_tiktok_id || '' }
+								onChange={ onChangeHandler }
+								type="text"
+								disabled={ data.am_gdpr_google_id?.startsWith(
+									'GTM-'
+								) }
+								// placeholder="A1AAA1AA1AAA1AAAAA1AA"
+							/>
+
 							<label
 								className="form-label"
 								htmlFor="am_gdpr_wp_privacy_policy_url"

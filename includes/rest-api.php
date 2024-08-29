@@ -56,7 +56,11 @@ if (!class_exists('AM_GDPR_Rest_API')) {
       }
 
       $response = [];
-      $response['am_gdpr_tracking_id'] = get_option('am_gdpr_tracking_id');
+      $response['am_gdpr_google_id'] = get_option('am_gdpr_google_id');
+      $response['am_gdpr_meta_id'] = get_option('am_gdpr_meta_id');
+      $response['am_gdpr_snap_id'] = get_option('am_gdpr_snap_id');
+      $response['am_gdpr_tiktok_id'] = get_option('am_gdpr_tiktok_id');
+
       $response['am_gdpr_font_family'] = get_option('am_gdpr_font_family');
       $response['am_gdpr_color'] = get_option('am_gdpr_color');
       $response['am_gdpr_accent_color'] = get_option('am_gdpr_accent_color');
@@ -87,52 +91,48 @@ if (!class_exists('AM_GDPR_Rest_API')) {
         'success' => true
       ]);
 
-      if ($request->get_param('am_gdpr_tracking_id') !== null) {
-        $am_gdpr_tracking_id = sanitize_text_field($request->get_param('am_gdpr_tracking_id'));
-        update_option('am_gdpr_tracking_id', $am_gdpr_tracking_id);
+      if ($request->get_param('am_gdpr_google_id') !== null) {
+        update_option('am_gdpr_google_id', sanitize_text_field($request->get_param('am_gdpr_google_id')));
+      }
 
-        $response = new WP_REST_Response([
-          'wp_language' => get_locale(),
-          'wp_name' => get_option('blogname'),
-          'wp_url' => get_option('siteurl'),
-          'wp_timezone' => wp_timezone_string(),
-          'php_version' => PHP_VERSION
-        ]);
+      if ($request->get_param('am_gdpr_meta_id') !== null) {
+        update_option('am_gdpr_meta_id', sanitize_text_field($request->get_param('am_gdpr_meta_id')));
+      }
+
+      if ($request->get_param('am_gdpr_snap_id') !== null) {
+        update_option('am_gdpr_snap_id', sanitize_text_field($request->get_param('am_gdpr_snap_id')));
+      }
+
+      if ($request->get_param('am_gdpr_tiktok_id') !== null) {
+        update_option('am_gdpr_tiktok_id', sanitize_text_field($request->get_param('am_gdpr_tiktok_id')));
       }
 
       if ($request->get_param('am_gdpr_font_family')) {
-        $am_gdpr_font_family = sanitize_text_field($request->get_param('am_gdpr_font_family'));
-        update_option('am_gdpr_font_family', $am_gdpr_font_family);
+        update_option('am_gdpr_font_family', sanitize_text_field($request->get_param('am_gdpr_font_family')));
       }
 
       if ($request->get_param('am_gdpr_color')) {
-        $am_gdpr_color = sanitize_hex_color($request->get_param('am_gdpr_color'));
-        update_option('am_gdpr_color', $am_gdpr_color);
+        update_option('am_gdpr_color', sanitize_hex_color($request->get_param('am_gdpr_color')));
       }
 
       if ($request->get_param('am_gdpr_accent_color')) {
-        $am_gdpr_accent_color = sanitize_hex_color($request->get_param('am_gdpr_accent_color'));
-        update_option('am_gdpr_accent_color', $am_gdpr_accent_color);
+        update_option('am_gdpr_accent_color', sanitize_hex_color($request->get_param('am_gdpr_accent_color')));
       }
 
       if ($request->get_param('am_gdpr_background_color')) {
-        $am_gdpr_background_color = sanitize_hex_color($request->get_param('am_gdpr_background_color'));
-        update_option('am_gdpr_background_color', $am_gdpr_background_color);
+        update_option('am_gdpr_background_color', sanitize_hex_color($request->get_param('am_gdpr_background_color')));
       }
 
       if ($request->get_param('am_gdpr_border_width')) {
-        $am_gdpr_border_width = sanitize_text_field($request->get_param('am_gdpr_border_width'));
-        update_option('am_gdpr_border_width', $am_gdpr_border_width);
+        update_option('am_gdpr_border_width', sanitize_text_field($request->get_param('am_gdpr_border_width')));
       }
 
       if ($request->get_param('am_gdpr_wp_privacy_policy_url')) {
-        $am_gdpr_wp_privacy_policy_url = sanitize_text_field($request->get_param('am_gdpr_wp_privacy_policy_url'));
-        update_option('am_gdpr_wp_privacy_policy_url', $am_gdpr_wp_privacy_policy_url);
+        update_option('am_gdpr_wp_privacy_policy_url', sanitize_text_field($request->get_param('am_gdpr_wp_privacy_policy_url')));
       }
 
       if ($request->get_param('am_gdpr_text')) {
-        $am_gdpr_text = rest_sanitize_object($request->get_param('am_gdpr_text'));
-        update_option('am_gdpr_text', $am_gdpr_text);
+        update_option('am_gdpr_text', rest_sanitize_object($request->get_param('am_gdpr_text')));
       }
 
       return $response;

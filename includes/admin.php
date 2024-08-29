@@ -52,16 +52,6 @@ if (!class_exists('AM_GDPR_Admin')) {
           '1.00',
           true
         );
-        // Add variables to be used inside script
-        // wp_localize_script(
-        //   'am-gdpr-wp-options',
-        //   'amPhpVars',
-        //   [
-        //     'pluginUrl' => AM_GDPR_URL,
-        //     'endpoint' => esc_url_raw(rest_url('/wp/v2/media/')),
-        //     'nonce' => wp_create_nonce('wp_rest'),
-        //   ]         
-        // );
       }
     }
 

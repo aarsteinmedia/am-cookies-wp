@@ -27,7 +27,10 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
       function add_gdpr_web_component()
       { ?>
       <am-gdpr
-        trackingID="<?php echo esc_attr(get_option('am_gdpr_tracking_id')); ?>"
+        googleID="<?php echo esc_attr(get_option('am_gdpr_google_id')); ?>"
+        metaPixelID="<?php echo esc_attr(get_option('am_gdpr_meta_id')); ?>"
+        snapChatPixelID="<?php echo esc_attr(get_option('am_gdpr_snap_id')); ?>"
+        tiktokPixelID="<?php echo esc_attr(get_option('am_gdpr_tiktok_id')); ?>"
         color="<?php echo esc_attr(get_option('am_gdpr_color')); ?>"
         accentColor="<?php echo esc_attr(get_option('am_gdpr_accent_color')); ?>"
         backgroundColor="<?php echo esc_attr(get_option('am_gdpr_background_color')); ?>"
