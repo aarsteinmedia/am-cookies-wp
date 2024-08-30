@@ -1,7 +1,7 @@
 {
 	"name": "am-gdpr-wp",
 	"version": "1.0.0",
-	"description": "GDPR Plugin for WordPress.",
+	"description": "GDPR Cookie Compliance Plugin for WordPress.",
 	"author": {
 		"name": "Aarstein Media",
 		"email": "johan@aarstein.media",

@@ -3,12 +3,12 @@
 /**
  * AM GDPR
  * 
- * @package AM GDPR for WordPress
+ * @package AM Cookies for WordPress
  * @author Aarstein Media
  *
  * @wordpress-plugin
- * Plugin Name:       AM GDPR for WordPress
- * Description:       GDPR Plugin for WordPress.
+ * Plugin Name:       AM Cookies for WordPress
+ * Description:       GDPR Cookie Compliance Plugin for WordPress.
  * Version:           1.0.0
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
@@ -65,6 +65,8 @@ if (!class_exists('AM_GDPR_WP')) {
       add_option('am_gdpr_snap_id', null);
       add_option('am_gdpr_tiktok_id', null);
 
+      add_option('am_gdpr_align', 'bottom-left');
+      add_option('am_gdpr_format', 'box');
       add_option('am_gdpr_font_family', 'sans-serif');
       add_option('am_gdpr_color', '#000000');
       add_option('am_gdpr_accent_color', '#ffffff');

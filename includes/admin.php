@@ -25,8 +25,8 @@ if (!class_exists('AM_GDPR_Admin')) {
     public function admin_menu()
     {
       add_menu_page(
-        __('AM GDPR Settings', 'am-gdpr-wp'),
-        'AM GDPR',
+        __('AM Cookies Settings', 'am-gdpr-wp'),
+        'AM Cookies',
         'manage_options',
         AM_GDPR_SLUG,
         [$this, 'render_settings'],
@@ -40,7 +40,9 @@ if (!class_exists('AM_GDPR_Admin')) {
      */
     public function admin_enqueue_scripts($page)
     {
-      wp_enqueue_style('am-backend-style', AM_GDPR_URL . 'styles/admin.css');
+      wp_enqueue_style('am-gdpr-backend-style', AM_GDPR_URL . 'styles/admin.css');
+      wp_enqueue_style('am-gdpr-preview-style', AM_GDPR_URL . 'styles/preview.css');
+      wp_enqueue_style('wp-edit-blocks');
 
       $assets = require AM_GDPR_PATH . 'build/settings.asset.php';
 

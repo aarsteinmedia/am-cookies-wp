@@ -26,19 +26,20 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
       add_action('wp_body_open', 'add_gdpr_web_component');
       function add_gdpr_web_component()
       { ?>
-      <am-gdpr
-        googleID="<?php echo esc_attr(get_option('am_gdpr_google_id')); ?>"
-        metaPixelID="<?php echo esc_attr(get_option('am_gdpr_meta_id')); ?>"
-        snapChatPixelID="<?php echo esc_attr(get_option('am_gdpr_snap_id')); ?>"
-        tiktokPixelID="<?php echo esc_attr(get_option('am_gdpr_tiktok_id')); ?>"
-        color="<?php echo esc_attr(get_option('am_gdpr_color')); ?>"
-        accentColor="<?php echo esc_attr(get_option('am_gdpr_accent_color')); ?>"
-        backgroundColor="<?php echo esc_attr(get_option('am_gdpr_background_color')); ?>"
-        fontFamily="<?php echo esc_attr(get_option('am_gdpr_font_family')); ?>"
-        borderWidth="<?php echo esc_attr(get_option('am_gdpr_border_width')); ?>"
-        privacyPolicyURL="<?php echo esc_attr(get_option(('am_gdpr_wp_privacy_policy_url'))); ?>"
-      ></am-gdpr>
-        <?php
+        <am-gdpr
+          googleID="<?php echo esc_attr(get_option('am_gdpr_google_id')); ?>"
+          metaPixelID="<?php echo esc_attr(get_option('am_gdpr_meta_id')); ?>"
+          snapChatPixelID="<?php echo esc_attr(get_option('am_gdpr_snap_id')); ?>"
+          tiktokPixelID="<?php echo esc_attr(get_option('am_gdpr_tiktok_id')); ?>"
+          alignPrompt="<?php echo esc_attr(get_option('am_gdpr_align')); ?>"
+          format="<?php echo esc_attr(get_option('am_gdpr_format')); ?>"
+          color="<?php echo esc_attr(get_option('am_gdpr_color')); ?>"
+          accentColor="<?php echo esc_attr(get_option('am_gdpr_accent_color')); ?>"
+          backgroundColor="<?php echo esc_attr(get_option('am_gdpr_background_color')); ?>"
+          fontFamily="<?php echo esc_attr(get_option('am_gdpr_font_family')); ?>"
+          borderWidth="<?php echo esc_attr(get_option('am_gdpr_border_width')); ?>"
+          privacyPolicyURL="<?php echo esc_attr(get_option(('am_gdpr_wp_privacy_policy_url'))); ?>"></am-gdpr>
+<?php
       }
     }
   }
