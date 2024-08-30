@@ -5,7 +5,6 @@ import {
 	useRef,
 	useState,
 } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import type { Options } from '@/types';
 
 export default function Preview( { data }: { data: Options } ) {
@@ -111,24 +110,17 @@ export default function Preview( { data }: { data: Options } ) {
 									</svg>
 								</figure>
 								<slot id="customize-header">
-									{ __(
-										'Your data, your choice',
-										'am-gdpr-wp'
-									) }
+									{ data.am_gdpr_text.customize.header }
 								</slot>
 							</h3>
 							<p
 								id="customize-text"
 								dangerouslySetInnerHTML={ {
-									__html: `${ __(
-										'We use <strong>functional cookies</strong> for navigation, etc. In addition, we use <strong>statistical cookies</strong> to see how users interact with the website.',
-										'am-gpdr-wp'
-									) }${
+									__html: `${
+										data.am_gdpr_text.customize.text
+									}${
 										hasRetargeting
-											? ` ${ __(
-													'We also use <strong>cookies for marketing.</strong',
-													'am-gdpr-wp'
-											  ) }`
+											? ` ${ data.am_gdpr_text.customize.retargeting }`
 											: ''
 									}`,
 								} }
@@ -136,9 +128,9 @@ export default function Preview( { data }: { data: Options } ) {
 							<p
 								id="customize-link"
 								dangerouslySetInnerHTML={ {
-									__html: __(
-										'See our <a href=#">privacy policy</a>',
-										'am-gdpr-wp'
+									__html: data.am_gdpr_text.customize.link.replace(
+										'%URL%',
+										data.am_gdpr_wp_privacy_policy_url
 									),
 								} }
 							/>
@@ -154,7 +146,7 @@ export default function Preview( { data }: { data: Options } ) {
 									className="button gdpr decline-all"
 									style={ { backgroundColor: 'transparent' } }
 								>
-									{ __( 'Only functional', 'am-gdpr-wp' ) }
+									{ data.am_gdpr_text.decline }
 								</button>
 								<button
 									onClick={ () =>
@@ -165,7 +157,7 @@ export default function Preview( { data }: { data: Options } ) {
 									}
 									className="button gdpr accept-all"
 								>
-									{ __( 'Accept all', 'am-gdpr-wp' ) }
+									{ data.am_gdpr_text.acceptAll }
 								</button>
 							</div>
 
@@ -173,22 +165,23 @@ export default function Preview( { data }: { data: Options } ) {
 								<SwitchButton
 									value={ true }
 									name="functional"
-									label={ __( 'Functional', 'am-gdpr-wp' ) }
+									label={ data.am_gdpr_text.functional.label }
 									disabled
 								/>
 								<SwitchButton
 									value={ false }
 									name="statistical"
-									label={ __( 'Statistical', 'am-gdpr-wp' ) }
+									label={
+										data.am_gdpr_text.statistical.label
+									}
 								/>
 								{ hasRetargeting && (
 									<SwitchButton
 										value={ false }
 										name="marketing"
-										label={ __(
-											'Marketing',
-											'am-gdpr-wp'
-										) }
+										label={
+											data.am_gdpr_text.marketing.label
+										}
 									/>
 								) }
 							</div>
@@ -208,7 +201,7 @@ export default function Preview( { data }: { data: Options } ) {
 							role="dialog"
 						>
 							<p className="h3" id="cookie-warning-text">
-								{ __( 'This website uses', 'am-gdpr-wp' ) }{ ' ' }
+								{ data.am_gdpr_text.header }{ ' ' }
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="992"
@@ -230,10 +223,10 @@ export default function Preview( { data }: { data: Options } ) {
 									} ) )
 								}
 							>
-								{ __( 'Customize', 'am-gdpr-wp' ) }
+								{ data.am_gdpr_text.customize.label }
 							</button>
 							<button className="button gdpr accept">
-								{ __( 'I understand', 'am-gdpr-wp' ) }
+								{ data.am_gdpr_text.accept }
 							</button>
 						</div>
 					</div>

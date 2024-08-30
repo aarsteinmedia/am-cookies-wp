@@ -1,0 +1,26 @@
+{
+  "settings": "Cookieinnstillinger",
+  "customize": {
+    "header": "Dine data, ditt valg",
+    "label": "Tilpass",
+    "text": "Vi bruker <strong>funksjonelle cookies</strong> til navigering og lignende. I tillegg bruker vi <strong>statistiske cookies</strong> til å se hvordan brukere interagerer med nettsiden.",
+    "retargeting": "Vi bruker også <strong>cookies til markedsføring.</strong>",
+    "link": "Les mer på vår <a href=\"/%URL%\">personvernserklæring</a>"
+  },
+  "header": "Denne nettsida bruker",
+  "accept": "Jeg forstår",
+  "acceptAll": "Godta alle",
+  "decline": "Bare funksjonelle",
+  "close": "Lukk",
+  "save": "Lagre innstillinger",
+  "functional": {
+    "label": "Funksjonell"
+  },
+  "statistical": {
+    "label": "Statistisk"
+  },
+  "marketing": {
+    "label": "Markedsføring"
+  },
+  "policyUrl": "personvern"
+}

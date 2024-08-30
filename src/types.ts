@@ -15,6 +15,6 @@ export interface Options {
 	am_gdpr_accent_color: string;
 	am_gdpr_background_color: string;
 	am_gdpr_border_width: number;
-	am_gdpr_text: Text | null;
+	am_gdpr_text: Text;
 	am_gdpr_wp_privacy_policy_url: string;
 }

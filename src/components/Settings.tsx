@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from '@wordpress/element';
 import { RadioControl } from '@wordpress/components';
+import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import Loading from './Loading';
@@ -8,6 +9,7 @@ import { Align, Format } from '@/utils';
 import SwitchLabel from './Switch';
 import ColorInput from './ColorInput';
 import Preview from './Preview';
+import getTranslation from '@/i18n';
 import type { ChangeEvent, FormEvent } from 'react';
 import type { Options } from '@/types';
 
@@ -24,7 +26,7 @@ export default function Settings() {
 			am_gdpr_accent_color: '#ffffff',
 			am_gdpr_background_color: '#ffffff',
 			am_gdpr_border_width: 2,
-			am_gdpr_text: null,
+			am_gdpr_text: getTranslation(),
 			am_gdpr_wp_privacy_policy_url: 'privacy-policy',
 		} ),
 		[ state, setState ] = useState( {
@@ -36,7 +38,12 @@ export default function Settings() {
 			const options = await apiFetch< Options >( {
 				path: 'am-gdpr-wp-settings/v1/options',
 			} );
-			setData( options );
+			setData( ( prev ) => {
+				if ( ! options.am_gdpr_text ) {
+					return { ...options, am_gdpr_text: prev.am_gdpr_text };
+				}
+				return options;
+			} );
 		}, [] ),
 		onChangeHandler = ( { target }: ChangeEvent< HTMLInputElement > ) => {
 			setData( ( prev ) => ( {
@@ -416,6 +423,269 @@ export default function Settings() {
 										'am-gdpr-wp'
 									) }
 								/>
+							</div>
+						</fieldset>
+						<fieldset
+							id="content"
+							hidden={ state.tab !== 'content' }
+							className="am-gdpr-fieldset"
+							style={ {
+								display:
+									state.tab === 'content' ? 'flex' : 'none',
+								gap: '2.5em',
+							} }
+						>
+							<div style={ { flex: '1' } }>
+								<h3 style={ { marginTop: '0' } }>
+									{ __( 'Cookie Prompt', 'am-gdpr-wp' ) }
+								</h3>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_header"
+								>
+									{ __( 'Header', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_header"
+										name="am_gdpr_text"
+										value={ data.am_gdpr_text.header }
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													header: value,
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_accept"
+								>
+									{ __( 'Accept', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_accept"
+										name="am_gdpr_text"
+										value={ data.am_gdpr_text.accept }
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													accept: value,
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_customize_label"
+								>
+									{ __( 'Customize', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_customize_label"
+										name="am_gdpr_text"
+										value={
+											data.am_gdpr_text.customize.label
+										}
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													customize: {
+														...prev.am_gdpr_text
+															.customize,
+														label: value,
+													},
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+							</div>
+							<div style={ { flex: '1' } }>
+								<h3 style={ { marginTop: '0' } }>
+									{ __( 'Customize settings', 'am-gdpr-wp' ) }
+								</h3>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_customize_header"
+								>
+									{ __( 'Header', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_customize_header"
+										name="am_gdpr_text"
+										value={
+											data.am_gdpr_text.customize.header
+										}
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													customize: {
+														...prev.am_gdpr_text
+															.customize,
+														header: value,
+													},
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_customize_text"
+								>
+									{ __( 'Description', 'am-gdpr-wp' ) }
+									<RichText
+										id="am_gdpr_text_customize_text"
+										name="am_gdpr_text"
+										className="am_gdpr_textarea"
+										value={
+											data.am_gdpr_text.customize.text
+										}
+										allowedFormats={ [
+											'core/bold',
+											'core/italic',
+										] }
+										onChange={ ( value ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													customize: {
+														...prev.am_gdpr_text
+															.customize,
+														text: value,
+													},
+												},
+											} ) )
+										}
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_customize_retargeting"
+								>
+									{ __(
+										'Description, retargeting',
+										'am-gdpr-wp'
+									) }
+									<RichText
+										id="am_gdpr_text_customize_retargeting"
+										name="am_gdpr_text"
+										className="am_gdpr_textarea"
+										value={
+											data.am_gdpr_text.customize
+												.retargeting
+										}
+										allowedFormats={ [
+											'core/bold',
+											'core/italic',
+										] }
+										onChange={ ( value ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													customize: {
+														...prev.am_gdpr_text
+															.customize,
+														retargeting: value,
+													},
+												},
+											} ) )
+										}
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_customize_link"
+								>
+									{ __( 'Privacy link', 'am-gdpr-wp' ) }
+									<RichText
+										id="am_gdpr_text_customize_link"
+										name="am_gdpr_text"
+										className="am_gdpr_textarea"
+										value={
+											data.am_gdpr_text.customize.link
+										}
+										allowedFormats={ [
+											'core/bold',
+											'core/italic',
+											'core/link',
+										] }
+										onChange={ ( value ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													customize: {
+														...prev.am_gdpr_text
+															.customize,
+														link: value,
+													},
+												},
+											} ) )
+										}
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_decline"
+								>
+									{ __( 'Decline', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_decline"
+										name="am_gdpr_text"
+										value={ data.am_gdpr_text.decline }
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													decline: value,
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_text_accept_all"
+								>
+									{ __( 'Accept all', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_text_accept_all"
+										name="am_gdpr_text"
+										value={ data.am_gdpr_text.acceptAll }
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_gdpr_text: {
+													...prev.am_gdpr_text,
+													acceptAll: value,
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
 							</div>
 						</fieldset>
 						<button type="submit" className="am-btn blue">
