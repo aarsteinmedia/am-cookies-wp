@@ -49,7 +49,7 @@ if (!function_exists('am_idify')) {
 if (!function_exists('am_use_id')) {
   function am_use_id()
   {
-    $str = rand();
+    $str = wp_rand();
     return am_idify(md5($str));
   }
 }

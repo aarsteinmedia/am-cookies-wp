@@ -3,15 +3,19 @@
 /**
  * AM GDPR
  * 
- * @package AM Cookies for WordPress
+ * @package AM Cookies
  * @author Aarstein Media
  *
  * @wordpress-plugin
- * Plugin Name:       AM Cookies for WordPress
- * Description:       GDPR Cookie Compliance Plugin for WordPress.
+ * Plugin Name:       AM Cookies
+ * Description:       Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
+ * Requires at least: 5.9
+ * Requires PHP:      7.0
  * Version:           1.0.0
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       am-cookies-wp
  */
 
@@ -51,7 +55,7 @@ if (!class_exists('AM_GDPR_WP')) {
       // Include utility functions
       include_once AM_GDPR_PATH . 'includes/functions.php';
 
-      am_gdpr_include('updates');
+      // am_gdpr_include('updates');
       am_gdpr_include('enqueue-scripts');
       am_gdpr_include('rest-api');
       if (is_admin()) {
