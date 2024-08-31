@@ -93,8 +93,18 @@
         width: 100%;
         position: relative;
         animation: fadeInUp .3s ease-in-out;
-        // display: inline-flex;
-        // flex-direction: column;
+        gap: 2.5em;
+        &:not([hidden]){
+          display: flex;
+        }
+
+        >div {
+          flex: 1;
+        }
+
+        .info {
+          animation: fadeIn .2s ease-in-out;
+        }
 
         input:not([type=radio]) {
           width: 100%;

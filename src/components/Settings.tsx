@@ -33,6 +33,7 @@ export default function Settings() {
 			loading: false,
 			preview: false,
 			tab: 'tracking',
+			activeInput: '',
 		} ),
 		getData = useCallback( async () => {
 			const options = await apiFetch< Options >( {
@@ -158,12 +159,6 @@ export default function Settings() {
 				} }
 			>
 				<div className="content">
-					{ /* <p>
-						{ __(
-							'If you already have installed Analytics or Tag Manager on your page – remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter below. If you use Google Tag Manager, we reccomend you use that to implement other tags, i. e. MetaPixel.',
-							'am-gdpr-wp'
-						) }
-					</p> */ }
 					<form
 						className="am-gdpr-form"
 						onSubmit={ ( e ) => void saveChanges( e ) }
@@ -173,108 +168,188 @@ export default function Settings() {
 							hidden={ state.tab !== 'tracking' }
 							className="am-gdpr-fieldset"
 						>
-							<label
-								className="form-label"
-								htmlFor="am_gdpr_google_id"
-							>
-								{ __( 'Google Tracking ID', 'am-gdpr-wp' ) }
+							<div>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_google_id"
+								>
+									{ __( 'Google Tracking ID', 'am-gdpr-wp' ) }
 
-								<input
-									id="am_gdpr_google_id"
-									name="am_gdpr_google_id"
-									value={ data.am_gdpr_google_id || '' }
-									onChange={ onChangeHandler }
-									type="text"
-									// placeholder="G-XXXXXXXXXX / GTM-XXXXXXXXXX"
-								/>
-								<span className="form-helper">
+									<input
+										id="am_gdpr_google_id"
+										name="am_gdpr_google_id"
+										value={ data.am_gdpr_google_id || '' }
+										onChange={ onChangeHandler }
+										type="text"
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput:
+													'am_gdpr_google_id',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										// placeholder="G-XXXXXXXXXX / GTM-XXXXXXXXXX"
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_meta_id"
+								>
 									{ __(
-										'GA4 tag or Tag Manager ID',
+										'Meta/Facebook Pixel ID',
 										'am-gdpr-wp'
 									) }
-								</span>
-							</label>
 
-							<label
-								className="form-label"
-								htmlFor="am_gdpr_meta_id"
-							>
-								{ __( 'Meta/Facebook Pixel ID', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_meta_id"
+										name="am_gdpr_meta_id"
+										value={ data.am_gdpr_meta_id || '' }
+										onChange={ onChangeHandler }
+										type="text"
+										disabled={ data.am_gdpr_google_id?.startsWith(
+											'GTM-'
+										) }
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: 'am_gdpr_meta_id',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										// placeholder="000000000000000"
+									/>
+								</label>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_snap_id"
+								>
+									{ __( 'SnapChat Pixel ID', 'am-gdpr-wp' ) }
 
-								<input
-									id="am_gdpr_meta_id"
-									name="am_gdpr_meta_id"
-									value={ data.am_gdpr_meta_id || '' }
-									onChange={ onChangeHandler }
-									type="text"
-									disabled={ data.am_gdpr_google_id?.startsWith(
-										'GTM-'
-									) }
-									// placeholder="000000000000000"
-								/>
-							</label>
-							<label
-								className="form-label"
-								htmlFor="am_gdpr_snap_id"
-							>
-								{ __( 'SnapChat Pixel ID', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_snap_id"
+										name="am_gdpr_snap_id"
+										value={ data.am_gdpr_snap_id || '' }
+										onChange={ onChangeHandler }
+										type="text"
+										disabled={ data.am_gdpr_google_id?.startsWith(
+											'GTM-'
+										) }
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: 'am_gdpr_snap_id',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										// placeholder="11a1111a-1a1a-111a-1a11-aa1aa111a1aa"
+									/>
+								</label>
 
-								<input
-									id="am_gdpr_snap_id"
-									name="am_gdpr_snap_id"
-									value={ data.am_gdpr_snap_id || '' }
-									onChange={ onChangeHandler }
-									type="text"
-									disabled={ data.am_gdpr_google_id?.startsWith(
-										'GTM-'
-									) }
-									// placeholder="11a1111a-1a1a-111a-1a11-aa1aa111a1aa"
-								/>
-							</label>
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_tiktok_id"
+								>
+									{ __( 'TikTok ID', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_tiktok_id"
+										name="am_gdpr_tiktok_id"
+										value={ data.am_gdpr_tiktok_id || '' }
+										onChange={ onChangeHandler }
+										type="text"
+										disabled={ data.am_gdpr_google_id?.startsWith(
+											'GTM-'
+										) }
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput:
+													'am_gdpr_tiktok_id',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										// placeholder="A1AAA1AA1AAA1AAAAA1AA"
+									/>
+								</label>
 
-							<label
-								className="form-label"
-								htmlFor="am_gdpr_tiktok_id"
-							>
-								{ __( 'TikTok ID', 'am-gdpr-wp' ) }
-								<input
-									id="am_gdpr_tiktok_id"
-									name="am_gdpr_tiktok_id"
-									value={ data.am_gdpr_tiktok_id || '' }
-									onChange={ onChangeHandler }
-									type="text"
-									disabled={ data.am_gdpr_google_id?.startsWith(
-										'GTM-'
-									) }
-									// placeholder="A1AAA1AA1AAA1AAAAA1AA"
-								/>
-							</label>
-
-							<label
-								className="form-label"
-								htmlFor="am_gdpr_wp_privacy_policy_url"
-							>
-								{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
-								<input
-									id="am_gdpr_wp_privacy_policy_url"
-									name="am_gdpr_wp_privacy_policy_url"
-									value={
-										data.am_gdpr_wp_privacy_policy_url || ''
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_wp_privacy_policy_url"
+								>
+									{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_wp_privacy_policy_url"
+										name="am_gdpr_wp_privacy_policy_url"
+										value={
+											data.am_gdpr_wp_privacy_policy_url ||
+											''
+										}
+										onChange={ onChangeHandler }
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput:
+													'am_gdpr_wp_privacy_policy_url',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+							</div>
+							<div>
+								<div
+									className="info"
+									hidden={
+										state.activeInput !==
+										'am_gdpr_google_id'
 									}
-									onChange={ onChangeHandler }
-									type="text"
-								/>
-							</label>
+								>
+									<p>
+										{ __(
+											'GA4 tag or Tag Manager ID.',
+											'am-gdpr-wp'
+										) }
+									</p>
+									<p>
+										{ __(
+											"If you've already installed Analytics or Tag Manager on your page, please remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter. If you use Google Tag Manager, we reccomend you implement other tags, i. e. MetaPixel through that.",
+											'am-gdpr-wp'
+										) }
+									</p>
+								</div>
+							</div>
 						</fieldset>
 						<fieldset
 							id="layout"
 							hidden={ state.tab !== 'layout' }
 							className="am-gdpr-fieldset"
-							style={ {
-								display:
-									state.tab === 'layout' ? 'flex' : 'none',
-								gap: '2.5em',
-							} }
 						>
 							<div>
 								<label
@@ -429,13 +504,8 @@ export default function Settings() {
 							id="content"
 							hidden={ state.tab !== 'content' }
 							className="am-gdpr-fieldset"
-							style={ {
-								display:
-									state.tab === 'content' ? 'flex' : 'none',
-								gap: '2.5em',
-							} }
 						>
-							<div style={ { flex: '1' } }>
+							<div>
 								<h3 style={ { marginTop: '0' } }>
 									{ __( 'Cookie Prompt', 'am-gdpr-wp' ) }
 								</h3>
@@ -465,7 +535,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_accept"
 								>
-									{ __( 'Accept', 'am-gdpr-wp' ) }
+									{ __( 'Accept-button', 'am-gdpr-wp' ) }
 									<input
 										id="am_gdpr_text_accept"
 										name="am_gdpr_text"
@@ -486,7 +556,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_label"
 								>
-									{ __( 'Customize', 'am-gdpr-wp' ) }
+									{ __( 'Customize-button', 'am-gdpr-wp' ) }
 									<input
 										id="am_gdpr_text_customize_label"
 										name="am_gdpr_text"
@@ -510,7 +580,7 @@ export default function Settings() {
 									/>
 								</label>
 							</div>
-							<div style={ { flex: '1' } }>
+							<div>
 								<h3 style={ { marginTop: '0' } }>
 									{ __( 'Customize settings', 'am-gdpr-wp' ) }
 								</h3>
@@ -546,7 +616,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_text"
 								>
-									{ __( 'Description', 'am-gdpr-wp' ) }
+									{ __( 'Main description', 'am-gdpr-wp' ) }
 									<RichText
 										id="am_gdpr_text_customize_text"
 										name="am_gdpr_text"
@@ -579,7 +649,7 @@ export default function Settings() {
 									htmlFor="am_gdpr_text_customize_retargeting"
 								>
 									{ __(
-										'Description, retargeting',
+										'Retargeting description',
 										'am-gdpr-wp'
 									) }
 									<RichText
@@ -614,7 +684,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_link"
 								>
-									{ __( 'Privacy link', 'am-gdpr-wp' ) }
+									{ __(
+										'Privacy link description',
+										'am-gdpr-wp'
+									) }
 									<RichText
 										id="am_gdpr_text_customize_link"
 										name="am_gdpr_text"
@@ -647,7 +720,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_decline"
 								>
-									{ __( 'Decline', 'am-gdpr-wp' ) }
+									{ __( 'Decline-button', 'am-gdpr-wp' ) }
 									<input
 										id="am_gdpr_text_decline"
 										name="am_gdpr_text"
@@ -669,7 +742,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_accept_all"
 								>
-									{ __( 'Accept all', 'am-gdpr-wp' ) }
+									{ __( 'Accept all-button', 'am-gdpr-wp' ) }
 									<input
 										id="am_gdpr_text_accept_all"
 										name="am_gdpr_text"
