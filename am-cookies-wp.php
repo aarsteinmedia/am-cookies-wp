@@ -12,9 +12,7 @@
  * Version:           1.0.0
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
- * Update URI:        https://api.aarstein.media/v1/plugins/am-gdpr-wp
- * Text Domain:       am-gdpr-wp
- * Domain Path:       /lang
+ * Text Domain:       am-cookies-wp
  */
 
 defined('ABSPATH') || exit;

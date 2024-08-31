@@ -37,7 +37,7 @@ export default function Settings() {
 		} ),
 		getData = useCallback( async () => {
 			const options = await apiFetch< Options >( {
-				path: 'am-gdpr-wp-settings/v1/options',
+				path: 'am-cookies-wp-settings/v1/options',
 			} );
 			setData( ( prev ) => {
 				if ( ! options.am_gdpr_text ) {
@@ -58,7 +58,7 @@ export default function Settings() {
 			try {
 				setState( ( prev ) => ( { ...prev, loading: true } ) );
 				await apiFetch( {
-					path: 'am-gdpr-wp-settings/v1/options',
+					path: 'am-cookies-wp-settings/v1/options',
 					method: 'POST',
 					data,
 				} );
@@ -95,12 +95,12 @@ export default function Settings() {
 							} }
 						/>
 						<h1 style={ { margin: '0' } }>
-							{ __( 'Cookies Settings', 'am-gdpr-wp' ) }
+							{ __( 'Cookies Settings', 'am-cookies-wp' ) }
 						</h1>
 					</span>
 					<SwitchLabel
 						id="toggle-preview"
-						title={ __( 'Preview', 'am-gdpr-wp' ) }
+						title={ __( 'Preview', 'am-cookies-wp' ) }
 						value={ state.preview }
 						onChange={ () =>
 							setState( ( prev ) => ( {
@@ -122,7 +122,7 @@ export default function Settings() {
 							} ) );
 						} }
 					>
-						{ __( 'Tracking', 'am-gdpr-wp' ) }
+						{ __( 'Tracking', 'am-cookies-wp' ) }
 					</a>
 					<a
 						href="/#layout"
@@ -135,7 +135,7 @@ export default function Settings() {
 							} ) );
 						} }
 					>
-						{ __( 'Layout', 'am-gdpr-wp' ) }
+						{ __( 'Layout', 'am-cookies-wp' ) }
 					</a>
 					<a
 						href="/#content"
@@ -148,7 +148,7 @@ export default function Settings() {
 							} ) );
 						} }
 					>
-						{ __( 'Content', 'am-gdpr-wp' ) }
+						{ __( 'Content', 'am-cookies-wp' ) }
 					</a>
 				</nav>
 			</div>
@@ -173,7 +173,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_google_id"
 								>
-									{ __( 'Google Tracking ID', 'am-gdpr-wp' ) }
+									{ __(
+										'Google Tracking ID',
+										'am-cookies-wp'
+									) }
 
 									<input
 										id="am_gdpr_google_id"
@@ -204,7 +207,7 @@ export default function Settings() {
 								>
 									{ __(
 										'Meta/Facebook Pixel ID',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 
 									<input
@@ -235,7 +238,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_snap_id"
 								>
-									{ __( 'SnapChat Pixel ID', 'am-gdpr-wp' ) }
+									{ __(
+										'SnapChat Pixel ID',
+										'am-cookies-wp'
+									) }
 
 									<input
 										id="am_gdpr_snap_id"
@@ -266,7 +272,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_tiktok_id"
 								>
-									{ __( 'TikTok ID', 'am-gdpr-wp' ) }
+									{ __( 'TikTok ID', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_tiktok_id"
 										name="am_gdpr_tiktok_id"
@@ -304,7 +310,7 @@ export default function Settings() {
 										'am_gdpr_google_id'
 									}
 								>
-									{ __( 'Instructions', 'am-gdpr-wp' ) }
+									{ __( 'Instructions', 'am-cookies-wp' ) }
 								</h3>
 								<div
 									className="info"
@@ -316,13 +322,13 @@ export default function Settings() {
 									<p>
 										{ __(
 											'Enter GA4 tag ID or Tag Manager ID.',
-											'am-gdpr-wp'
+											'am-cookies-wp'
 										) }
 									</p>
 									<p>
 										{ __(
 											"If you've already installed Analytics or Tag Manager on your page, please remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter. If you use Google Tag Manager, we reccomend you implement other tags, i. e. MetaPixel through that.",
-											'am-gdpr-wp'
+											'am-cookies-wp'
 										) }
 									</p>
 								</div>
@@ -338,7 +344,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_font_family"
 								>
-									{ __( 'Font Family', 'am-gdpr-wp' ) }
+									{ __( 'Font Family', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_font_family"
 										name="am_gdpr_font_family"
@@ -350,14 +356,17 @@ export default function Settings() {
 								</label>
 
 								<ColorInput
-									label={ __( 'Color', 'am-gdpr-wp' ) }
+									label={ __( 'Color', 'am-cookies-wp' ) }
 									name="am_gdpr_color"
 									value={ data.am_gdpr_color || '#000000' }
 									onChange={ onChangeHandler }
 								/>
 
 								<ColorInput
-									label={ __( 'Accent Color', 'am-gdpr-wp' ) }
+									label={ __(
+										'Accent Color',
+										'am-cookies-wp'
+									) }
 									name="am_gdpr_accent_color"
 									value={
 										data.am_gdpr_accent_color || '#ffffff'
@@ -368,7 +377,7 @@ export default function Settings() {
 								<ColorInput
 									label={ __(
 										'Background Color',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 									name="am_gdpr_background_color"
 									value={
@@ -382,7 +391,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_border_width"
 								>
-									{ __( 'Border Width', 'am-gdpr-wp' ) }
+									{ __( 'Border Width', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_border_width"
 										name="am_gdpr_border_width"
@@ -407,28 +416,28 @@ export default function Settings() {
 													{
 														label: __(
 															'Bottom Left',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.BottomLeft,
 													},
 													{
 														label: __(
 															'Bottom Right',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.BottomRight,
 													},
 													{
 														label: __(
 															'Top Left',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.TopLeft,
 													},
 													{
 														label: __(
 															'Top Right',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.TopRight,
 													},
@@ -437,14 +446,14 @@ export default function Settings() {
 													{
 														label: __(
 															'Bottom',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.BottomLeft,
 													},
 													{
 														label: __(
 															'Top',
-															'am-gdpr-wp'
+															'am-cookies-wp'
 														),
 														value: Align.TopLeft,
 													},
@@ -453,7 +462,7 @@ export default function Settings() {
 									name="am_gdpr_align"
 									label={ __(
 										'Align Cookie Prompt',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 								/>
 								<RadioControl
@@ -466,18 +475,21 @@ export default function Settings() {
 									}
 									options={ [
 										{
-											label: __( 'Box', 'am-gdpr-wp' ),
+											label: __( 'Box', 'am-cookies-wp' ),
 											value: Format.Box,
 										},
 										{
-											label: __( 'Banner', 'am-gdpr-wp' ),
+											label: __(
+												'Banner',
+												'am-cookies-wp'
+											),
 											value: Format.Banner,
 										},
 									] }
 									name="am_gdpr_format"
 									label={ __(
 										'Format of Cookie Prompt',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 								/>
 							</div>
@@ -489,13 +501,13 @@ export default function Settings() {
 						>
 							<div>
 								<h3 style={ { marginTop: '0' } }>
-									{ __( 'Cookie Prompt', 'am-gdpr-wp' ) }
+									{ __( 'Cookie Prompt', 'am-cookies-wp' ) }
 								</h3>
 								<label
 									className="form-label"
 									htmlFor="am_gdpr_text_header"
 								>
-									{ __( 'Header', 'am-gdpr-wp' ) }
+									{ __( 'Header', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_text_header"
 										name="am_gdpr_text"
@@ -517,7 +529,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_accept"
 								>
-									{ __( 'Accept-button', 'am-gdpr-wp' ) }
+									{ __( 'Accept-button', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_text_accept"
 										name="am_gdpr_text"
@@ -538,7 +550,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_label"
 								>
-									{ __( 'Customize-button', 'am-gdpr-wp' ) }
+									{ __(
+										'Customize-button',
+										'am-cookies-wp'
+									) }
 									<input
 										id="am_gdpr_text_customize_label"
 										name="am_gdpr_text"
@@ -564,13 +579,16 @@ export default function Settings() {
 							</div>
 							<div>
 								<h3 style={ { marginTop: '0' } }>
-									{ __( 'Customize settings', 'am-gdpr-wp' ) }
+									{ __(
+										'Customize settings',
+										'am-cookies-wp'
+									) }
 								</h3>
 								<label
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_header"
 								>
-									{ __( 'Header', 'am-gdpr-wp' ) }
+									{ __( 'Header', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_text_customize_header"
 										name="am_gdpr_text"
@@ -598,7 +616,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_customize_text"
 								>
-									{ __( 'Main description', 'am-gdpr-wp' ) }
+									{ __(
+										'Main description',
+										'am-cookies-wp'
+									) }
 									<RichText
 										id="am_gdpr_text_customize_text"
 										name="am_gdpr_text"
@@ -632,7 +653,7 @@ export default function Settings() {
 								>
 									{ __(
 										'Retargeting description',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 									<RichText
 										id="am_gdpr_text_customize_retargeting"
@@ -666,7 +687,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_wp_privacy_policy_url"
 								>
-									{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
+									{ __(
+										'Privacy Policy URL',
+										'am-cookies-wp'
+									) }
 									<input
 										id="am_gdpr_wp_privacy_policy_url"
 										name="am_gdpr_wp_privacy_policy_url"
@@ -698,7 +722,7 @@ export default function Settings() {
 								>
 									{ __(
 										'Privacy link description',
-										'am-gdpr-wp'
+										'am-cookies-wp'
 									) }
 									<RichText
 										id="am_gdpr_text_customize_link"
@@ -732,7 +756,7 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_decline"
 								>
-									{ __( 'Decline-button', 'am-gdpr-wp' ) }
+									{ __( 'Decline-button', 'am-cookies-wp' ) }
 									<input
 										id="am_gdpr_text_decline"
 										name="am_gdpr_text"
@@ -754,7 +778,10 @@ export default function Settings() {
 									className="form-label"
 									htmlFor="am_gdpr_text_accept_all"
 								>
-									{ __( 'Accept all-button', 'am-gdpr-wp' ) }
+									{ __(
+										'Accept all-button',
+										'am-cookies-wp'
+									) }
 									<input
 										id="am_gdpr_text_accept_all"
 										name="am_gdpr_text"
@@ -777,7 +804,7 @@ export default function Settings() {
 							{ state.loading ? (
 								<Loading />
 							) : (
-								__( 'Save', 'am-gdpr-wp' )
+								__( 'Save', 'am-cookies-wp' )
 							) }
 						</button>
 					</form>

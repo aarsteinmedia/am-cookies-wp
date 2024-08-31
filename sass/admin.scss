@@ -1,4 +1,4 @@
-.toplevel_page_am-gdpr-wp {
+.toplevel_page_am-cookies-wp {
 
   [hidden] {
     display: none;
@@ -281,7 +281,7 @@
 }
 
 @media only screen and (max-width: 960px) {
-  .toplevel_page_am-gdpr-wp .am-gdpr-settings {
+  .toplevel_page_am-cookies-wp .am-gdpr-settings {
     .am-gdpr-header-wrapper {
       width: calc(100% - 66px)
     }
@@ -289,7 +289,7 @@
 }
 
 @media screen and (max-width: 782px) {
-  .toplevel_page_am-gdpr-wp .am-gdpr-settings {
+  .toplevel_page_am-cookies-wp .am-gdpr-settings {
     .am-gdpr-header-wrapper {
       width: calc(100% - 20px)
     }
