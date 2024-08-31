@@ -43,9 +43,15 @@ if (!class_exists('AM_GDPR_Admin')) {
       wp_enqueue_style(
         'am-gdpr-backend-style',
         AM_GDPR_URL . 'styles/admin.css',
-        
+        [],
+        '1.0.0'
       );
-      wp_enqueue_style('am-gdpr-preview-style', AM_GDPR_URL . 'styles/preview.css');
+      wp_enqueue_style(
+        'am-gdpr-preview-style',
+        AM_GDPR_URL . 'styles/preview.css',
+        [],
+        '1.0.0'
+      );
       wp_enqueue_style('wp-edit-blocks');
 
       $assets = require AM_GDPR_PATH . 'build/settings.asset.php';
