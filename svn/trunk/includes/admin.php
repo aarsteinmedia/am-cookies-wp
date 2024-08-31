@@ -25,7 +25,7 @@ if (!class_exists('AM_GDPR_Admin')) {
     public function admin_menu()
     {
       add_menu_page(
-        __('AM Cookies Settings', 'am-cookies-wp'),
+        __('AM Cookies Settings', 'am-cookies'),
         'AM Cookies',
         'manage_options',
         AM_GDPR_SLUG,
@@ -56,9 +56,9 @@ if (!class_exists('AM_GDPR_Admin')) {
 
       $assets = require AM_GDPR_PATH . 'build/settings.asset.php';
 
-      if ($page === 'toplevel_page_am-cookies-wp') {
+      if ($page === 'toplevel_page_am-cookies') {
         wp_enqueue_script(
-          'am-cookies-wp-options',
+          'am-cookies-options',
           AM_GDPR_URL . 'build/settings.js',
           $assets['dependencies'],
           '1.00',
@@ -70,9 +70,9 @@ if (!class_exists('AM_GDPR_Admin')) {
     public function render_settings()
     {
       if (!current_user_can('manage_options')) {
-        wp_die(esc_html__('You do not have sufficient capabilities to access this page.', 'am-cookies-wp'));
+        wp_die(esc_html__('You do not have sufficient capabilities to access this page.', 'am-cookies'));
       } ?>
-      <div id="am-cookies-wp-settings"></div>
+      <div id="am-cookies-settings"></div>
       <?php
     }
   }

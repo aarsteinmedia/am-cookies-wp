@@ -1,5 +1,5 @@
 {
-	"name": "am-cookies-wp",
+	"name": "am-cookies",
 	"version": "1.0.0",
 	"description": "Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.",
 	"author": {
@@ -15,13 +15,13 @@
 		"ga4",
 		"tagmanager"
 	],
-	"homepage": "https://www.aarstein.media/am-cookies-wp",
+	"homepage": "https://www.aarstein.media/am-cookies",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/aarsteinmedia/am-cookies-wp"
+		"url": "https://github.com/aarsteinmedia/am-cookies"
 	},
 	"bugs": {
-		"url": "https://github.com/aarsteinmedia/am-cookies-wp/issues",
+		"url": "https://github.com/aarsteinmedia/am-cookies/issues",
 		"email": "johan@aarstein.media"
 	},
 	"files": [
@@ -29,7 +29,7 @@
 		"includes",
 		"scripts",
 		"styles",
-		"am-cookies-wp.php"
+		"am-cookies.php"
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
@@ -70,10 +70,10 @@
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
 		"scss": "sass --no-source-map --style=compressed sass:styles",
-		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies-wp.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
+		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
 	},
 	"cde": {
-		"gettext": "am-cookies-wp",
+		"gettext": "am-cookies",
 		"prefix": "am"
 	}
 }

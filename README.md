@@ -28,7 +28,7 @@ Automatic installation is the easiest option — WordPress will handle the file 
 
 ### Manual installation
 
-1. Upload the entire 'am-cookies-wp' folder to your plugins directory
+1. Upload the entire 'am-cookies' folder to your plugins directory
 2. Activate the plugin through the **Plugins** menu in WordPress
 
 ### After activation

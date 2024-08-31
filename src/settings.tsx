@@ -2,7 +2,7 @@ import { createRoot } from '@wordpress/element';
 import Settings from '@/components/Settings';
 
 const App = () => <Settings />,
-	htmlElement = document.getElementById( 'am-cookies-wp-settings' );
+	htmlElement = document.getElementById( 'am-cookies-settings' );
 if ( ! htmlElement ) {
 	throw new Error( 'Missing root element' );
 }

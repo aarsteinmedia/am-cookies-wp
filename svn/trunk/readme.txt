@@ -2,7 +2,7 @@
 Contributors: johanaarstein
 Donate link: https://www.paypal.com/donate/?hosted_button_id=E7C7DMN8KSQ6A
 Author URI: https://www.aarstein.media
-Plugin URI: https://wordpress.org/plugins/am-cookies-wp/
+Plugin URI: https://wordpress.org/plugins/am-cookies/
 Tags: gdpr, cookies, analytics, retargetting, tracking
 Requires at least: 5.9
 Tested up to: 6.6
@@ -39,7 +39,7 @@ Automatic installation is the easiest option — WordPress will handle the file 
 
 = Manual installation =
 
-1. Upload the entire 'am-cookies-wp' folder to your plugins directory
+1. Upload the entire 'am-cookies' folder to your plugins directory
 2. Activate the plugin through the **Plugins** menu in WordPress
 
 = After activation =

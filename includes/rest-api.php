@@ -22,7 +22,7 @@ if (!class_exists('AM_GDPR_Rest_API')) {
     public function register_options_rest_route()
     {
       register_rest_route(
-        'am-cookies-wp-settings/v1',
+        'am-cookies-settings/v1',
         '/options',
         [
           'methods' => 'GET',
@@ -32,7 +32,7 @@ if (!class_exists('AM_GDPR_Rest_API')) {
       );
 
       register_rest_route(
-        'am-cookies-wp-settings/v1',
+        'am-cookies-settings/v1',
         '/options',
         [
           'methods' => 'POST',
@@ -50,7 +50,7 @@ if (!class_exists('AM_GDPR_Rest_API')) {
       if (!current_user_can('manage_options')) {
         return new WP_Error(
           'rest_read_error',
-          __('Not allowed', 'am-cookies-wp'),
+          __('Not allowed', 'am-cookies'),
           ['status' => 403]
         );
       }
