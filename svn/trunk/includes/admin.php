@@ -40,7 +40,11 @@ if (!class_exists('AM_GDPR_Admin')) {
      */
     public function admin_enqueue_scripts($page)
     {
-      wp_enqueue_style('am-gdpr-backend-style', AM_GDPR_URL . 'styles/admin.css');
+      wp_enqueue_style(
+        'am-gdpr-backend-style',
+        AM_GDPR_URL . 'styles/admin.css',
+        
+      );
       wp_enqueue_style('am-gdpr-preview-style', AM_GDPR_URL . 'styles/preview.css');
       wp_enqueue_style('wp-edit-blocks');
 

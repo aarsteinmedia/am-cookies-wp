@@ -20,7 +20,8 @@ if (!class_exists('AM_GDPR_Enqueue_Scripts')) {
         'am-gdpr',
         AM_GDPR_URL . '/scripts/am-gdpr.min.js',
         [],
-        '1.0.0'
+        '1.0.0',
+        false
       );
 
       add_action('wp_body_open', 'add_gdpr_web_component');
