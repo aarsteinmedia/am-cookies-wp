@@ -292,38 +292,20 @@ export default function Settings() {
 										// placeholder="A1AAA1AA1AAA1AAAAA1AA"
 									/>
 								</label>
-
-								<label
-									className="form-label"
-									htmlFor="am_gdpr_wp_privacy_policy_url"
-								>
-									{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
-									<input
-										id="am_gdpr_wp_privacy_policy_url"
-										name="am_gdpr_wp_privacy_policy_url"
-										value={
-											data.am_gdpr_wp_privacy_policy_url ||
-											''
-										}
-										onChange={ onChangeHandler }
-										onFocus={ () =>
-											setState( ( prev ) => ( {
-												...prev,
-												activeInput:
-													'am_gdpr_wp_privacy_policy_url',
-											} ) )
-										}
-										onBlur={ () =>
-											setState( ( prev ) => ( {
-												...prev,
-												activeInput: '',
-											} ) )
-										}
-										type="text"
-									/>
-								</label>
 							</div>
 							<div>
+								<h3
+									className="fade-in"
+									style={ {
+										marginTop: '0',
+									} }
+									hidden={
+										state.activeInput !==
+										'am_gdpr_google_id'
+									}
+								>
+									{ __( 'Instructions', 'am-gdpr-wp' ) }
+								</h3>
 								<div
 									className="info"
 									hidden={
@@ -333,7 +315,7 @@ export default function Settings() {
 								>
 									<p>
 										{ __(
-											'GA4 tag or Tag Manager ID.',
+											'Enter GA4 tag ID or Tag Manager ID.',
 											'am-gdpr-wp'
 										) }
 									</p>
@@ -677,6 +659,36 @@ export default function Settings() {
 												},
 											} ) )
 										}
+									/>
+								</label>
+
+								<label
+									className="form-label"
+									htmlFor="am_gdpr_wp_privacy_policy_url"
+								>
+									{ __( 'Privacy Policy URL', 'am-gdpr-wp' ) }
+									<input
+										id="am_gdpr_wp_privacy_policy_url"
+										name="am_gdpr_wp_privacy_policy_url"
+										value={
+											data.am_gdpr_wp_privacy_policy_url ||
+											''
+										}
+										onChange={ onChangeHandler }
+										onFocus={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput:
+													'am_gdpr_wp_privacy_policy_url',
+											} ) )
+										}
+										onBlur={ () =>
+											setState( ( prev ) => ( {
+												...prev,
+												activeInput: '',
+											} ) )
+										}
+										type="text"
 									/>
 								</label>
 

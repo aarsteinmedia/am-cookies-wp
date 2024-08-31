@@ -13,7 +13,12 @@ export default function ColorInput( {
 	}
 	const [ showPicker, setShowPicker ] = useState( false );
 	return (
-		<label className="form-label" htmlFor={ name }>
+		<label
+			className="form-label"
+			htmlFor={ name }
+			onFocus={ () => setShowPicker( true ) }
+			onBlur={ () => setShowPicker( false ) }
+		>
 			{ label }
 			<div
 				style={ {
@@ -23,18 +28,18 @@ export default function ColorInput( {
 					alignItems: 'center',
 				} }
 			>
-				<ColorIndicator colorValue={ value as string } />
 				<input
 					id={ name }
 					name={ name }
 					value={ value }
 					onChange={ onChange }
 					type="text"
-					onFocus={ () => setShowPicker( true ) }
+					// onFocus={ () => setShowPicker( true ) }
 					// type="color"
 				/>
+				<ColorIndicator colorValue={ value as string } />
 				{ showPicker && (
-					<Popover onFocusOutside={ () => setShowPicker( false ) }>
+					<Popover>
 						<ColorPicker
 							color={ value as string }
 							onChange={ ( color ) =>

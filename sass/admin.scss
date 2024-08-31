@@ -1,5 +1,13 @@
 .toplevel_page_am-gdpr-wp {
 
+  [hidden] {
+    display: none;
+  }
+
+  .fade-in {
+    animation: fadeIn .2s ease-in-out;
+  }
+
   .wpbody-content>*:not(section):not(.clear),
   .notice.update-nag {
     position: absolute;
@@ -112,6 +120,10 @@
           margin: .5em 0;
           display: block;
         }
+      }
+
+      .component-color-indicator {
+        margin-left: -2.5em;
       }
 
       .form-label {
