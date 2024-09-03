@@ -64,6 +64,7 @@ if (!class_exists('AM_COOKIES_Rest_API')) {
 
       // Layout
       $response['am_cookies_align'] = get_option('am_cookies_align');
+      $response['am_cookies_align_mini'] = get_option('am_cookies_align_mini');
       $response['am_cookies_format'] = get_option('am_cookies_format');
       $response['am_cookies_font_family'] = get_option('am_cookies_font_family');
       $response['am_cookies_color'] = get_option('am_cookies_color');
@@ -115,6 +116,10 @@ if (!class_exists('AM_COOKIES_Rest_API')) {
 
       if ($request->get_param('am_cookies_align')) {
         update_option('am_cookies_align', sanitize_text_field($request->get_param('am_cookies_align')));
+      }
+
+      if ($request->get_param('am_cookies_align_mini')) {
+        update_option('am_cookies_align_mini', sanitize_text_field($request->get_param('am_cookies_align_mini')));
       }
 
       if ($request->get_param('am_cookies_format')) {

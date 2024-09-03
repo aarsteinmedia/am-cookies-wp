@@ -5,11 +5,13 @@ import {
 	useRef,
 	useState,
 } from '@wordpress/element';
+import CookieIcon from './CookieIcon';
 import type { Options } from '@/types';
 
 export default function Preview( { data }: { data: Options } ) {
 	const [ state, setState ] = useState( {
 			isCustomize: false,
+			isMinimized: false,
 			dialogHeight: 0,
 		} ),
 		dialogInner = useRef< HTMLDivElement >( null ),
@@ -57,7 +59,7 @@ export default function Preview( { data }: { data: Options } ) {
         }`
 				}
 			</style>
-			{ state.isCustomize ? (
+			{ state.isCustomize && (
 				<div
 					className="pop-up fadeIn"
 					lang={ document.documentElement.lang }
@@ -76,6 +78,7 @@ export default function Preview( { data }: { data: Options } ) {
 								setState( ( prev ) => ( {
 									...prev,
 									isCustomize: false,
+									isMinimized: true,
 								} ) )
 							}
 						>
@@ -100,14 +103,7 @@ export default function Preview( { data }: { data: Options } ) {
 										marginRight: '0.5em',
 									} }
 								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="992"
-										height="1024"
-										viewBox="0 0 992 1024"
-									>
-										<path d="M810.112 4.992c-27.232 0-49.28 22.112-49.344 49.344 0 27.232 22.112 49.344 49.344 49.344s49.344-22.112 49.344-49.344c0-27.232-22.112-49.344-49.344-49.344zm13.184 429.728c-167.424 54.048-292.352-63.52-236.384-243.232-61.728-22.944-82.24-90.368-58.016-166.24C255.36 11.456 14.336 224.416.672 498.048c-13.792 273.536 196.896 506.432 470.368 520.32 273.6 13.792 506.528-196.896 520.32-470.464 1.248-24.736.672-49.184-1.664-73.088-69.952 43.008-123.84 23.52-166.432-40.032zm-575.52-35.392c40.992 0 74.176 33.248 74.176 74.176s-33.248 74.176-74.176 74.176c-40.992 0-74.176-33.248-74.176-74.176s33.248-74.176 74.176-74.176zm233.696 94.56c23.616 0 42.752 19.136 42.752 42.752s-19.136 42.752-42.752 42.752c-23.616 0-42.752-19.136-42.752-42.752-.096-23.616 19.072-42.752 42.752-42.752zM295.968 669.952c28.8 0 52.16 23.36 52.16 52.16s-23.36 52.16-52.16 52.16c-28.8 0-52.16-23.36-52.16-52.16 0-28.864 23.36-52.16 52.16-52.16zm112.384-399.008c22.624 0 40.832 18.304 40.832 40.832 0 22.624-18.304 40.832-40.832 40.832-22.624 0-40.832-18.304-40.832-40.832s18.304-40.832 40.832-40.832zm221.952 417.28c37.856 0 68.48 30.688 68.48 68.48 0 37.856-30.688 68.48-68.48 68.48-37.856 0-68.48-30.688-68.48-68.48s30.688-68.48 68.48-68.48zm144.224-492.608c25.408 0 46.048 20.64 46.048 46.048s-20.64 46.048-46.048 46.048-46.048-20.64-46.048-46.048 20.64-46.048 46.048-46.048z" />
-									</svg>
+									<CookieIcon />
 								</figure>
 								<slot id="customize-header">
 									{ data.am_cookies_text.customize.header }
@@ -141,6 +137,7 @@ export default function Preview( { data }: { data: Options } ) {
 										setState( ( prev ) => ( {
 											...prev,
 											isCustomize: false,
+											isMinimized: true,
 										} ) )
 									}
 									className="button gdpr decline-all"
@@ -153,6 +150,7 @@ export default function Preview( { data }: { data: Options } ) {
 										setState( ( prev ) => ( {
 											...prev,
 											isCustomize: false,
+											isMinimized: true,
 										} ) )
 									}
 									className="button gdpr accept-all"
@@ -190,7 +188,8 @@ export default function Preview( { data }: { data: Options } ) {
 						</div>
 					</dialog>
 				</div>
-			) : (
+			) }{ ' ' }
+			{ ! state.isCustomize && ! state.isMinimized && (
 				<div
 					className={ `cookie-container ${ data.am_cookies_align } ${ data.am_cookies_format }-format` }
 					lang={ document.documentElement.lang }
@@ -203,15 +202,7 @@ export default function Preview( { data }: { data: Options } ) {
 							role="dialog"
 						>
 							<p className="h3" id="cookie-warning-text">
-								{ data.am_cookies_text.header }{ ' ' }
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="992"
-									height="1024"
-									viewBox="0 0 992 1024"
-								>
-									<path d="M810.112 4.992c-27.232 0-49.28 22.112-49.344 49.344 0 27.232 22.112 49.344 49.344 49.344s49.344-22.112 49.344-49.344c0-27.232-22.112-49.344-49.344-49.344zm13.184 429.728c-167.424 54.048-292.352-63.52-236.384-243.232-61.728-22.944-82.24-90.368-58.016-166.24C255.36 11.456 14.336 224.416.672 498.048c-13.792 273.536 196.896 506.432 470.368 520.32 273.6 13.792 506.528-196.896 520.32-470.464 1.248-24.736.672-49.184-1.664-73.088-69.952 43.008-123.84 23.52-166.432-40.032zm-575.52-35.392c40.992 0 74.176 33.248 74.176 74.176s-33.248 74.176-74.176 74.176c-40.992 0-74.176-33.248-74.176-74.176s33.248-74.176 74.176-74.176zm233.696 94.56c23.616 0 42.752 19.136 42.752 42.752s-19.136 42.752-42.752 42.752c-23.616 0-42.752-19.136-42.752-42.752-.096-23.616 19.072-42.752 42.752-42.752zM295.968 669.952c28.8 0 52.16 23.36 52.16 52.16s-23.36 52.16-52.16 52.16c-28.8 0-52.16-23.36-52.16-52.16 0-28.864 23.36-52.16 52.16-52.16zm112.384-399.008c22.624 0 40.832 18.304 40.832 40.832 0 22.624-18.304 40.832-40.832 40.832-22.624 0-40.832-18.304-40.832-40.832s18.304-40.832 40.832-40.832zm221.952 417.28c37.856 0 68.48 30.688 68.48 68.48 0 37.856-30.688 68.48-68.48 68.48-37.856 0-68.48-30.688-68.48-68.48s30.688-68.48 68.48-68.48zm144.224-492.608c25.408 0 46.048 20.64 46.048 46.048s-20.64 46.048-46.048 46.048-46.048-20.64-46.048-46.048 20.64-46.048 46.048-46.048z" />
-								</svg>
+								{ data.am_cookies_text.header } <CookieIcon />
 							</p>
 						</div>
 						<div className="button-wrapper">
@@ -222,17 +213,43 @@ export default function Preview( { data }: { data: Options } ) {
 									setState( ( prev ) => ( {
 										...prev,
 										isCustomize: true,
+										isMinimized: false,
 									} ) )
 								}
 							>
 								{ data.am_cookies_text.customize.label }
 							</button>
-							<button className="button gdpr accept">
+							<button
+								className="button gdpr accept"
+								onClick={ () =>
+									setState( ( prev ) => ( {
+										...prev,
+										isMinimized: true,
+									} ) )
+								}
+							>
 								{ data.am_cookies_text.accept }
 							</button>
 						</div>
 					</div>
 				</div>
+			) }{ ' ' }
+			{ ! state.isCustomize && state.isMinimized && (
+				<button
+					className={ `mini-gdpr ${ data.am_cookies_align_mini }` }
+					data-hide="false"
+					aria-label={ data.am_cookies_text.miniGDPR }
+					onClick={ () =>
+						setState( ( prev ) => ( {
+							...prev,
+							isMinimized: false,
+						} ) )
+					}
+				>
+					<figure className="icon-cookies settings">
+						<CookieIcon />
+					</figure>
+				</button>
 			) }
 		</div>
 	);

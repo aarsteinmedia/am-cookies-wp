@@ -20,6 +20,7 @@ export default function Settings() {
 			am_cookies_snap_id: null,
 			am_cookies_tiktok_id: null,
 			am_cookies_align: Align.BottomLeft,
+			am_cookies_align_mini: Align.BottomLeft,
 			am_cookies_format: Format.Box,
 			am_cookies_font_family: 'sans-serif',
 			am_cookies_color: '#000000',
@@ -492,6 +493,54 @@ export default function Settings() {
 										'am-cookies'
 									) }
 								/>
+								<RadioControl
+									selected={ `mini-${ data.am_cookies_align_mini }` }
+									onChange={ ( value ) =>
+										setData( ( prev ) => ( {
+											...prev,
+											am_cookies_align_mini:
+												value.replace(
+													'mini-',
+													''
+												) as Align,
+										} ) )
+									}
+									options={ [
+										{
+											label: __(
+												'Bottom Left',
+												'am-cookies'
+											),
+											value: `mini-${ Align.BottomLeft }`,
+										},
+										{
+											label: __(
+												'Bottom Right',
+												'am-cookies'
+											),
+											value: `mini-${ Align.BottomRight }`,
+										},
+										{
+											label: __(
+												'Top Left',
+												'am-cookies'
+											),
+											value: `mini-${ Align.TopLeft }`,
+										},
+										{
+											label: __(
+												'Top Right',
+												'am-cookies'
+											),
+											value: `mini-${ Align.TopRight }`,
+										},
+									] }
+									name="am_cookies_align_mini"
+									label={ __(
+										'Align Mini Cookie Prompt',
+										'am-cookies'
+									) }
+								/>
 							</div>
 						</fieldset>
 						<fieldset
@@ -567,6 +616,30 @@ export default function Settings() {
 															.customize,
 														label: value,
 													},
+												},
+											} ) )
+										}
+										type="text"
+									/>
+								</label>
+								<h3>
+									{ __( 'Mini-Cookie Prompt', 'am-cookies' ) }
+								</h3>
+								<label
+									className="form-label"
+									htmlFor="am_cookies_text_miniGDPR"
+								>
+									{ __( 'Aria-label', 'am-cookies' ) }
+									<input
+										id="am_cookies_text_miniGDPR"
+										name="am_cookies_text"
+										value={ data.am_cookies_text.miniGDPR }
+										onChange={ ( { target: { value } } ) =>
+											setData( ( prev ) => ( {
+												...prev,
+												am_cookies_text: {
+													...prev.am_cookies_text,
+													miniGDPR: value,
 												},
 											} ) )
 										}

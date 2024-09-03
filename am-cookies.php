@@ -68,6 +68,7 @@ if (!class_exists('AM_Cookies')) {
       add_option('am_cookies_tiktok_id', null);
 
       add_option('am_cookies_align', 'bottom-left');
+      add_option('am_cookies_align_mini', 'bottom-left');
       add_option('am_cookies_format', 'box');
       add_option('am_cookies_font_family', 'sans-serif');
       add_option('am_cookies_color', '#000000');

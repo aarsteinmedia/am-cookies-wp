@@ -9,6 +9,7 @@ export interface Options {
 	am_cookies_snap_id: string | null;
 	am_cookies_tiktok_id: string | null;
 	am_cookies_align: Align;
+	am_cookies_align_mini: Align;
 	am_cookies_format: Format;
 	am_cookies_font_family: string;
 	am_cookies_color: string;

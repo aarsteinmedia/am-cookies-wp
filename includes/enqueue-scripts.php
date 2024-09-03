@@ -33,6 +33,7 @@ if (!class_exists('AM_COOKIES_Enqueue_Scripts')) {
           snapChatPixelID="<?php echo esc_attr(get_option('am_cookies_snap_id')); ?>"
           tiktokPixelID="<?php echo esc_attr(get_option('am_cookies_tiktok_id')); ?>"
           alignPrompt="<?php echo esc_attr(get_option('am_cookies_align')); ?>"
+          alignMiniPrompt="<?php echo esc_attr(get_option('am_cookies_align_mini')); ?>"
           format="<?php echo esc_attr(get_option('am_cookies_format')); ?>"
           color="<?php echo esc_attr(get_option('am_cookies_color')); ?>"
           accentColor="<?php echo esc_attr(get_option('am_cookies_accent_color')); ?>"
