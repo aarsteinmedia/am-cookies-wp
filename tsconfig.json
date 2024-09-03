@@ -6,7 +6,12 @@
 		"target": "ES2021",
 		"jsx": "react-jsx",
 		"module": "ESNext",
-		"lib": [ "DOM", "DOM.Iterable", "ES2015", "ESNext" ],
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2021",
+			"ESNext"
+		],
 		"noImplicitAny": false,
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
@@ -14,7 +19,9 @@
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"paths": {
-			"@/*": [ "./src/*" ],
+			"@/*": [
+				"./src/*"
+			],
 		}
 	},
 	"ts-node": {
@@ -22,7 +29,9 @@
 			"module": "CommonJS"
 		}
 	},
-	"include": [ "./src/**/*" ],
+	"include": [
+		"./src/**/*"
+	],
 	"exclude": [
 		"**/svn",
 		"**/build",
