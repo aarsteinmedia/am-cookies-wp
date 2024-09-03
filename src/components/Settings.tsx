@@ -15,19 +15,19 @@ import type { Options } from '@/types';
 
 export default function Settings() {
 	const [ data, setData ] = useState< Options >( {
-			am_gdpr_google_id: null,
-			am_gdpr_meta_id: null,
-			am_gdpr_snap_id: null,
-			am_gdpr_tiktok_id: null,
-			am_gdpr_align: Align.BottomLeft,
-			am_gdpr_format: Format.Box,
-			am_gdpr_font_family: 'sans-serif',
-			am_gdpr_color: '#000000',
-			am_gdpr_accent_color: '#ffffff',
-			am_gdpr_background_color: '#ffffff',
-			am_gdpr_border_width: 2,
-			am_gdpr_text: getTranslation(),
-			am_gdpr_wp_privacy_policy_url: 'privacy-policy',
+			am_cookies_google_id: null,
+			am_cookies_meta_id: null,
+			am_cookies_snap_id: null,
+			am_cookies_tiktok_id: null,
+			am_cookies_align: Align.BottomLeft,
+			am_cookies_format: Format.Box,
+			am_cookies_font_family: 'sans-serif',
+			am_cookies_color: '#000000',
+			am_cookies_accent_color: '#ffffff',
+			am_cookies_background_color: '#ffffff',
+			am_cookies_border_width: 2,
+			am_cookies_text: getTranslation(),
+			am_cookies_wp_privacy_policy_url: 'privacy-policy',
 		} ),
 		[ state, setState ] = useState( {
 			loading: false,
@@ -40,8 +40,11 @@ export default function Settings() {
 				path: 'am-cookies-settings/v1/options',
 			} );
 			setData( ( prev ) => {
-				if ( ! options.am_gdpr_text ) {
-					return { ...options, am_gdpr_text: prev.am_gdpr_text };
+				if ( ! options.am_cookies_text ) {
+					return {
+						...options,
+						am_cookies_text: prev.am_cookies_text,
+					};
 				}
 				return options;
 			} );
@@ -171,24 +174,23 @@ export default function Settings() {
 							<div>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_google_id"
+									htmlFor="am_cookies_google_id"
 								>
-									{ __(
-										'Google Tracking ID',
-										'am-cookies'
-									) }
+									{ __( 'Google Tracking ID', 'am-cookies' ) }
 
 									<input
-										id="am_gdpr_google_id"
-										name="am_gdpr_google_id"
-										value={ data.am_gdpr_google_id || '' }
+										id="am_cookies_google_id"
+										name="am_cookies_google_id"
+										value={
+											data.am_cookies_google_id || ''
+										}
 										onChange={ onChangeHandler }
 										type="text"
 										onFocus={ () =>
 											setState( ( prev ) => ( {
 												...prev,
 												activeInput:
-													'am_gdpr_google_id',
+													'am_cookies_google_id',
 											} ) )
 										}
 										onBlur={ () =>
@@ -203,7 +205,7 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_meta_id"
+									htmlFor="am_cookies_meta_id"
 								>
 									{ __(
 										'Meta/Facebook Pixel ID',
@@ -211,18 +213,19 @@ export default function Settings() {
 									) }
 
 									<input
-										id="am_gdpr_meta_id"
-										name="am_gdpr_meta_id"
-										value={ data.am_gdpr_meta_id || '' }
+										id="am_cookies_meta_id"
+										name="am_cookies_meta_id"
+										value={ data.am_cookies_meta_id || '' }
 										onChange={ onChangeHandler }
 										type="text"
-										disabled={ data.am_gdpr_google_id?.startsWith(
+										disabled={ data.am_cookies_google_id?.startsWith(
 											'GTM-'
 										) }
 										onFocus={ () =>
 											setState( ( prev ) => ( {
 												...prev,
-												activeInput: 'am_gdpr_meta_id',
+												activeInput:
+													'am_cookies_meta_id',
 											} ) )
 										}
 										onBlur={ () =>
@@ -236,26 +239,24 @@ export default function Settings() {
 								</label>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_snap_id"
+									htmlFor="am_cookies_snap_id"
 								>
-									{ __(
-										'SnapChat Pixel ID',
-										'am-cookies'
-									) }
+									{ __( 'SnapChat Pixel ID', 'am-cookies' ) }
 
 									<input
-										id="am_gdpr_snap_id"
-										name="am_gdpr_snap_id"
-										value={ data.am_gdpr_snap_id || '' }
+										id="am_cookies_snap_id"
+										name="am_cookies_snap_id"
+										value={ data.am_cookies_snap_id || '' }
 										onChange={ onChangeHandler }
 										type="text"
-										disabled={ data.am_gdpr_google_id?.startsWith(
+										disabled={ data.am_cookies_google_id?.startsWith(
 											'GTM-'
 										) }
 										onFocus={ () =>
 											setState( ( prev ) => ( {
 												...prev,
-												activeInput: 'am_gdpr_snap_id',
+												activeInput:
+													'am_cookies_snap_id',
 											} ) )
 										}
 										onBlur={ () =>
@@ -270,23 +271,25 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_tiktok_id"
+									htmlFor="am_cookies_tiktok_id"
 								>
 									{ __( 'TikTok ID', 'am-cookies' ) }
 									<input
-										id="am_gdpr_tiktok_id"
-										name="am_gdpr_tiktok_id"
-										value={ data.am_gdpr_tiktok_id || '' }
+										id="am_cookies_tiktok_id"
+										name="am_cookies_tiktok_id"
+										value={
+											data.am_cookies_tiktok_id || ''
+										}
 										onChange={ onChangeHandler }
 										type="text"
-										disabled={ data.am_gdpr_google_id?.startsWith(
+										disabled={ data.am_cookies_google_id?.startsWith(
 											'GTM-'
 										) }
 										onFocus={ () =>
 											setState( ( prev ) => ( {
 												...prev,
 												activeInput:
-													'am_gdpr_tiktok_id',
+													'am_cookies_tiktok_id',
 											} ) )
 										}
 										onBlur={ () =>
@@ -307,7 +310,7 @@ export default function Settings() {
 									} }
 									hidden={
 										state.activeInput !==
-										'am_gdpr_google_id'
+										'am_cookies_google_id'
 									}
 								>
 									{ __( 'Instructions', 'am-cookies' ) }
@@ -316,7 +319,7 @@ export default function Settings() {
 									className="info"
 									hidden={
 										state.activeInput !==
-										'am_gdpr_google_id'
+										'am_cookies_google_id'
 									}
 								>
 									<p>
@@ -342,13 +345,13 @@ export default function Settings() {
 							<div>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_font_family"
+									htmlFor="am_cookies_font_family"
 								>
 									{ __( 'Font Family', 'am-cookies' ) }
 									<input
-										id="am_gdpr_font_family"
-										name="am_gdpr_font_family"
-										value={ data.am_gdpr_font_family }
+										id="am_cookies_font_family"
+										name="am_cookies_font_family"
+										value={ data.am_cookies_font_family }
 										placeholder="sans-serif"
 										onChange={ onChangeHandler }
 										type="text"
@@ -357,19 +360,17 @@ export default function Settings() {
 
 								<ColorInput
 									label={ __( 'Color', 'am-cookies' ) }
-									name="am_gdpr_color"
-									value={ data.am_gdpr_color || '#000000' }
+									name="am_cookies_color"
+									value={ data.am_cookies_color || '#000000' }
 									onChange={ onChangeHandler }
 								/>
 
 								<ColorInput
-									label={ __(
-										'Accent Color',
-										'am-cookies'
-									) }
-									name="am_gdpr_accent_color"
+									label={ __( 'Accent Color', 'am-cookies' ) }
+									name="am_cookies_accent_color"
 									value={
-										data.am_gdpr_accent_color || '#ffffff'
+										data.am_cookies_accent_color ||
+										'#ffffff'
 									}
 									onChange={ onChangeHandler }
 								/>
@@ -379,9 +380,9 @@ export default function Settings() {
 										'Background Color',
 										'am-cookies'
 									) }
-									name="am_gdpr_background_color"
+									name="am_cookies_background_color"
 									value={
-										data.am_gdpr_background_color ||
+										data.am_cookies_background_color ||
 										'#ffffff'
 									}
 									onChange={ onChangeHandler }
@@ -389,13 +390,15 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_border_width"
+									htmlFor="am_cookies_border_width"
 								>
 									{ __( 'Border Width', 'am-cookies' ) }
 									<input
-										id="am_gdpr_border_width"
-										name="am_gdpr_border_width"
-										value={ data.am_gdpr_border_width ?? 2 }
+										id="am_cookies_border_width"
+										name="am_cookies_border_width"
+										value={
+											data.am_cookies_border_width ?? 2
+										}
 										onChange={ onChangeHandler }
 										type="number"
 									/>
@@ -403,15 +406,15 @@ export default function Settings() {
 							</div>
 							<div>
 								<RadioControl
-									selected={ data.am_gdpr_align }
+									selected={ data.am_cookies_align }
 									onChange={ ( value ) =>
 										setData( ( prev ) => ( {
 											...prev,
-											am_gdpr_align: value as Align,
+											am_cookies_align: value as Align,
 										} ) )
 									}
 									options={
-										data.am_gdpr_format === Format.Box
+										data.am_cookies_format === Format.Box
 											? [
 													{
 														label: __(
@@ -459,18 +462,18 @@ export default function Settings() {
 													},
 											  ]
 									}
-									name="am_gdpr_align"
+									name="am_cookies_align"
 									label={ __(
 										'Align Cookie Prompt',
 										'am-cookies'
 									) }
 								/>
 								<RadioControl
-									selected={ data.am_gdpr_format }
+									selected={ data.am_cookies_format }
 									onChange={ ( value ) =>
 										setData( ( prev ) => ( {
 											...prev,
-											am_gdpr_format: value as Format,
+											am_cookies_format: value as Format,
 										} ) )
 									}
 									options={ [
@@ -479,14 +482,11 @@ export default function Settings() {
 											value: Format.Box,
 										},
 										{
-											label: __(
-												'Banner',
-												'am-cookies'
-											),
+											label: __( 'Banner', 'am-cookies' ),
 											value: Format.Banner,
 										},
 									] }
-									name="am_gdpr_format"
+									name="am_cookies_format"
 									label={ __(
 										'Format of Cookie Prompt',
 										'am-cookies'
@@ -505,18 +505,18 @@ export default function Settings() {
 								</h3>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_header"
+									htmlFor="am_cookies_text_header"
 								>
 									{ __( 'Header', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_header"
-										name="am_gdpr_text"
-										value={ data.am_gdpr_text.header }
+										id="am_cookies_text_header"
+										name="am_cookies_text"
+										value={ data.am_cookies_text.header }
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													header: value,
 												},
 											} ) )
@@ -527,18 +527,18 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_accept"
+									htmlFor="am_cookies_text_accept"
 								>
 									{ __( 'Accept-button', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_accept"
-										name="am_gdpr_text"
-										value={ data.am_gdpr_text.accept }
+										id="am_cookies_text_accept"
+										name="am_cookies_text"
+										value={ data.am_cookies_text.accept }
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													accept: value,
 												},
 											} ) )
@@ -548,25 +548,22 @@ export default function Settings() {
 								</label>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_customize_label"
+									htmlFor="am_cookies_text_customize_label"
 								>
-									{ __(
-										'Customize-button',
-										'am-cookies'
-									) }
+									{ __( 'Customize-button', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_customize_label"
-										name="am_gdpr_text"
+										id="am_cookies_text_customize_label"
+										name="am_cookies_text"
 										value={
-											data.am_gdpr_text.customize.label
+											data.am_cookies_text.customize.label
 										}
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													customize: {
-														...prev.am_gdpr_text
+														...prev.am_cookies_text
 															.customize,
 														label: value,
 													},
@@ -579,29 +576,27 @@ export default function Settings() {
 							</div>
 							<div>
 								<h3 style={ { marginTop: '0' } }>
-									{ __(
-										'Customize settings',
-										'am-cookies'
-									) }
+									{ __( 'Customize settings', 'am-cookies' ) }
 								</h3>
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_customize_header"
+									htmlFor="am_cookies_text_customize_header"
 								>
 									{ __( 'Header', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_customize_header"
-										name="am_gdpr_text"
+										id="am_cookies_text_customize_header"
+										name="am_cookies_text"
 										value={
-											data.am_gdpr_text.customize.header
+											data.am_cookies_text.customize
+												.header
 										}
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													customize: {
-														...prev.am_gdpr_text
+														...prev.am_cookies_text
 															.customize,
 														header: value,
 													},
@@ -614,18 +609,15 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_customize_text"
+									htmlFor="am_cookies_text_customize_text"
 								>
-									{ __(
-										'Main description',
-										'am-cookies'
-									) }
+									{ __( 'Main description', 'am-cookies' ) }
 									<RichText
-										id="am_gdpr_text_customize_text"
-										name="am_gdpr_text"
-										className="am_gdpr_textarea"
+										id="am_cookies_text_customize_text"
+										name="am_cookies_text"
+										className="am_cookies_textarea"
 										value={
-											data.am_gdpr_text.customize.text
+											data.am_cookies_text.customize.text
 										}
 										allowedFormats={ [
 											'core/bold',
@@ -634,10 +626,10 @@ export default function Settings() {
 										onChange={ ( value ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													customize: {
-														...prev.am_gdpr_text
+														...prev.am_cookies_text
 															.customize,
 														text: value,
 													},
@@ -649,18 +641,18 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_customize_retargeting"
+									htmlFor="am_cookies_text_customize_retargeting"
 								>
 									{ __(
 										'Retargeting description',
 										'am-cookies'
 									) }
 									<RichText
-										id="am_gdpr_text_customize_retargeting"
-										name="am_gdpr_text"
-										className="am_gdpr_textarea"
+										id="am_cookies_text_customize_retargeting"
+										name="am_cookies_text"
+										className="am_cookies_textarea"
 										value={
-											data.am_gdpr_text.customize
+											data.am_cookies_text.customize
 												.retargeting
 										}
 										allowedFormats={ [
@@ -670,10 +662,10 @@ export default function Settings() {
 										onChange={ ( value ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													customize: {
-														...prev.am_gdpr_text
+														...prev.am_cookies_text
 															.customize,
 														retargeting: value,
 													},
@@ -685,17 +677,14 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_wp_privacy_policy_url"
+									htmlFor="am_cookies_wp_privacy_policy_url"
 								>
-									{ __(
-										'Privacy Policy URL',
-										'am-cookies'
-									) }
+									{ __( 'Privacy Policy URL', 'am-cookies' ) }
 									<input
-										id="am_gdpr_wp_privacy_policy_url"
-										name="am_gdpr_wp_privacy_policy_url"
+										id="am_cookies_wp_privacy_policy_url"
+										name="am_cookies_wp_privacy_policy_url"
 										value={
-											data.am_gdpr_wp_privacy_policy_url ||
+											data.am_cookies_wp_privacy_policy_url ||
 											''
 										}
 										onChange={ onChangeHandler }
@@ -703,7 +692,7 @@ export default function Settings() {
 											setState( ( prev ) => ( {
 												...prev,
 												activeInput:
-													'am_gdpr_wp_privacy_policy_url',
+													'am_cookies_wp_privacy_policy_url',
 											} ) )
 										}
 										onBlur={ () =>
@@ -718,18 +707,18 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_customize_link"
+									htmlFor="am_cookies_text_customize_link"
 								>
 									{ __(
 										'Privacy link description',
 										'am-cookies'
 									) }
 									<RichText
-										id="am_gdpr_text_customize_link"
-										name="am_gdpr_text"
-										className="am_gdpr_textarea"
+										id="am_cookies_text_customize_link"
+										name="am_cookies_text"
+										className="am_cookies_textarea"
 										value={
-											data.am_gdpr_text.customize.link
+											data.am_cookies_text.customize.link
 										}
 										allowedFormats={ [
 											'core/bold',
@@ -739,10 +728,10 @@ export default function Settings() {
 										onChange={ ( value ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													customize: {
-														...prev.am_gdpr_text
+														...prev.am_cookies_text
 															.customize,
 														link: value,
 													},
@@ -754,18 +743,18 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_decline"
+									htmlFor="am_cookies_text_decline"
 								>
 									{ __( 'Decline-button', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_decline"
-										name="am_gdpr_text"
-										value={ data.am_gdpr_text.decline }
+										id="am_cookies_text_decline"
+										name="am_cookies_text"
+										value={ data.am_cookies_text.decline }
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													decline: value,
 												},
 											} ) )
@@ -776,21 +765,18 @@ export default function Settings() {
 
 								<label
 									className="form-label"
-									htmlFor="am_gdpr_text_accept_all"
+									htmlFor="am_cookies_text_accept_all"
 								>
-									{ __(
-										'Accept all-button',
-										'am-cookies'
-									) }
+									{ __( 'Accept all-button', 'am-cookies' ) }
 									<input
-										id="am_gdpr_text_accept_all"
-										name="am_gdpr_text"
-										value={ data.am_gdpr_text.acceptAll }
+										id="am_cookies_text_accept_all"
+										name="am_cookies_text"
+										value={ data.am_cookies_text.acceptAll }
 										onChange={ ( { target: { value } } ) =>
 											setData( ( prev ) => ( {
 												...prev,
-												am_gdpr_text: {
-													...prev.am_gdpr_text,
+												am_cookies_text: {
+													...prev.am_cookies_text,
 													acceptAll: value,
 												},
 											} ) )

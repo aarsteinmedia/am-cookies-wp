@@ -210,9 +210,9 @@
             this.defer = !!defer;
             this.consentParams = consentParams;
             if (!window.gtag) {
-                window.gtag = function() {
+                window.gtag = function(...args) {
                     window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push(arguments);
+                    window.dataLayer.push(args);
                 };
             }
         }
@@ -257,9 +257,9 @@
             this.config = config;
             this.consentParams = consentParams;
             if (!window.gtag) {
-                window.gtag = function() {
+                window.gtag = function(...args) {
                     window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push(arguments);
+                    window.dataLayer.push(args);
                 };
             }
         }
@@ -501,7 +501,7 @@
 
     const UPDATE_ON_CONNECTED = Symbol('UPDATE_ON_CONNECTED');
     if (isServer()) {
-        global.HTMLElement = class EmptyHTMLElement extends HTMLElement {
+        global.HTMLElement = class EmptyHTMLElement {
         };
     }
     let EnhancedElement = class EnhancedElement extends HTMLElement {
@@ -514,7 +514,9 @@
                 if (!('propertyChangedCallback' in this) || typeof this.propertyChangedCallback !== 'function') {
                     continue;
                 }
-                this.propertyChangedCallback(propName, undefined, this[propName]);
+                if (propName in this) {
+                    this.propertyChangedCallback(propName, undefined, this[propName]);
+                }
             }
         }
         constructor(){
@@ -538,13 +540,14 @@
                         }
                     });
                     if (typeof initialValue !== 'undefined') {
-                        this[UPDATE_ON_CONNECTED]?.push(propName);
+                        if (UPDATE_ON_CONNECTED in this && Array.isArray(this[UPDATE_ON_CONNECTED])) {
+                            this[UPDATE_ON_CONNECTED].push(propName);
+                        }
                     }
                 }
             }
         }
     };
-    EnhancedElement.observedProperties = [];
 
     class AMGDPR extends EnhancedElement {
         connectedCallback() {
@@ -946,19 +949,7 @@
             this.shadow.appendChild(this.template.content.cloneNode(true));
         }
         constructor(){
-            super();
-            this.allowStatistical = null;
-            this.allowRetargeting = null;
-            this.isVisible = false;
-            this.isCustomize = null;
-            this.isSaving = false;
-            this._scrollPos = 0;
-            this._consentListeners = [];
-            this.hasRetargeting = false;
-            this._popUp = popUp;
-            this._cookieWarning = cookieWarning;
-            this._miniGDPR = miniGDPR;
-            this.switchButton = switchButton;
+            super(), this.allowStatistical = null, this.allowRetargeting = null, this.isVisible = false, this.isCustomize = null, this.isSaving = false, this._scrollPos = 0, this._consentListeners = [], this.hasRetargeting = false, this._popUp = popUp, this._cookieWarning = cookieWarning, this._miniGDPR = miniGDPR, this.switchButton = switchButton;
             this.acceptAll = this.acceptAll.bind(this);
             this.declineAll = this.declineAll.bind(this);
             this.esc = this.esc.bind(this);

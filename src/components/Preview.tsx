@@ -14,10 +14,10 @@ export default function Preview( { data }: { data: Options } ) {
 		} ),
 		dialogInner = useRef< HTMLDivElement >( null ),
 		hasRetargeting =
-			data.am_gdpr_google_id?.startsWith( 'GTM-' ) ||
-			!! data.am_gdpr_meta_id ||
-			!! data.am_gdpr_snap_id ||
-			!! data.am_gdpr_tiktok_id,
+			data.am_cookies_google_id?.startsWith( 'GTM-' ) ||
+			!! data.am_cookies_meta_id ||
+			!! data.am_cookies_snap_id ||
+			!! data.am_cookies_tiktok_id,
 		esc = useCallback(
 			( { key }: KeyboardEvent ) => {
 				if ( ! state.isCustomize || key !== 'Escape' ) {
@@ -49,11 +49,11 @@ export default function Preview( { data }: { data: Options } ) {
 			<style>
 				{
 					/* CSS */ `.cookie-preview {
-          --border-width: ${ data.am_gdpr_border_width }px;
-          --font-family: ${ data.am_gdpr_font_family };
-          --color: ${ data.am_gdpr_color };
-          --background-color: ${ data.am_gdpr_background_color };
-          --accent-color: ${ data.am_gdpr_accent_color };
+          --border-width: ${ data.am_cookies_border_width }px;
+          --font-family: ${ data.am_cookies_font_family };
+          --color: ${ data.am_cookies_color };
+          --background-color: ${ data.am_cookies_background_color };
+          --accent-color: ${ data.am_cookies_accent_color };
         }`
 				}
 			</style>
@@ -110,17 +110,17 @@ export default function Preview( { data }: { data: Options } ) {
 									</svg>
 								</figure>
 								<slot id="customize-header">
-									{ data.am_gdpr_text.customize.header }
+									{ data.am_cookies_text.customize.header }
 								</slot>
 							</h3>
 							<p
 								id="customize-text"
 								dangerouslySetInnerHTML={ {
 									__html: `${
-										data.am_gdpr_text.customize.text
+										data.am_cookies_text.customize.text
 									}${
 										hasRetargeting
-											? ` ${ data.am_gdpr_text.customize.retargeting }`
+											? ` ${ data.am_cookies_text.customize.retargeting }`
 											: ''
 									}`,
 								} }
@@ -128,9 +128,9 @@ export default function Preview( { data }: { data: Options } ) {
 							<p
 								id="customize-link"
 								dangerouslySetInnerHTML={ {
-									__html: data.am_gdpr_text.customize.link.replace(
+									__html: data.am_cookies_text.customize.link.replace(
 										'%URL%',
-										data.am_gdpr_wp_privacy_policy_url
+										data.am_cookies_wp_privacy_policy_url
 									),
 								} }
 							/>
@@ -146,7 +146,7 @@ export default function Preview( { data }: { data: Options } ) {
 									className="button gdpr decline-all"
 									style={ { backgroundColor: 'transparent' } }
 								>
-									{ data.am_gdpr_text.decline }
+									{ data.am_cookies_text.decline }
 								</button>
 								<button
 									onClick={ () =>
@@ -157,7 +157,7 @@ export default function Preview( { data }: { data: Options } ) {
 									}
 									className="button gdpr accept-all"
 								>
-									{ data.am_gdpr_text.acceptAll }
+									{ data.am_cookies_text.acceptAll }
 								</button>
 							</div>
 
@@ -165,14 +165,16 @@ export default function Preview( { data }: { data: Options } ) {
 								<SwitchButton
 									value={ true }
 									name="functional"
-									label={ data.am_gdpr_text.functional.label }
+									label={
+										data.am_cookies_text.functional.label
+									}
 									disabled
 								/>
 								<SwitchButton
 									value={ false }
 									name="statistical"
 									label={
-										data.am_gdpr_text.statistical.label
+										data.am_cookies_text.statistical.label
 									}
 								/>
 								{ hasRetargeting && (
@@ -180,7 +182,7 @@ export default function Preview( { data }: { data: Options } ) {
 										value={ false }
 										name="marketing"
 										label={
-											data.am_gdpr_text.marketing.label
+											data.am_cookies_text.marketing.label
 										}
 									/>
 								) }
@@ -190,7 +192,7 @@ export default function Preview( { data }: { data: Options } ) {
 				</div>
 			) : (
 				<div
-					className={ `cookie-container ${ data.am_gdpr_align } ${ data.am_gdpr_format }-format` }
+					className={ `cookie-container ${ data.am_cookies_align } ${ data.am_cookies_format }-format` }
 					lang={ document.documentElement.lang }
 				>
 					<div className="content">
@@ -201,7 +203,7 @@ export default function Preview( { data }: { data: Options } ) {
 							role="dialog"
 						>
 							<p className="h3" id="cookie-warning-text">
-								{ data.am_gdpr_text.header }{ ' ' }
+								{ data.am_cookies_text.header }{ ' ' }
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="992"
@@ -223,10 +225,10 @@ export default function Preview( { data }: { data: Options } ) {
 									} ) )
 								}
 							>
-								{ data.am_gdpr_text.customize.label }
+								{ data.am_cookies_text.customize.label }
 							</button>
 							<button className="button gdpr accept">
-								{ data.am_gdpr_text.accept }
+								{ data.am_cookies_text.accept }
 							</button>
 						</div>
 					</div>

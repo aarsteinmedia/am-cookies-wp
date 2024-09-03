@@ -1,21 +1,21 @@
 <?php
 defined('ABSPATH') || exit;
 
-if (!function_exists('am_gdpr_get_path')) {
+if (!function_exists('am_cookies_get_path')) {
   /**
    * Returns the plugin path to a specified file.
    *
    * @param string $filename The specified file.
    * @return string
    */
-  function am_gdpr_get_path($path = '')
+  function am_cookies_get_path($path = '')
   {
     $path = preg_replace('/\.[^.]*$/', '', ltrim($path, '/')) . '.php';
-    return AM_GDPR_PATH . $path;
+    return AM_COOKIES_PATH . $path;
   }
 }
 
-if (!function_exists('am_gdpr_include')) {
+if (!function_exists('am_cookies_include')) {
   /**
    * Includes a file within the plugins includes folder
    *
@@ -23,9 +23,9 @@ if (!function_exists('am_gdpr_include')) {
    * @param mixed $arg (optional)
    * @return void
    */
-  function am_gdpr_include($path = '', $args = null)
+  function am_cookies_include($path = '', $args = null)
   {
-    $path = am_gdpr_get_path('includes/' . ltrim($path, '/'));
+    $path = am_cookies_get_path('includes/' . ltrim($path, '/'));
     if (file_exists($path)) {
       $args;
       include_once $path;

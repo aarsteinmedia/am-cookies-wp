@@ -2,8 +2,8 @@
 
 defined('ABSPATH') || exit;
 
-if (!class_exists('AM_GDPR_Rest_API')) {
-  class AM_GDPR_Rest_API
+if (!class_exists('AM_COOKIES_Rest_API')) {
+  class AM_COOKIES_Rest_API
   {
     /**
      * Constructor
@@ -57,23 +57,23 @@ if (!class_exists('AM_GDPR_Rest_API')) {
 
       $response = [];
       // Tracking
-      $response['am_gdpr_google_id'] = get_option('am_gdpr_google_id');
-      $response['am_gdpr_meta_id'] = get_option('am_gdpr_meta_id');
-      $response['am_gdpr_snap_id'] = get_option('am_gdpr_snap_id');
-      $response['am_gdpr_tiktok_id'] = get_option('am_gdpr_tiktok_id');
+      $response['am_cookies_google_id'] = get_option('am_cookies_google_id');
+      $response['am_cookies_meta_id'] = get_option('am_cookies_meta_id');
+      $response['am_cookies_snap_id'] = get_option('am_cookies_snap_id');
+      $response['am_cookies_tiktok_id'] = get_option('am_cookies_tiktok_id');
 
       // Layout
-      $response['am_gdpr_align'] = get_option('am_gdpr_align');
-      $response['am_gdpr_format'] = get_option('am_gdpr_format');
-      $response['am_gdpr_font_family'] = get_option('am_gdpr_font_family');
-      $response['am_gdpr_color'] = get_option('am_gdpr_color');
-      $response['am_gdpr_accent_color'] = get_option('am_gdpr_accent_color');
-      $response['am_gdpr_background_color'] = get_option('am_gdpr_background_color');
-      $response['am_gdpr_border_width'] = get_option('am_gdpr_border_width');
-      $response['am_gdpr_text'] = get_option('am_gdpr_text');
+      $response['am_cookies_align'] = get_option('am_cookies_align');
+      $response['am_cookies_format'] = get_option('am_cookies_format');
+      $response['am_cookies_font_family'] = get_option('am_cookies_font_family');
+      $response['am_cookies_color'] = get_option('am_cookies_color');
+      $response['am_cookies_accent_color'] = get_option('am_cookies_accent_color');
+      $response['am_cookies_background_color'] = get_option('am_cookies_background_color');
+      $response['am_cookies_border_width'] = get_option('am_cookies_border_width');
+      $response['am_cookies_text'] = get_option('am_cookies_text');
 
       // Privacy policy
-      $response['am_gdpr_wp_privacy_policy_url'] = get_option('am_gdpr_wp_privacy_policy_url');
+      $response['am_cookies_wp_privacy_policy_url'] = get_option('am_cookies_wp_privacy_policy_url');
 
       $response = new WP_REST_Response($response);
 
@@ -97,56 +97,56 @@ if (!class_exists('AM_GDPR_Rest_API')) {
         'success' => true
       ]);
 
-      if ($request->get_param('am_gdpr_google_id') !== null) {
-        update_option('am_gdpr_google_id', sanitize_text_field($request->get_param('am_gdpr_google_id')));
+      if ($request->get_param('am_cookies_google_id') !== null) {
+        update_option('am_cookies_google_id', sanitize_text_field($request->get_param('am_cookies_google_id')));
       }
 
-      if ($request->get_param('am_gdpr_meta_id') !== null) {
-        update_option('am_gdpr_meta_id', sanitize_text_field($request->get_param('am_gdpr_meta_id')));
+      if ($request->get_param('am_cookies_meta_id') !== null) {
+        update_option('am_cookies_meta_id', sanitize_text_field($request->get_param('am_cookies_meta_id')));
       }
 
-      if ($request->get_param('am_gdpr_snap_id') !== null) {
-        update_option('am_gdpr_snap_id', sanitize_text_field($request->get_param('am_gdpr_snap_id')));
+      if ($request->get_param('am_cookies_snap_id') !== null) {
+        update_option('am_cookies_snap_id', sanitize_text_field($request->get_param('am_cookies_snap_id')));
       }
 
-      if ($request->get_param('am_gdpr_tiktok_id') !== null) {
-        update_option('am_gdpr_tiktok_id', sanitize_text_field($request->get_param('am_gdpr_tiktok_id')));
+      if ($request->get_param('am_cookies_tiktok_id') !== null) {
+        update_option('am_cookies_tiktok_id', sanitize_text_field($request->get_param('am_cookies_tiktok_id')));
       }
 
-      if ($request->get_param('am_gdpr_align')) {
-        update_option('am_gdpr_align', sanitize_text_field($request->get_param('am_gdpr_align')));
+      if ($request->get_param('am_cookies_align')) {
+        update_option('am_cookies_align', sanitize_text_field($request->get_param('am_cookies_align')));
       }
 
-      if ($request->get_param('am_gdpr_format')) {
-        update_option('am_gdpr_format', sanitize_text_field($request->get_param('am_gdpr_format')));
+      if ($request->get_param('am_cookies_format')) {
+        update_option('am_cookies_format', sanitize_text_field($request->get_param('am_cookies_format')));
       }
 
-      if ($request->get_param('am_gdpr_font_family')) {
-        update_option('am_gdpr_font_family', sanitize_text_field($request->get_param('am_gdpr_font_family')));
+      if ($request->get_param('am_cookies_font_family')) {
+        update_option('am_cookies_font_family', sanitize_text_field($request->get_param('am_cookies_font_family')));
       }
 
-      if ($request->get_param('am_gdpr_color')) {
-        update_option('am_gdpr_color', sanitize_hex_color($request->get_param('am_gdpr_color')));
+      if ($request->get_param('am_cookies_color')) {
+        update_option('am_cookies_color', sanitize_hex_color($request->get_param('am_cookies_color')));
       }
 
-      if ($request->get_param('am_gdpr_accent_color')) {
-        update_option('am_gdpr_accent_color', sanitize_hex_color($request->get_param('am_gdpr_accent_color')));
+      if ($request->get_param('am_cookies_accent_color')) {
+        update_option('am_cookies_accent_color', sanitize_hex_color($request->get_param('am_cookies_accent_color')));
       }
 
-      if ($request->get_param('am_gdpr_background_color')) {
-        update_option('am_gdpr_background_color', sanitize_hex_color($request->get_param('am_gdpr_background_color')));
+      if ($request->get_param('am_cookies_background_color')) {
+        update_option('am_cookies_background_color', sanitize_hex_color($request->get_param('am_cookies_background_color')));
       }
 
-      if ($request->get_param('am_gdpr_border_width')) {
-        update_option('am_gdpr_border_width', sanitize_text_field($request->get_param('am_gdpr_border_width')));
+      if ($request->get_param('am_cookies_border_width')) {
+        update_option('am_cookies_border_width', sanitize_text_field($request->get_param('am_cookies_border_width')));
       }
 
-      if ($request->get_param('am_gdpr_wp_privacy_policy_url')) {
-        update_option('am_gdpr_wp_privacy_policy_url', sanitize_text_field($request->get_param('am_gdpr_wp_privacy_policy_url')));
+      if ($request->get_param('am_cookies_wp_privacy_policy_url')) {
+        update_option('am_cookies_wp_privacy_policy_url', sanitize_text_field($request->get_param('am_cookies_wp_privacy_policy_url')));
       }
 
-      if ($request->get_param('am_gdpr_text')) {
-        update_option('am_gdpr_text', rest_sanitize_object($request->get_param('am_gdpr_text')));
+      if ($request->get_param('am_cookies_text')) {
+        update_option('am_cookies_text', rest_sanitize_object($request->get_param('am_cookies_text')));
       }
 
       return $response;
@@ -156,14 +156,14 @@ if (!class_exists('AM_GDPR_Rest_API')) {
 
 /**
  * Main function, to initialize class
- * @return AM_GDPR_Rest_API
+ * @return AM_COOKIES_Rest_API
  */
 (function () {
-  global $am_gdpr_rest_api;
+  global $am_cookies_rest_api;
 
-  if (!isset($am_gdpr_rest_api)) {
-    $am_gdpr_rest_api = new AM_GDPR_Rest_API();
+  if (!isset($am_cookies_rest_api)) {
+    $am_cookies_rest_api = new AM_COOKIES_Rest_API();
   }
 
-  return $am_gdpr_rest_api;
+  return $am_cookies_rest_api;
 })();
