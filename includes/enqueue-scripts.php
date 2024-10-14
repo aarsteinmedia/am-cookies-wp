@@ -41,7 +41,26 @@ class AAMD_COOKIES_Enqueue_Scripts
         borderWidth="<?php echo esc_attr(get_option('aamd_cookies_border_width')); ?>"
         privacyPolicyURL="<?php echo esc_attr(get_option(('aamd_cookies_wp_privacy_policy_url'))); ?>"></am-gdpr>
 <?php
-    echo wp_kses_post(ob_get_clean());
+    echo wp_kses(
+      ob_get_clean(),
+      [
+        'am-gdpr' => [
+          'googleid' => [],
+          'metapixelid' => [],
+          'snapchatpixelid' => [],
+          'tiktokpixelid' => [],
+          'alignprompt' => [],
+          'alignminiprompt' => [],
+          'format' => [],
+          'color' => [],
+          'accentcolor' => [],
+          'backgroundcolor' => [],
+          'fontfamily' => [],
+          'borderwidth' => [],
+          'privacypolicyurl' => [],
+        ]
+      ]
+    );
     }
   }
 }
