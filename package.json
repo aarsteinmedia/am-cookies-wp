@@ -29,7 +29,8 @@
 		"includes",
 		"scripts",
 		"styles",
-		"am-cookies.php"
+		"am-cookies.php",
+		"uninstall.php"
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
@@ -69,7 +70,7 @@
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
 		"scss": "sass --no-source-map --style=compressed sass:styles",
-		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
+		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./uninstall.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
 	},
 	"cde": {
 		"gettext": "am-cookies",
