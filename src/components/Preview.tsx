@@ -15,11 +15,12 @@ export default function Preview( { data }: { data: Options } ) {
 			dialogHeight: 0,
 		} ),
 		dialogInner = useRef< HTMLDivElement >( null ),
+		isInitialLoad = useRef( true ),
 		hasRetargeting =
-			data.am_cookies_google_id?.startsWith( 'GTM-' ) ||
-			!! data.am_cookies_meta_id ||
-			!! data.am_cookies_snap_id ||
-			!! data.am_cookies_tiktok_id,
+			data.aamd_cookies_google_id?.startsWith( 'GTM-' ) ||
+			!! data.aamd_cookies_meta_id ||
+			!! data.aamd_cookies_snap_id ||
+			!! data.aamd_cookies_tiktok_id,
 		esc = useCallback(
 			( { key }: KeyboardEvent ) => {
 				if ( ! state.isCustomize || key !== 'Escape' ) {
@@ -41,6 +42,17 @@ export default function Preview( { data }: { data: Options } ) {
 		}
 	}, [ state.isCustomize ] );
 	useEffect( () => {
+		if ( isInitialLoad.current ) {
+			isInitialLoad.current = false;
+		} else {
+			setState( ( prev ) => ( {
+				...prev,
+				isCustomize: false,
+				isMinimized: false,
+			} ) );
+		}
+	}, [ data.aamd_cookies_align_mini ] );
+	useEffect( () => {
 		addEventListener( 'keydown', esc );
 		return () => {
 			removeEventListener( 'keydown', esc );
@@ -51,11 +63,11 @@ export default function Preview( { data }: { data: Options } ) {
 			<style>
 				{
 					/* CSS */ `.cookie-preview {
-          --border-width: ${ data.am_cookies_border_width }px;
-          --font-family: ${ data.am_cookies_font_family };
-          --color: ${ data.am_cookies_color };
-          --background-color: ${ data.am_cookies_background_color };
-          --accent-color: ${ data.am_cookies_accent_color };
+          --border-width: ${ data.aamd_cookies_border_width }px;
+          --font-family: ${ data.aamd_cookies_font_family };
+          --color: ${ data.aamd_cookies_color };
+          --background-color: ${ data.aamd_cookies_background_color };
+          --accent-color: ${ data.aamd_cookies_accent_color };
         }`
 				}
 			</style>
@@ -106,17 +118,17 @@ export default function Preview( { data }: { data: Options } ) {
 									<CookieIcon />
 								</figure>
 								<slot id="customize-header">
-									{ data.am_cookies_text.customize.header }
+									{ data.aamd_cookies_text.customize.header }
 								</slot>
 							</h3>
 							<p
 								id="customize-text"
 								dangerouslySetInnerHTML={ {
 									__html: `${
-										data.am_cookies_text.customize.text
+										data.aamd_cookies_text.customize.text
 									}${
 										hasRetargeting
-											? ` ${ data.am_cookies_text.customize.retargeting }`
+											? ` ${ data.aamd_cookies_text.customize.retargeting }`
 											: ''
 									}`,
 								} }
@@ -124,9 +136,9 @@ export default function Preview( { data }: { data: Options } ) {
 							<p
 								id="customize-link"
 								dangerouslySetInnerHTML={ {
-									__html: data.am_cookies_text.customize.link.replace(
+									__html: data.aamd_cookies_text.customize.link.replace(
 										'%URL%',
-										data.am_cookies_wp_privacy_policy_url
+										data.aamd_cookies_wp_privacy_policy_url
 									),
 								} }
 							/>
@@ -143,7 +155,7 @@ export default function Preview( { data }: { data: Options } ) {
 									className="button gdpr decline-all"
 									style={ { backgroundColor: 'transparent' } }
 								>
-									{ data.am_cookies_text.decline }
+									{ data.aamd_cookies_text.decline }
 								</button>
 								<button
 									onClick={ () =>
@@ -155,7 +167,7 @@ export default function Preview( { data }: { data: Options } ) {
 									}
 									className="button gdpr accept-all"
 								>
-									{ data.am_cookies_text.acceptAll }
+									{ data.aamd_cookies_text.acceptAll }
 								</button>
 							</div>
 
@@ -164,7 +176,7 @@ export default function Preview( { data }: { data: Options } ) {
 									value={ true }
 									name="functional"
 									label={
-										data.am_cookies_text.functional.label
+										data.aamd_cookies_text.functional.label
 									}
 									disabled
 								/>
@@ -172,7 +184,7 @@ export default function Preview( { data }: { data: Options } ) {
 									value={ false }
 									name="statistical"
 									label={
-										data.am_cookies_text.statistical.label
+										data.aamd_cookies_text.statistical.label
 									}
 								/>
 								{ hasRetargeting && (
@@ -180,7 +192,8 @@ export default function Preview( { data }: { data: Options } ) {
 										value={ false }
 										name="marketing"
 										label={
-											data.am_cookies_text.marketing.label
+											data.aamd_cookies_text.marketing
+												.label
 										}
 									/>
 								) }
@@ -191,7 +204,7 @@ export default function Preview( { data }: { data: Options } ) {
 			) }{ ' ' }
 			{ ! state.isCustomize && ! state.isMinimized && (
 				<div
-					className={ `cookie-container ${ data.am_cookies_align } ${ data.am_cookies_format }-format` }
+					className={ `cookie-container ${ data.aamd_cookies_align } ${ data.aamd_cookies_format }-format` }
 					lang={ document.documentElement.lang }
 				>
 					<div className="content">
@@ -202,7 +215,7 @@ export default function Preview( { data }: { data: Options } ) {
 							role="dialog"
 						>
 							<p className="h3" id="cookie-warning-text">
-								{ data.am_cookies_text.header } <CookieIcon />
+								{ data.aamd_cookies_text.header } <CookieIcon />
 							</p>
 						</div>
 						<div className="button-wrapper">
@@ -217,7 +230,7 @@ export default function Preview( { data }: { data: Options } ) {
 									} ) )
 								}
 							>
-								{ data.am_cookies_text.customize.label }
+								{ data.aamd_cookies_text.customize.label }
 							</button>
 							<button
 								className="button gdpr accept"
@@ -228,7 +241,7 @@ export default function Preview( { data }: { data: Options } ) {
 									} ) )
 								}
 							>
-								{ data.am_cookies_text.accept }
+								{ data.aamd_cookies_text.accept }
 							</button>
 						</div>
 					</div>
@@ -236,9 +249,9 @@ export default function Preview( { data }: { data: Options } ) {
 			) }{ ' ' }
 			{ ! state.isCustomize && state.isMinimized && (
 				<button
-					className={ `mini-gdpr ${ data.am_cookies_align_mini }` }
+					className={ `mini-gdpr ${ data.aamd_cookies_align_mini }` }
 					data-hide="false"
-					aria-label={ data.am_cookies_text.miniGDPR }
+					aria-label={ data.aamd_cookies_text.miniGDPR }
 					onClick={ () =>
 						setState( ( prev ) => ( {
 							...prev,

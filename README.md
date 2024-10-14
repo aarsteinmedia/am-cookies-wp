@@ -6,6 +6,10 @@ Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
 
 AM Cookies for WordPress is easy to use, lightweight, and gives your visitors total control over what data they want to share with you.
 
+This plugin utilizes our open source web component, `aamd-cookies`, which is publicly available here: https://github.com/aarsteinmedia/aamd-cookies.
+
+The purpose of this plugin is to give visitors to your website control over how their data is collected by third-party services such as Google, Meta, Snapchat, or TikTok. To use the plugin, simply input your tracking ID or pixel ID from any of these services – no coding is required. Our codebase includes links to sites like googletagmanager.com, gtm.com, facebook.net, sc-static.net, and tiktok.com, but none of these scripts are activated unless you choose to do so. When activated they will only collect data as per your configuration and with user consent. We do not collect any data through this plugin.
+
 ### Features
 
 - Loads tracking codes automatically – no need to manually add any code
