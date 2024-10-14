@@ -39,10 +39,9 @@ class AAMD_COOKIES_Enqueue_Scripts
         backgroundColor="<?php echo esc_attr(get_option('aamd_cookies_background_color')); ?>"
         fontFamily="<?php echo esc_attr(get_option('aamd_cookies_font_family')); ?>"
         borderWidth="<?php echo esc_attr(get_option('aamd_cookies_border_width')); ?>"
-        privacyPolicyURL="<?php echo esc_attr(get_option(('aamd_cookies_wp_privacy_policy_url'))); ?>">
-      </am-gdpr>
-  <?php
-      echo ob_get_clean();
+        privacyPolicyURL="<?php echo esc_attr(get_option(('aamd_cookies_wp_privacy_policy_url'))); ?>"></am-gdpr>
+<?php
+    echo ob_get_clean();
     }
   }
 }

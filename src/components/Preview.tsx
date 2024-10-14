@@ -48,10 +48,21 @@ export default function Preview( { data }: { data: Options } ) {
 			setState( ( prev ) => ( {
 				...prev,
 				isCustomize: false,
-				isMinimized: false,
+				isMinimized: true,
 			} ) );
 		}
 	}, [ data.aamd_cookies_align_mini ] );
+	useEffect( () => {
+		if ( isInitialLoad.current ) {
+			isInitialLoad.current = false;
+		} else {
+			setState( ( prev ) => ( {
+				...prev,
+				isCustomize: false,
+				isMinimized: false,
+			} ) );
+		}
+	}, [ data.aamd_cookies_align ] );
 	useEffect( () => {
 		addEventListener( 'keydown', esc );
 		return () => {

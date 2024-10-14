@@ -21,7 +21,6 @@
 
 defined('ABSPATH') || exit;
 
-
 class AAMD_Cookies
 {
   public $version;
@@ -54,13 +53,12 @@ class AAMD_Cookies
     // Include utility functions
     include_once AAMD_COOKIES_PATH . 'includes/functions.php';
 
-    // aamd_cookies_include('updates');
     aamd_cookies_include('enqueue-scripts');
     aamd_cookies_include('rest-api');
     if (is_admin()) {
       aamd_cookies_include('admin');
     }
-    
+
     add_option('aamd_cookies_google_id', null);
     add_option('aamd_cookies_meta_id', null);
     add_option('aamd_cookies_snap_id', null);
@@ -84,7 +82,7 @@ class AAMD_Cookies
  * Main function, to initialize plugin
  * @return AAMD_Cookies
  */
-function aamd_cookies()
+(function()
 {
   global $aamd_cookies;
 
@@ -94,6 +92,4 @@ function aamd_cookies()
   }
 
   return $aamd_cookies;
-}
-
-aamd_cookies();
+})();

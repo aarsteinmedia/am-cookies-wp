@@ -35,15 +35,15 @@ function aamd_cookies_include($path = '', $args = null)
  * @param   string $str The string to convert.
  * @return  string
  */
-function aamd_cookies_idify($str = '')
+function aamd_idify($str = '')
 {
   return str_replace(['][', '[', ']'], ['-', '-', ''], strtolower($str));
 }
 
-function aamd_cookies_use_id()
+function aamd_use_id()
 {
   $str = wp_rand();
-  return aamd_cookies_idify(md5($str));
+  return aamd_idify(md5($str));
 }
 
 /**
@@ -51,6 +51,7 @@ function aamd_cookies_use_id()
  * @param string $str
  * 
  */
-function aamd_cookies_snakeify($str) {
+function aamd_snakeify($str)
+{
   return strtolower(preg_replace("/[\-]/", "_", $str));
 }

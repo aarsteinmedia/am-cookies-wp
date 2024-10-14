@@ -88,7 +88,7 @@ class AAMD_COOKIES_Rest_API
     if (!current_user_can('manage_options')) {
       return new WP_Error(
         'rest_write_error',
-        __('Not allowed', 'aamd-cookies'),
+        __('Not allowed', 'am-cookies'),
         ['status' => 403]
       );
     }
