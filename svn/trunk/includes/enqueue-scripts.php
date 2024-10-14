@@ -15,15 +15,15 @@ class AAMD_COOKIES_Enqueue_Scripts
       return;
     }
     wp_enqueue_script(
-      'am-gdpr',
+      'am-cookies',
       AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
       [],
-      '1.0.0',
+      '1.0.1',
       false
     );
 
-    add_action('wp_body_open', 'add_gdpr_web_component');
-    function add_gdpr_web_component()
+    add_action('wp_body_open', 'aamd_cookies_add_web_component');
+    function aamd_cookies_add_web_component()
     {
       ob_start(); ?>
       <am-gdpr
@@ -41,7 +41,7 @@ class AAMD_COOKIES_Enqueue_Scripts
         borderWidth="<?php echo esc_attr(get_option('aamd_cookies_border_width')); ?>"
         privacyPolicyURL="<?php echo esc_attr(get_option(('aamd_cookies_wp_privacy_policy_url'))); ?>"></am-gdpr>
 <?php
-    echo ob_get_clean();
+    echo wp_kses_post(ob_get_clean());
     }
   }
 }
