@@ -55,3 +55,10 @@ Automatic installation is the easiest option — WordPress will handle the file 
 == Feedback ==
 
 We'd love to [hear from you](mailto:johan@aarstein.media)!
+
+== Changelog ==
+
+= 1.0.2 - October 20 2024 =
+* Expanded browser compability
+* Minor bugfixes
+* Minor stylistic changes

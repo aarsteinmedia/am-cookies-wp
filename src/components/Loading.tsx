@@ -4,9 +4,9 @@ export default function Loading() {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			stroke="currentColor"
+			width="22"
+			height="22"
+			stroke="currentcolor"
 		>
 			<style>
 				{
@@ -42,8 +42,8 @@ export default function Loading() {
 				} }
 			>
 				<Circle
-					cx="12"
-					cy="12"
+					cx="11"
+					cy="11"
 					r="9.5"
 					fill="none"
 					strokeWidth="3"

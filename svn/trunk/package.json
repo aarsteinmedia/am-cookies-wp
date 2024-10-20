@@ -1,6 +1,6 @@
 {
 	"name": "am-cookies",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.",
 	"author": {
 		"name": "Aarstein Media",
@@ -34,7 +34,7 @@
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
-		"@types/node": "^22.7.6",
+		"@types/node": "^22.7.7",
 		"@types/react": "^18.3.11",
 		"@types/webpack": "^5.28.5",
 		"@types/wordpress__block-editor": "^11.5.15",
@@ -50,7 +50,7 @@
 		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-react": "^7.37.1",
 		"eslint-plugin-react-hooks": "^4.6.2",
-		"sass": "^1.80.2",
+		"sass": "^1.80.3",
 		"ts-loader": "^9.5.1",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.3"
@@ -71,6 +71,7 @@
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
 		"scss": "sass --no-source-map --style=compressed sass:styles",
+		"dep": "cp ~/Dev/@aarsteinmedia/am-gdpr/build/index.js ./scripts/am-gdpr.min.js",
 		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./uninstall.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
 	},
 	"cde": {

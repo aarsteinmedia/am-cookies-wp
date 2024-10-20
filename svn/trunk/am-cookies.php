@@ -11,7 +11,7 @@
  * Description:       Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
  * License:           GPL-2.0-or-later
@@ -33,7 +33,7 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 		 * @return  void
 		 */
 		public function __construct() {
-			$this->version = '1.0.1';
+			$this->version = '1.0.2';
 		}
 
 		/**

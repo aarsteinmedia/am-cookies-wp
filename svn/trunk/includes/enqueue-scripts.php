@@ -17,7 +17,7 @@ if ( ! class_exists( 'AAMD_COOKIES_Enqueue_Scripts' ) ) {
 				'am-cookies',
 				AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
 				array(),
-				'1.0.1',
+				'1.0.2',
 				false
 			);
 
