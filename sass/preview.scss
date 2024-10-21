@@ -69,7 +69,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 99999;
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: rgb(0 0 0 / 30%);
 		backdrop-filter: blur(2px);
 	}
 
@@ -161,7 +161,7 @@
 	}
 
 	.button {
-		border: solid var(--border-width);
+		border: solid var(--border-width) currentcolor;
 		font-size: 0.9em;
 		line-height: 0.9;
 		font-weight: 700;
@@ -236,7 +236,7 @@
 		}
 
 		&.bottom-right {
-			border-radius: 66% 0 0 0;
+			border-radius: 66% 0 0;
 			transform-origin: bottom right;
 			animation: popInBottomRight 0.3s ease-in-out;
 
@@ -246,7 +246,7 @@
 		}
 
 		&.top-left {
-			border-radius: 0 0 66% 0;
+			border-radius: 0 0 66%;
 			transform-origin: top left;
 			animation: popInTopLeft 0.3s ease-in-out;
 
@@ -289,7 +289,7 @@
 		z-index: 999999;
 		animation-duration: 0.4s;
 		animation-name: fadeIn;
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: rgb(0 0 0 / 30%);
 
 		dialog {
 			position: absolute;
@@ -298,7 +298,7 @@
 			min-height: 0;
 			max-height: 0;
 			border-radius: 0.25em;
-			border: solid var(--border-width);
+			border: solid var(--border-width) currentcolor;
 			left: 0;
 			right: 0;
 			margin: auto;
@@ -308,7 +308,7 @@
 			overflow: hidden;
 			transition: max-height 0.2s ease-in-out, min-height 0.2s ease-in-out;
 			width: 600px;
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
 			color: var(--color);
 			background-color: var(--background-color);
 
@@ -324,7 +324,6 @@
 		}
 
 		&[data-gallery="true"] {
-
 			dialog {
 				padding: 0;
 			}
@@ -374,12 +373,9 @@
 	.slider {
 		position: absolute;
 		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		inset: 0;
 		border-radius: 1em;
-		border: solid var(--border-width);
+		border: solid var(--border-width) currentcolor;
 		appearance: none;
 		transition: background-color 0.2s;
 
@@ -399,13 +395,11 @@
 	}
 
 	.input {
-
 		&:focus + .slider {
 			box-shadow: 0 0 1px;
 		}
 
 		&:checked + .slider {
-
 			background-color: var(--accent-color);
 
 			&::before {
@@ -484,9 +478,7 @@
 		}
 
 		&[data-open="true"] {
-
 			.hamburger {
-
 				&::before {
 					transform: translateY(12px) rotate(135deg);
 				}
@@ -531,8 +523,6 @@
 	input[type="submit"],
 	input[type="button"],
 	input[type="reset"] {
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 
 		* {
@@ -578,10 +568,8 @@
 }
 
 
-@media only screen and (max-width: 760px) {
-
+@media only screen and (width <= 760px) {
 	.cookie-preview {
-
 		.cookie-container {
 			padding: 15px;
 
@@ -591,7 +579,6 @@
 			}
 
 			&.banner-format {
-
 				.content {
 					flex-direction: column;
 				}
@@ -610,7 +597,6 @@
 		}
 
 		.pop-up {
-
 			.pop-up-element {
 				padding: 25px;
 
@@ -623,8 +609,7 @@
 		}
 
 		.row {
-			overflow-x: auto;
-			overflow-y: hidden;
+			overflow: auto hidden;
 			scroll-snap-points-x: repeat(100%);
 			scroll-snap-type: x mandatory;
 			flex: 1 1;
@@ -647,7 +632,6 @@
 }
 
 @keyframes fadeIn {
-
 	0% {
 		opacity: 0;
 	}
@@ -658,7 +642,6 @@
 }
 
 @keyframes fadeInUp {
-
 	0% {
 		transform: translateY(1em);
 		opacity: 0;
@@ -671,7 +654,6 @@
 }
 
 @keyframes fadeInDown {
-
 	0% {
 		transform: translateY(-1em);
 		opacity: 0;
@@ -684,7 +666,6 @@
 }
 
 @keyframes popInBottomLeft {
-
 	0% {
 		transform: translateY(100%) translateX(-100%);
 	}
@@ -695,7 +676,6 @@
 }
 
 @keyframes popInBottomRight {
-
 	0% {
 		transform: translateY(100%) translateX(100%);
 	}
@@ -706,7 +686,6 @@
 }
 
 @keyframes popInTopLeft {
-
 	0% {
 		transform: translateY(-100%) translateX(-100%);
 	}
@@ -717,7 +696,6 @@
 }
 
 @keyframes popInTopRight {
-
 	0% {
 		transform: translateY(-100%) translateX(100%);
 	}

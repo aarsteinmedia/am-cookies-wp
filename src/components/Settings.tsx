@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import Loading from './Loading';
 import Logo from './Logo';
-import { Align, Format } from '@/utils';
+import { Align, Format } from '@/enums';
 import SwitchLabel from './Switch';
 import ColorInput from './ColorInput';
 import Preview from './Preview';

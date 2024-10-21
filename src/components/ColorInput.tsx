@@ -42,13 +42,14 @@ export default function ColorInput( {
 					<Popover>
 						<ColorPicker
 							color={ value as string }
-							onChange={ ( color ) =>
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-ignore
+							onChange={ ( color ) => {
+								if ( ! onChange ) {
+									return;
+								}
 								onChange( {
 									target: { value: color, name },
-								} as ChangeEvent< HTMLInputElement > )
-							}
+								} as ChangeEvent< HTMLInputElement > );
+							} }
 						/>
 					</Popover>
 				) }

@@ -1,5 +1,5 @@
 import text from '@/i18n/en.json';
-import { Align, Format } from '@/utils';
+import { Align, Format } from '@/enums';
 
 type Text = typeof text;
 

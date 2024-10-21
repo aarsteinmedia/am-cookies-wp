@@ -1,5 +1,4 @@
 .toplevel_page_am-cookies {
-
 	[hidden] {
 		display: none;
 	}
@@ -27,7 +26,7 @@
 		}
 	}
 
-	.wpbody-content > *:not(section):not(.clear),
+	.wpbody-content > *:not(section, .clear),
 	.notice.update-nag {
 		position: absolute;
 		right: 20px;
@@ -43,7 +42,6 @@
 	}
 
 	.aamd-cookies-settings {
-
 		.aamd-cookies-header-wrapper {
 			position: fixed;
 			top: 32px;
@@ -54,12 +52,14 @@
 
 		nav {
 			background-color: #fff;
+
 			// color
-			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 0 5px rgb(0 0 0 / 10%);
 			width: 100%;
 			display: flex;
 			gap: 1em;
 			padding: 20px;
+
 			// margin-left: -20px;
 			// width: calc(100% - 20px);
 
@@ -118,6 +118,7 @@
 					max-width: 250px;
 					margin: 0.5em 0;
 					display: block;
+
 					// transition: opacity .2s ease-in-out;
 				}
 			}
@@ -128,6 +129,7 @@
 
 			.form-label {
 				display: flex;
+
 				// align-items: center;
 				// gap: .5em;
 				flex-direction: column;
@@ -156,11 +158,11 @@
 		}
 
 		.block-tabs {
-
 			.block-tab {
 				border: 0;
 				appearance: none;
 				padding: 15px;
+
 				// text-align: center;
 				display: inline-flex;
 				flex: 1;
@@ -180,7 +182,6 @@
 		}
 
 		.content-tabs {
-
 			.content-tab {
 				background: #fff;
 				padding: 20px;
@@ -199,12 +200,11 @@
 		.am-btn {
 			font-size: 14px;
 			min-height: 46px;
-			line-height: 3.14285714;
+			line-height: 3.143;
 			padding: 0 36px;
 			display: inline-flex;
 			border-width: 1px;
 			border-style: solid;
-			-webkit-appearance: none;
 			appearance: none;
 			border-radius: 3px;
 			white-space: nowrap;
@@ -260,7 +260,6 @@
 	}
 
 	.components-base-control {
-
 		label:not(.components-radio-control__label) {
 			font-weight: 700;
 			font-size: inherit;
@@ -283,20 +282,16 @@
 
 }
 
-@media only screen and (max-width: 960px) {
-
+@media only screen and (width <= 960px) {
 	.toplevel_page_am-cookies .aamd-cookies-settings {
-
 		.aamd-cookies-header-wrapper {
 			width: calc(100% - 66px);
 		}
 	}
 }
 
-@media screen and (max-width: 782px) {
-
+@media screen and (width <= 782px) {
 	.toplevel_page_am-cookies .aamd-cookies-settings {
-
 		.aamd-cookies-header-wrapper {
 			width: calc(100% - 20px);
 		}
