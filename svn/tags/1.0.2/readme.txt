@@ -27,7 +27,7 @@ The purpose of this plugin is to give visitors to your website control over how 
 - Customizable layout
 - Customizable fonts and colors
 - Customizable text content
-- Front-end script only 37 kB
+- Front-end script less than 40 kB
 
 == Installation ==
 
