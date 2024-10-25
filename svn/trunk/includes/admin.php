@@ -48,7 +48,7 @@ if ( ! class_exists( 'AAMD_Cookies_Admin' ) ) {
 				'aamd-cookies-preview-style',
 				AAMD_COOKIES_URL . 'styles/preview.css',
 				array(),
-				'1.0.0'
+				'1.0.1'
 			);
 			wp_enqueue_style( 'wp-edit-blocks' );
 

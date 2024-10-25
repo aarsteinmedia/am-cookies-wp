@@ -1,0 +1,27 @@
+{
+  "settings": "Configuración de cookies",
+  "customize": {
+    "header": "Tus datos, tu elección",
+    "label": "Personalizar",
+    "text": "Utilizamos <strong>cookies funcionales</strong> para la navegación, etc. Además, utilizamos <strong>cookies estadísticas</strong> para ver cómo los usuarios interactúan con el sitio web.",
+    "retargeting": "También usamos <strong>cookies para marketing.</strong>",
+    "link": "Consulta nuestra <a href=\"/%URL%\">política de privacidad</a>"
+  },
+  "header": "Este sitio web utiliza",
+  "miniGDPR": "Configuración de cookies",
+  "accept": "Entiendo",
+  "acceptAll": "Aceptar todo",
+  "decline": "Solo funcional",
+  "close": "Cerrar",
+  "save": "Guardar preferencias",
+  "functional": {
+    "label": "Funcional"
+  },
+  "statistical": {
+    "label": "Estadístico"
+  },
+  "marketing": {
+    "label": "Marketing"
+  },
+  "policyUrl": "privacidad"
+}

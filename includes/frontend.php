@@ -2,8 +2,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'AAMD_COOKIES_Enqueue_Scripts' ) ) {
-	class AAMD_COOKIES_Enqueue_Scripts {
+if ( ! class_exists( 'AAMD_COOKIES_Frontend' ) ) {
+	class AAMD_COOKIES_Frontend {
 
 		public function __construct() {
 			add_action( 'wp_enqueue_scripts', array( $this, 'init' ) );
@@ -17,14 +17,29 @@ if ( ! class_exists( 'AAMD_COOKIES_Enqueue_Scripts' ) ) {
 				'am-cookies',
 				AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
 				array(),
-				'1.0.2',
+				'2.0.0',
 				false
+			);
+
+			wp_enqueue_script(
+				'am-cookies-text',
+				AAMD_COOKIES_URL . 'scripts/add-text.js',
+				array( 'am-cookies' ),
+				'1.0.0',
+				true
+			);
+
+			$text = json_encode( get_option( 'aamd_cookies_text' ) );
+
+			wp_add_inline_script(
+				'am-cookies-text',
+				"amCookiesElement?.setText({$text})"
 			);
 
 			add_action( 'wp_body_open', 'aamd_cookies_add_web_component' );
 			function aamd_cookies_add_web_component() {
 				ob_start(); ?>
-		<am-gdpr
+		<am-cookies
 			googleID="<?php echo esc_attr( get_option( 'aamd_cookies_google_id' ) ); ?>"
 			metaPixelID="<?php echo esc_attr( get_option( 'aamd_cookies_meta_id' ) ); ?>"
 			snapChatPixelID="<?php echo esc_attr( get_option( 'aamd_cookies_snap_id' ) ); ?>"
@@ -37,12 +52,12 @@ if ( ! class_exists( 'AAMD_COOKIES_Enqueue_Scripts' ) ) {
 			backgroundColor="<?php echo esc_attr( get_option( 'aamd_cookies_background_color' ) ); ?>"
 			fontFamily="<?php echo esc_attr( get_option( 'aamd_cookies_font_family' ) ); ?>"
 			borderWidth="<?php echo esc_attr( get_option( 'aamd_cookies_border_width' ) ); ?>"
-			privacyPolicyURL="<?php echo esc_attr( get_option( ( 'aamd_cookies_wp_privacy_policy_url' ) ) ); ?>"></am-gdpr>
+			privacyPolicyURL="<?php echo esc_attr( get_option( ( 'aamd_cookies_wp_privacy_policy_url' ) ) ); ?>"></am-cookies>
 				<?php
 				echo wp_kses(
 					ob_get_clean(),
 					array(
-						'am-gdpr' => array(
+						'am-cookies' => array(
 							'googleid'         => array(),
 							'metapixelid'      => array(),
 							'snapchatpixelid'  => array(),
@@ -67,14 +82,14 @@ if ( ! class_exists( 'AAMD_COOKIES_Enqueue_Scripts' ) ) {
 /**
  * Main function, to initialize class
  *
- * @return AAMD_COOKIES_Enqueue_Scripts
+ * @return AAMD_COOKIES_Frontend
  */
 ( function () {
-	global $aamd_cookies_enqueue_scripts;
+	global $aamd_cookies_frontend;
 
-	if ( ! isset( $aamd_cookies_enqueue_scripts ) ) {
-		$aamd_cookies_enqueue_scripts = new AAMD_COOKIES_Enqueue_Scripts();
+	if ( ! isset( $aamd_cookies_frontend ) ) {
+		$aamd_cookies_frontend = new AAMD_COOKIES_Frontend();
 	}
 
-	return $aamd_cookies_enqueue_scripts;
+	return $aamd_cookies_frontend;
 } )();

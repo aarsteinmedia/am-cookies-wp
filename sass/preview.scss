@@ -75,6 +75,9 @@
 
 	#cookie-warning-text {
 		margin: 0;
+		display: inline-flex;
+		gap: 0.5rem;
+		align-items: baseline;
 	}
 
 	.cookie-container {
@@ -88,7 +91,8 @@
 
 		.content {
 			display: flex;
-			align-items: center;
+
+			// align-items: center;
 			margin: 0;
 			font-size: 0.9em;
 			gap: 1em;
@@ -311,6 +315,10 @@
 			box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
 			color: var(--color);
 			background-color: var(--background-color);
+
+			.button-wrapper {
+				margin-top: 1em;
+			}
 
 			.close-button {
 				top: 14px;

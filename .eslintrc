@@ -31,7 +31,8 @@
 		"**/node_modules",
 		"**/vendor",
 		"*.config.*",
-		"*.min.*"
+		"*.min.*",
+		"**/scripts"
 	],
 	"rules": {
 		"@typescript-eslint/no-unused-vars": [

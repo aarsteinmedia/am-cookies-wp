@@ -51,9 +51,9 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 			define( 'AAMD_COOKIES_URL', plugin_dir_url( __FILE__ ) );
 
 			// Include utility functions
-			include_once AAMD_COOKIES_PATH . 'includes/functions.php';
+			include_once AAMD_COOKIES_PATH . 'includes/utils.php';
 
-			aamd_cookies_include( 'enqueue-scripts' );
+			aamd_cookies_include( 'frontend' );
 			aamd_cookies_include( 'rest-api' );
 			if ( is_admin() ) {
 				aamd_cookies_include( 'admin' );

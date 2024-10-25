@@ -1,5 +1,0 @@
-**/*.css
-vendor/**/*.scss
-node_modules/**/*.scss
-svn/**/*.scss
-build/**/*.scss

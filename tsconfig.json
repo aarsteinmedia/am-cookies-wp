@@ -15,7 +15,7 @@
 		"noImplicitAny": false,
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
-		"moduleResolution": "node",
+		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"paths": {
