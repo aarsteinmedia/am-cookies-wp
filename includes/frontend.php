@@ -1,44 +1,16 @@
 <?php
+namespace AAMD_Cookies;
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'AAMD_COOKIES_Frontend' ) ) {
-	class AAMD_COOKIES_Frontend {
+class Frontend {
 
-		public function __construct() {
-			add_action( 'wp_enqueue_scripts', array( $this, 'init' ) );
-		}
+	public function __construct() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'init' ) );
+	}
 
-		public function init() {
-			if ( is_admin() ) {
-				return;
-			}
-			wp_enqueue_script(
-				'am-cookies',
-				AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
-				array(),
-				'2.0.0',
-				false
-			);
-
-			wp_enqueue_script(
-				'am-cookies-text',
-				AAMD_COOKIES_URL . 'scripts/add-text.js',
-				array( 'am-cookies' ),
-				'1.0.0',
-				true
-			);
-
-			$text = json_encode( get_option( 'aamd_cookies_text' ) );
-
-			wp_add_inline_script(
-				'am-cookies-text',
-				"amCookiesElement?.setText({$text})"
-			);
-
-			add_action( 'wp_body_open', 'aamd_cookies_add_web_component' );
-			function aamd_cookies_add_web_component() {
-				ob_start(); ?>
+	public function add_web_component() {
+		\ob_start(); ?>
 		<am-cookies
 			googleID="<?php echo esc_attr( get_option( 'aamd_cookies_google_id' ) ); ?>"
 			metaPixelID="<?php echo esc_attr( get_option( 'aamd_cookies_meta_id' ) ); ?>"
@@ -53,42 +25,69 @@ if ( ! class_exists( 'AAMD_COOKIES_Frontend' ) ) {
 			fontFamily="<?php echo esc_attr( get_option( 'aamd_cookies_font_family' ) ); ?>"
 			borderWidth="<?php echo esc_attr( get_option( 'aamd_cookies_border_width' ) ); ?>"
 			privacyPolicyURL="<?php echo esc_attr( get_option( ( 'aamd_cookies_wp_privacy_policy_url' ) ) ); ?>"></am-cookies>
-				<?php
-				echo wp_kses(
-					ob_get_clean(),
-					array(
-						'am-cookies' => array(
-							'googleid'         => array(),
-							'metapixelid'      => array(),
-							'snapchatpixelid'  => array(),
-							'tiktokpixelid'    => array(),
-							'alignprompt'      => array(),
-							'alignminiprompt'  => array(),
-							'format'           => array(),
-							'color'            => array(),
-							'accentcolor'      => array(),
-							'backgroundcolor'  => array(),
-							'fontfamily'       => array(),
-							'borderwidth'      => array(),
-							'privacypolicyurl' => array(),
-						),
-					)
-				);
-			}
+		<?php
+		echo wp_kses(
+			\ob_get_clean(),
+			array(
+				'am-cookies' => array(
+					'googleid'         => array(),
+					'metapixelid'      => array(),
+					'snapchatpixelid'  => array(),
+					'tiktokpixelid'    => array(),
+					'alignprompt'      => array(),
+					'alignminiprompt'  => array(),
+					'format'           => array(),
+					'color'            => array(),
+					'accentcolor'      => array(),
+					'backgroundcolor'  => array(),
+					'fontfamily'       => array(),
+					'borderwidth'      => array(),
+					'privacypolicyurl' => array(),
+				),
+			)
+		);
+	}
+
+	public function init() {
+		if ( is_admin() ) {
+			return;
 		}
+		wp_enqueue_script(
+			'am-cookies',
+			AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
+			array(),
+			'2.0.0',
+			false
+		);
+
+		wp_enqueue_script(
+			'am-cookies-text',
+			AAMD_COOKIES_URL . 'scripts/add-text.js',
+			array( 'am-cookies' ),
+			'1.0.0',
+			true
+		);
+
+		$text = json_encode( get_option( 'aamd_cookies_text' ) );
+
+		wp_add_inline_script(
+			'am-cookies-text',
+			"amCookiesElement?.setText({$text})"
+		);
+
+		add_action( 'wp_body_open', array( $this, 'add_web_component' ) );
 	}
 }
 
 /**
  * Main function, to initialize class
- *
- * @return AAMD_COOKIES_Frontend
+ * @return Frontend
  */
 ( function () {
 	global $aamd_cookies_frontend;
 
 	if ( ! isset( $aamd_cookies_frontend ) ) {
-		$aamd_cookies_frontend = new AAMD_COOKIES_Frontend();
+		$aamd_cookies_frontend = new Frontend();
 	}
 
 	return $aamd_cookies_frontend;

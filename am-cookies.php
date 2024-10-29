@@ -11,7 +11,7 @@
  * Description:       Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
  * License:           GPL-2.0-or-later
@@ -21,10 +21,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
+use function AAMD_Cookies\Utils\include_file;
+
 if ( ! class_exists( 'AAMD_Cookies' ) ) {
 	class AAMD_Cookies {
 
-		public $version;
+		private const _version = '1.2.0';
 
 		/**
 		 * Constructor.
@@ -33,30 +35,22 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 		 * @return  void
 		 */
 		public function __construct() {
-			$this->version = '1.1.0';
-		}
-
-		/**
-		 * Sets up AM GDPR plugin
-		 *
-		 * @return void
-		 */
-		public function initialize() {
 
 			// Define constants
 			define( 'AAMD_COOKIES_PATH', plugin_dir_path( __FILE__ ) );
 			define( 'AAMD_COOKIES_SLUG', plugin_basename( __DIR__ ) );
 			define( 'AAMD_COOKIES_BASENAME', plugin_basename( __FILE__ ) );
-			define( 'AAMD_COOKIES_VERSION', $this->version );
+			define( 'AAMD_COOKIES_VERSION', self::_version );
 			define( 'AAMD_COOKIES_URL', plugin_dir_url( __FILE__ ) );
 
 			// Include utility functions
 			include_once AAMD_COOKIES_PATH . 'includes/utils.php';
 
-			aamd_cookies_include( 'frontend' );
-			aamd_cookies_include( 'rest-api' );
+			include_file( 'frontend' );
+			include_file( 'rest-api' );
+
 			if ( is_admin() ) {
-				aamd_cookies_include( 'admin' );
+				include_file( 'admin' );
 			}
 
 			add_option( 'aamd_cookies_google_id', null );
@@ -89,7 +83,6 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 
 	if ( ! isset( $aamd_cookies ) ) {
 		$aamd_cookies = new AAMD_Cookies();
-		$aamd_cookies->initialize();
 	}
 
 	return $aamd_cookies;

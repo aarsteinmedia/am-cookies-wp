@@ -3,6 +3,13 @@ import { Align, Format } from '@/enums';
 
 type Text = typeof text;
 
+export interface SettingsState {
+	loading: boolean
+	preview: boolean
+	tab: 'tracking' | 'layout' | 'content'
+	activeInput: string
+}
+
 export interface Options {
 	aamd_cookies_google_id: string | null;
 	aamd_cookies_meta_id: string | null;

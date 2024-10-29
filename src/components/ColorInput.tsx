@@ -34,8 +34,6 @@ export default function ColorInput( {
 					value={ value }
 					onChange={ onChange }
 					type="text"
-					// onFocus={ () => setShowPicker( true ) }
-					// type="color"
 				/>
 				<ColorIndicator colorValue={ value as string } />
 				{ showPicker && (
