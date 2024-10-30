@@ -52,6 +52,7 @@
 		"eslint-plugin-jest": "^28.8.3",
 		"eslint-plugin-react": "^7.37.2",
 		"eslint-plugin-react-hooks": "^5.0.0",
+		"rimraf": "^6.0.1",
 		"sass": "^1.80.5",
 		"stylelint": "^16.10.0",
 		"stylelint-config-standard-scss": "^13.1.0",
@@ -77,7 +78,7 @@
 		"test:unit": "wp-scripts test-unit-js",
 		"scss": "sass --no-source-map --style=compressed sass:styles",
 		"dep": "cp ~/Dev/@aarsteinmedia/am-gdpr/build/index.js ./scripts/am-gdpr.min.js",
-		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./uninstall.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
+		"svn": "rimraf ./svn/trunk/* && cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./uninstall.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
 	},
 	"cde": {
 		"gettext": "am-cookies",
