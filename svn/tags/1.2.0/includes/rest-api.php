@@ -7,15 +7,11 @@ class Rest_API {
 
 	/**
 	 * Constructor
-	 *
 	 * @param void
 	 * @return void
 	 */
 	public function __construct() {
-		add_action(
-			'rest_api_init',
-			array( $this, 'register_options_rest_route' )
-		);
+		add_action( 'rest_api_init', array( $this, 'register_options_rest_route' ) );
 	}
 
 	/**
@@ -43,11 +39,7 @@ class Rest_API {
 		);
 	}
 
-	/**
-	 * Array with all options, with accociated
-	 * methods for sanitizing
-	 */
-	private const _options = array(
+	private $_options = array(
 		// Tracking
 		'aamd_cookies_google_id'             => 'sanitize_text_field',
 		'aamd_cookies_meta_id'               => 'sanitize_text_field',
@@ -73,73 +65,62 @@ class Rest_API {
 	 * Callback function to read from Rest API
 	 */
 	public function options_read_rest_route_callback( $data ) {
-		try {
-			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \WP_Error(
-					'rest_read_error',
-					__( 'Not allowed', 'am-cookies' ),
-					array( 'status' => 403 )
-				);
-			}
-
-			$response = array();
-
-			// Loop over options keys to get options
-			foreach ( \array_keys( self::_options ) as $option ) {
-				if ( ! get_option( $option ) ) {
-					continue;
-				}
-				$response[ $option ] = get_option( $option );
-			}
-
-			$response = new \WP_REST_Response( $response );
-
-			return $response;
-		} catch ( \Exception $e ) {
-			return $e;
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new \WP_Error(
+				'rest_read_error',
+				__( 'Not allowed', 'am-cookies' ),
+				array( 'status' => 403 )
+			);
 		}
+
+		$response = array();
+
+		foreach ( $this->_options as $option => $_ ) {
+			if ( ! get_option( $option ) ) {
+				continue;
+			}
+			$response[ $option ] = get_option( $option );
+		}
+
+		$response = new \WP_REST_Response( $response );
+
+		return $response;
 	}
 
 	/**
 	 * Callback function to write to Rest API
 	 */
 	public function options_write_rest_route_callback( $request ) {
-		try {
-
-			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \WP_Error(
-					'rest_write_error',
-					__( 'Not allowed', 'am-cookies' ),
-					array( 'status' => 403 )
-				);
-			}
-
-			$response = new \WP_REST_Response(
-				array(
-					'success' => true,
-				)
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new \WP_Error(
+				'rest_write_error',
+				__( 'Not allowed', 'am-cookies' ),
+				array( 'status' => 403 )
 			);
-
-			foreach ( self::_options as $option => $sanitizer ) {
-				if ( ! $request->get_param( $option ) || ! function_exists( $sanitizer ) ) {
-					continue;
-				}
-				update_option(
-					$option,
-					$sanitizer( $request->get_param( $option ) )
-				);
-			}
-
-			return $response;
-		} catch ( \Exception $e ) {
-			return $e;
 		}
+
+		$response = new \WP_REST_Response(
+			array(
+				'success' => true,
+			)
+		);
+
+		foreach ( $this->_options as $option => $sanitizer ) {
+			if ( ! $request->get_param( $option ) || ! function_exists( $sanitizer ) ) {
+				continue;
+			}
+			update_option(
+				$option,
+				$sanitizer( $request->get_param( $option ) )
+			);
+		}
+
+		return $response;
 	}
 }
 
 /**
  * Main function, to initialize class
- *
  * @return Rest_API
  */
 ( function () {

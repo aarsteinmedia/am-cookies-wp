@@ -81,7 +81,6 @@ class Frontend {
 
 /**
  * Main function, to initialize class
- *
  * @return Frontend
  */
 ( function () {

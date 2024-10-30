@@ -7,7 +7,6 @@ class Admin {
 
 	/**
 	 * Constructor
-	 *
 	 * @param void
 	 * @return void
 	 */
@@ -76,7 +75,6 @@ class Admin {
 
 /**
  * Main function, to initialize class
- *
  * @return Admin
  */
 ( function () {

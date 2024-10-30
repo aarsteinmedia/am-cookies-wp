@@ -1,6 +1,4 @@
 <?php
-namespace AAMD_Cookies\Utils;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -9,8 +7,8 @@ defined( 'ABSPATH' ) || exit;
  * @param string $filename The specified file.
  * @return string
  */
-function get_path( $path = '' ) {
-	$path = \preg_replace( '/\.[^.]*$/', '', \ltrim( $path, '/' ) ) . '.php';
+function aamd_cookies_get_path( $path = '' ) {
+	$path = preg_replace( '/\.[^.]*$/', '', ltrim( $path, '/' ) ) . '.php';
 	return AAMD_COOKIES_PATH . $path;
 }
 
@@ -21,9 +19,9 @@ function get_path( $path = '' ) {
  * @param mixed  $arg (optional)
  * @return void
  */
-function include_file( $path = '', $args = null ) {
-	$path = get_path( 'includes/' . \ltrim( $path, '/' ) );
-	if ( \file_exists( $path ) ) {
+function aamd_cookies_include( $path = '', $args = null ) {
+	$path = aamd_cookies_get_path( 'includes/' . ltrim( $path, '/' ) );
+	if ( file_exists( $path ) ) {
 		$args;
 		include_once $path;
 	}
@@ -35,16 +33,13 @@ function include_file( $path = '', $args = null ) {
  * @param   string $str The string to convert.
  * @return  string
  */
-function idify( $str = '' ) {
-	return \str_replace( array( '][', '[', ']' ), array( '-', '-', '' ), \strtolower( $str ) );
+function aamd_idify( $str = '' ) {
+	return str_replace( array( '][', '[', ']' ), array( '-', '-', '' ), strtolower( $str ) );
 }
 
-/**
- * Generate unique id
- */
-function use_id() {
+function aamd_use_id() {
 	$str = wp_rand();
-	return aamd_idify( \md5( $str ) );
+	return aamd_idify( md5( $str ) );
 }
 
 /**
@@ -52,6 +47,6 @@ function use_id() {
  *
  * @param string $str
  */
-function snakeify( $str ) {
-	return \strtolower( \preg_replace( '/[\-]/', '_', $str ) );
+function aamd_snakeify( $str ) {
+	return strtolower( preg_replace( '/[\-]/', '_', $str ) );
 }

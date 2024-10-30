@@ -39,9 +39,6 @@ function idify( $str = '' ) {
 	return \str_replace( array( '][', '[', ']' ), array( '-', '-', '' ), \strtolower( $str ) );
 }
 
-/**
- * Generate unique id
- */
 function use_id() {
 	$str = wp_rand();
 	return aamd_idify( \md5( $str ) );
