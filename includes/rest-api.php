@@ -1,6 +1,8 @@
 <?php
 namespace AAMD_Cookies;
 
+use function AAMD_Cookies\Utils\get_options;
+
 defined( 'ABSPATH' ) || exit;
 
 class Rest_API {
@@ -44,32 +46,6 @@ class Rest_API {
 	}
 
 	/**
-	 * Array with all options, with accociated
-	 * methods for sanitizing
-	 */
-	private const _options = array(
-		// Tracking
-		'aamd_cookies_google_id'             => 'sanitize_text_field',
-		'aamd_cookies_meta_id'               => 'sanitize_text_field',
-		'aamd_cookies_snap_id'               => 'sanitize_text_field',
-		'aamd_cookies_tiktok_id'             => 'sanitize_text_field',
-
-		// Layout
-		'aamd_cookies_align'                 => 'sanitize_text_field',
-		'aamd_cookies_align_mini'            => 'sanitize_text_field',
-		'aamd_cookies_format'                => 'sanitize_text_field',
-		'aamd_cookies_font_family'           => 'sanitize_text_field',
-		'aamd_cookies_color'                 => 'sanitize_hex_color',
-		'aamd_cookies_accent_color'          => 'sanitize_hex_color',
-		'aamd_cookies_background_color'      => 'sanitize_hex_color',
-		'aamd_cookies_border_width'          => 'sanitize_text_field',
-		'aamd_cookies_text'                  => 'rest_sanitize_object',
-
-		// Privacy policy
-		'aamd_cookies_wp_privacy_policy_url' => 'sanitize_text_field',
-	);
-
-	/**
 	 * Callback function to read from Rest API
 	 */
 	public function options_read_rest_route_callback( $data ) {
@@ -85,7 +61,7 @@ class Rest_API {
 			$response = array();
 
 			// Loop over options keys to get options
-			foreach ( \array_keys( self::_options ) as $option ) {
+			foreach ( \array_keys( get_options() ) as $option ) {
 				if ( ! get_option( $option ) ) {
 					continue;
 				}
@@ -120,7 +96,7 @@ class Rest_API {
 				)
 			);
 
-			foreach ( self::_options as $option => $sanitizer ) {
+			foreach ( get_options() as $option => [$_, $sanitizer] ) {
 				if ( ! $request->get_param( $option ) || ! function_exists( $sanitizer ) ) {
 					continue;
 				}

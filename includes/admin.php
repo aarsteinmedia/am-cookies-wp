@@ -1,6 +1,8 @@
 <?php
 namespace AAMD_Cookies;
 
+use function AAMD_Cookies\Utils\get_options;
+
 defined( 'ABSPATH' ) || exit;
 
 class Admin {
@@ -14,6 +16,17 @@ class Admin {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		register_uninstall_hook(
+			AAMD_COOKIES_FILE,
+			array( $this, 'uninstall_hook' ),
+		);
+	}
+
+	public function uninstall_hook() {
+		foreach ( \array_keys( get_options() ) as $option ) {
+			delete_option( $option );
+		}
 	}
 
 	/**

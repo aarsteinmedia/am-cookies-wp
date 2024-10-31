@@ -11,7 +11,7 @@
  * Description:       Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.2.1
+ * Version:           1.2.2
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media
  * License:           GPL-2.0-or-later
@@ -22,6 +22,7 @@
 defined( 'ABSPATH' ) || exit;
 
 use function AAMD_Cookies\Utils\include_file;
+use function AAMD_Cookies\Utils\get_options;
 
 if ( ! class_exists( 'AAMD_Cookies' ) ) {
 	class AAMD_Cookies {
@@ -35,10 +36,13 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 		public function __construct() {
 
 			// Define constants
+			/** Path to plugin directory */
 			define( 'AAMD_COOKIES_PATH', plugin_dir_path( __FILE__ ) );
 			define( 'AAMD_COOKIES_SLUG', plugin_basename( __DIR__ ) );
 			define( 'AAMD_COOKIES_BASENAME', plugin_basename( __FILE__ ) );
 			define( 'AAMD_COOKIES_URL', plugin_dir_url( __FILE__ ) );
+			/** Path to plugin main file */
+			define( 'AAMD_COOKIES_FILE', AAMD_COOKIES_PATH . AAMD_COOKIES_SLUG . '.php' );
 
 			// Include utility functions
 			include_once AAMD_COOKIES_PATH . 'includes/utils.php';
@@ -50,21 +54,9 @@ if ( ! class_exists( 'AAMD_Cookies' ) ) {
 				include_file( 'admin' );
 			}
 
-			add_option( 'aamd_cookies_google_id', null );
-			add_option( 'aamd_cookies_meta_id', null );
-			add_option( 'aamd_cookies_snap_id', null );
-			add_option( 'aamd_cookies_tiktok_id', null );
-
-			add_option( 'aamd_cookies_align', 'bottom-left' );
-			add_option( 'aamd_cookies_align_mini', 'bottom-left' );
-			add_option( 'aamd_cookies_format', 'box' );
-			add_option( 'aamd_cookies_font_family', 'sans-serif' );
-			add_option( 'aamd_cookies_color', '#000000' );
-			add_option( 'aamd_cookies_accent_color', '#ffffff' );
-			add_option( 'aamd_cookies_background_color', '#ffffff' );
-			add_option( 'aamd_cookies_border_width', 2 );
-			add_option( 'aamd_cookies_text', null );
-			add_option( 'aamd_cookies_wp_privacy_policy_url', 'privacy-policy' );
+			foreach ( get_options() as $option => [$default_value] ) {
+				add_option( $option, $default_value );
+			}
 		}
 	}
 }
