@@ -1,6 +1,6 @@
 {
 	"name": "am-cookies",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.",
 	"author": {
 		"name": "Aarstein Media",
@@ -29,13 +29,12 @@
 		"includes",
 		"scripts",
 		"styles",
-		"am-cookies.php",
-		"uninstall.php"
+		"am-cookies.php"
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
 		"@playwright/test": "^1.48.2",
-		"@types/node": "^22.8.4",
+		"@types/node": "^22.8.6",
 		"@types/react": "^18.3.12",
 		"@types/webpack": "^5.28.5",
 		"@types/wordpress__block-editor": "^11.5.15",
@@ -52,6 +51,7 @@
 		"eslint-plugin-jest": "^28.8.3",
 		"eslint-plugin-react": "^7.37.2",
 		"eslint-plugin-react-hooks": "^5.0.0",
+		"rimraf": "^6.0.1",
 		"sass": "^1.80.5",
 		"stylelint": "^16.10.0",
 		"stylelint-config-standard-scss": "^13.1.0",
@@ -77,7 +77,7 @@
 		"test:unit": "wp-scripts test-unit-js",
 		"scss": "sass --no-source-map --style=compressed sass:styles",
 		"dep": "cp ~/Dev/@aarsteinmedia/am-gdpr/build/index.js ./scripts/am-gdpr.min.js",
-		"svn": "cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./uninstall.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
+		"svn": "rimraf ./svn/trunk/* && cp -R ./build ./includes ./scripts ./styles ./svn/trunk && cp ./am-cookies.php ./LICENSE ./package.json ./readme.txt ./svn/trunk"
 	},
 	"cde": {
 		"gettext": "am-cookies",

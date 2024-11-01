@@ -4,6 +4,34 @@ namespace AAMD_Cookies\Utils;
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Array with all options, with array of
+ * default value and accociated methods for sanitizing
+ */
+function get_options() {
+	return array(
+		// Tracking
+		'aamd_cookies_google_id'             => array( null, 'sanitize_text_field' ),
+		'aamd_cookies_meta_id'               => array( null, 'sanitize_text_field' ),
+		'aamd_cookies_snap_id'               => array( null, 'sanitize_text_field' ),
+		'aamd_cookies_tiktok_id'             => array( null, 'sanitize_text_field' ),
+
+		// Layout
+		'aamd_cookies_align'                 => array( 'bottom-left', 'sanitize_text_field' ),
+		'aamd_cookies_align_mini'            => array( 'bottom-left', 'sanitize_text_field' ),
+		'aamd_cookies_format'                => array( 'box', 'sanitize_text_field' ),
+		'aamd_cookies_font_family'           => array( 'sans-serif', 'sanitize_text_field' ),
+		'aamd_cookies_color'                 => array( '#000000', 'sanitize_hex_color' ),
+		'aamd_cookies_accent_color'          => array( '#ffffff', 'sanitize_hex_color' ),
+		'aamd_cookies_background_color'      => array( '#ffffff', 'sanitize_hex_color' ),
+		'aamd_cookies_border_width'          => array( 2, 'sanitize_text_field' ),
+		'aamd_cookies_text'                  => array( null, 'rest_sanitize_object' ),
+
+		// Privacy policy
+		'aamd_cookies_wp_privacy_policy_url' => array( 'privacy-policy', 'sanitize_text_field' ),
+	);
+}
+
+/**
  * Returns the plugin path to a specified file.
  *
  * @param string $filename The specified file.
@@ -40,18 +68,18 @@ function idify( $str = '' ) {
 }
 
 /**
- * Generate unique id
- */
-function use_id() {
-	$str = wp_rand();
-	return aamd_idify( \md5( $str ) );
-}
-
-/**
  * Converts slug to snake_case
  *
  * @param string $str
  */
 function snakeify( $str ) {
 	return \strtolower( \preg_replace( '/[\-]/', '_', $str ) );
+}
+
+/**
+ * Generate unique id
+ */
+function use_id() {
+	$str = wp_rand();
+	return aamd_idify( \md5( $str ) );
 }
