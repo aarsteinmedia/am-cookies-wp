@@ -68,7 +68,7 @@ class Frontend {
 			true
 		);
 
-		$text = json_encode( get_option( 'aamd_cookies_text' ) );
+		$text = wp_json_encode( get_option( 'aamd_cookies_text' ) );
 
 		wp_add_inline_script(
 			'am-cookies-text',
