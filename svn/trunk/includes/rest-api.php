@@ -29,7 +29,10 @@ class Rest_API {
 			'/options',
 			array(
 				'methods'             => 'GET',
-				'callback'            => array( $this, 'options_read_rest_route_callback' ),
+				'callback'            => array(
+					$this,
+					'options_read_rest_route_callback'
+				),
 				'permission_callback' => '__return_true',
 			)
 		);
@@ -39,7 +42,10 @@ class Rest_API {
 			'/options',
 			array(
 				'methods'             => 'POST',
-				'callback'            => array( $this, 'options_write_rest_route_callback' ),
+				'callback'            => array(
+					$this,
+					'options_write_rest_route_callback'
+				),
 				'permission_callback' => '__return_true',
 			)
 		);

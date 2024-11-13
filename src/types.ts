@@ -4,10 +4,10 @@ import { Align, Format } from '@/enums';
 type Text = typeof text;
 
 export interface SettingsState {
-	loading: boolean
-	preview: boolean
-	tab: 'tracking' | 'layout' | 'content'
-	activeInput: string
+	loading: boolean;
+	preview: boolean;
+	tab: 'tracking' | 'layout' | 'content';
+	activeInput: string;
 }
 
 export interface Options {

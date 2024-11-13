@@ -30,7 +30,7 @@ export default function Settings() {
 			aamd_cookies_text: getTranslation(),
 			aamd_cookies_wp_privacy_policy_url: 'privacy-policy',
 		} ),
-		[state, setState] = useState<SettingsState>( {
+		[ state, setState ] = useState< SettingsState >( {
 			loading: false,
 			preview: false,
 			tab: 'tracking',
@@ -167,9 +167,25 @@ export default function Settings() {
 						className="aamd-cookies-form"
 						onSubmit={ ( e ) => void saveChanges( e ) }
 					>
-						<Tracking data={data} onChangeHandler={onChangeHandler} setState={setState} state={state} />
-						<Layout data={data} setData={setData} onChangeHandler={onChangeHandler} state={state} />
-						<Content data={data} setData={setData} onChangeHandler={onChangeHandler} setState={setState} state={state} />
+						<Tracking
+							data={ data }
+							onChangeHandler={ onChangeHandler }
+							setState={ setState }
+							state={ state }
+						/>
+						<Layout
+							data={ data }
+							setData={ setData }
+							onChangeHandler={ onChangeHandler }
+							state={ state }
+						/>
+						<Content
+							data={ data }
+							setData={ setData }
+							onChangeHandler={ onChangeHandler }
+							setState={ setState }
+							state={ state }
+						/>
 						<button type="submit" className="am-btn blue">
 							{ state.loading ? (
 								<Loading />
