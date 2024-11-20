@@ -19,11 +19,11 @@ class Admin {
 
 		register_uninstall_hook(
 			AAMD_COOKIES_FILE,
-			array( $this, 'uninstall_hook' ),
+			'AAMD_Cookies\Admin::uninstall_hook',
 		);
 	}
 
-	public function uninstall_hook() {
+	public static function uninstall_hook() {
 		foreach ( \array_keys( get_options() ) as $option ) {
 			delete_option( $option );
 		}

@@ -1,5 +1,4 @@
 import { __ } from '@wordpress/i18n';
-// import { RichText } from '@wordpress/block-editor';
 import TextEditor from '@/components/TextEditor';
 import type { Options, SettingsState } from '@/types';
 

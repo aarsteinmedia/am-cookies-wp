@@ -68,7 +68,6 @@ export default function Tracking( {
 								activeInput: '',
 							} ) )
 						}
-						// placeholder="000000000000000"
 					/>
 				</label>
 				<label className="form-label" htmlFor="aamd_cookies_snap_id">
@@ -95,7 +94,6 @@ export default function Tracking( {
 								activeInput: '',
 							} ) )
 						}
-						// placeholder="11a1111a-1a1a-111a-1a11-aa1aa111a1aa"
 					/>
 				</label>
 
@@ -122,7 +120,6 @@ export default function Tracking( {
 								activeInput: '',
 							} ) )
 						}
-						// placeholder="A1AAA1AA1AAA1AAAAA1AA"
 					/>
 				</label>
 			</div>

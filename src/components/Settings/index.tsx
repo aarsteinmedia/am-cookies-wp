@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import Loading from '../Loading';
-import Logo from '../Logo';
+import Loading from '@/components/Loading';
+import Logo from '@/components/Logo';
 import { Align, Format } from '@/enums';
-import SwitchLabel from '../Switch';
-import Preview from '../Preview';
+import SwitchLabel from '@/components/Switch';
+import Preview from '@/components/Preview';
 import getTranslation from '@/i18n';
 import type { ChangeEvent, FormEvent } from 'react';
 import type { Options, SettingsState } from '@/types';
-import Tracking from './Tracking';
-import Layout from './Layout';
-import Content from './Content';
+import Tracking from '@/components/Settings/Tracking';
+import Layout from '@/components/Settings/Layout';
+import Content from '@/components/Settings/Content';
 
 export default function Settings() {
 	const [ data, setData ] = useState< Options >( {

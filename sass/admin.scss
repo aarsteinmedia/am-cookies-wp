@@ -280,6 +280,12 @@
 		}
 	}
 
+	// Text editing
+	.components-accessible-toolbar {
+		position: absolute;
+		top: -30px;
+		animation: fadeInUp .2s ease-in-out;
+	}
 }
 
 @media only screen and (width <= 960px) {
