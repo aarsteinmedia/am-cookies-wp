@@ -32,7 +32,7 @@ export default function Settings() {
 		} ),
 		[ state, setState ] = useState< SettingsState >( {
 			loading: false,
-			preview: false,
+			preview: true,
 			tab: 'tracking',
 			activeInput: '',
 		} ),
@@ -104,7 +104,7 @@ export default function Settings() {
 					</span>
 					<SwitchLabel
 						id="toggle-preview"
-						title={ __( 'Preview', 'am-cookies' ) }
+						title={ __( 'Toggle Preview', 'am-cookies' ) }
 						value={ state.preview }
 						onChange={ () =>
 							setState( ( prev ) => ( {
