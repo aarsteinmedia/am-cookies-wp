@@ -1,5 +1,5 @@
-import { createRoot } from '@wordpress/element';
 import Settings from '@/components/Settings';
+import { createRoot } from '@wordpress/element';
 
 const App = () => <Settings />,
 	htmlElement = document.getElementById( 'am-cookies-settings' );

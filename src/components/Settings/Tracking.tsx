@@ -1,11 +1,12 @@
-import { __ } from '@wordpress/i18n';
 import type { Options, SettingsState } from '@/types';
+
+import { __ } from '@wordpress/i18n';
 
 export default function Tracking( {
 	data,
 	onChangeHandler,
-	state,
 	setState,
+	state,
 }: Readonly< {
 	data: Options;
 	onChangeHandler: ( e: React.ChangeEvent< HTMLInputElement > ) => void;
@@ -14,9 +15,9 @@ export default function Tracking( {
 } > ) {
 	return (
 		<fieldset
-			id="tracking"
-			hidden={ state.tab !== 'tracking' }
 			className="aamd-cookies-fieldset"
+			hidden={ state.tab !== 'tracking' }
+			id="tracking"
 		>
 			<div>
 				<label className="form-label" htmlFor="aamd_cookies_google_id">
@@ -25,21 +26,21 @@ export default function Tracking( {
 					<input
 						id="aamd_cookies_google_id"
 						name="aamd_cookies_google_id"
-						value={ data.aamd_cookies_google_id || '' }
-						onChange={ onChangeHandler }
-						type="text"
-						onFocus={ () =>
-							setState( ( prev ) => ( {
-								...prev,
-								activeInput: 'aamd_cookies_google_id',
-							} ) )
-						}
 						onBlur={ () =>
 							setState( ( prev ) => ( {
 								...prev,
 								activeInput: '',
 							} ) )
 						}
+						onChange={ onChangeHandler }
+						onFocus={ () =>
+							setState( ( prev ) => ( {
+								...prev,
+								activeInput: 'aamd_cookies_google_id',
+							} ) )
+						}
+						type="text"
+						value={ data.aamd_cookies_google_id || '' }
 						// placeholder="G-XXXXXXXXXX / GTM-XXXXXXXXXX"
 					/>
 				</label>
@@ -48,88 +49,88 @@ export default function Tracking( {
 					{ __( 'Meta/Facebook Pixel ID', 'am-cookies' ) }
 
 					<input
-						id="aamd_cookies_meta_id"
-						name="aamd_cookies_meta_id"
-						value={ data.aamd_cookies_meta_id || '' }
-						onChange={ onChangeHandler }
-						type="text"
 						disabled={ data.aamd_cookies_google_id?.startsWith(
 							'GTM-'
 						) }
+						id="aamd_cookies_meta_id"
+						name="aamd_cookies_meta_id"
+						onBlur={ () =>
+							setState( ( prev ) => ( {
+								...prev,
+								activeInput: '',
+							} ) )
+						}
+						onChange={ onChangeHandler }
 						onFocus={ () =>
 							setState( ( prev ) => ( {
 								...prev,
 								activeInput: 'aamd_cookies_meta_id',
 							} ) )
 						}
-						onBlur={ () =>
-							setState( ( prev ) => ( {
-								...prev,
-								activeInput: '',
-							} ) )
-						}
+						type="text"
+						value={ data.aamd_cookies_meta_id || '' }
 					/>
 				</label>
 				<label className="form-label" htmlFor="aamd_cookies_snap_id">
 					{ __( 'SnapChat Pixel ID', 'am-cookies' ) }
 
 					<input
-						id="aamd_cookies_snap_id"
-						name="aamd_cookies_snap_id"
-						value={ data.aamd_cookies_snap_id || '' }
-						onChange={ onChangeHandler }
-						type="text"
 						disabled={ data.aamd_cookies_google_id?.startsWith(
 							'GTM-'
 						) }
+						id="aamd_cookies_snap_id"
+						name="aamd_cookies_snap_id"
+						onBlur={ () =>
+							setState( ( prev ) => ( {
+								...prev,
+								activeInput: '',
+							} ) )
+						}
+						onChange={ onChangeHandler }
 						onFocus={ () =>
 							setState( ( prev ) => ( {
 								...prev,
 								activeInput: 'aamd_cookies_snap_id',
 							} ) )
 						}
-						onBlur={ () =>
-							setState( ( prev ) => ( {
-								...prev,
-								activeInput: '',
-							} ) )
-						}
+						type="text"
+						value={ data.aamd_cookies_snap_id || '' }
 					/>
 				</label>
 
 				<label className="form-label" htmlFor="aamd_cookies_tiktok_id">
 					{ __( 'TikTok ID', 'am-cookies' ) }
 					<input
-						id="aamd_cookies_tiktok_id"
-						name="aamd_cookies_tiktok_id"
-						value={ data.aamd_cookies_tiktok_id || '' }
-						onChange={ onChangeHandler }
-						type="text"
 						disabled={ data.aamd_cookies_google_id?.startsWith(
 							'GTM-'
 						) }
-						onFocus={ () =>
-							setState( ( prev ) => ( {
-								...prev,
-								activeInput: 'aamd_cookies_tiktok_id',
-							} ) )
-						}
+						id="aamd_cookies_tiktok_id"
+						name="aamd_cookies_tiktok_id"
 						onBlur={ () =>
 							setState( ( prev ) => ( {
 								...prev,
 								activeInput: '',
 							} ) )
 						}
+						onChange={ onChangeHandler }
+						onFocus={ () =>
+							setState( ( prev ) => ( {
+								...prev,
+								activeInput: 'aamd_cookies_tiktok_id',
+							} ) )
+						}
+						type="text"
+						value={ data.aamd_cookies_tiktok_id || '' }
 					/>
 				</label>
 			</div>
 			<div>
 				<h3
 					className="fade-in"
+					hidden={ state.activeInput !== 'aamd_cookies_google_id' }
 					style={ {
 						marginTop: '0',
 					} }
-					hidden={ state.activeInput !== 'aamd_cookies_google_id' }
 				>
 					{ __( 'Instructions', 'am-cookies' ) }
 				</h3>

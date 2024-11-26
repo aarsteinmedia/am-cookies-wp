@@ -3,10 +3,10 @@ import { Circle, G, SVG } from '@wordpress/components';
 export default function Loading() {
 	return (
 		<SVG
-			xmlns="http://www.w3.org/2000/svg"
-			width="22"
 			height="22"
 			stroke="currentcolor"
+			width="22"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<style>
 				{
@@ -37,19 +37,19 @@ export default function Loading() {
 			</style>
 			<G
 				style={ {
-					transformOrigin: 'center',
 					animation: 'spinner_zKoa 2s linear infinite',
+					transformOrigin: 'center',
 				} }
 			>
 				<Circle
 					cx="11"
 					cy="11"
-					r="9.5"
 					fill="none"
+					r="9.5"
 					strokeWidth="3"
 					style={ {
-						strokeLinecap: 'round',
 						animation: 'spinner_YpZS 1.5s ease-in-out infinite',
+						strokeLinecap: 'round',
 					} }
 				/>
 			</G>

@@ -1,13 +1,14 @@
-import { __ } from '@wordpress/i18n';
-import { RadioControl } from '@wordpress/components';
-import ColorInput from '@/components/ColorInput';
 import type { Options, SettingsState } from '@/types';
+
+import ColorInput from '@/components/ColorInput';
 import { Align, Format } from '@/enums';
+import { RadioControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 export default function Layout( {
 	data,
-	setData,
 	onChangeHandler,
+	setData,
 	state,
 }: Readonly< {
 	data: Options;
@@ -17,9 +18,9 @@ export default function Layout( {
 } > ) {
 	return (
 		<fieldset
-			id="layout"
-			hidden={ state.tab !== 'layout' }
 			className="aamd-cookies-fieldset"
+			hidden={ state.tab !== 'layout' }
+			id="layout"
 		>
 			<div>
 				<label
@@ -30,32 +31,32 @@ export default function Layout( {
 					<input
 						id="aamd_cookies_font_family"
 						name="aamd_cookies_font_family"
-						value={ data.aamd_cookies_font_family }
-						placeholder="sans-serif"
 						onChange={ onChangeHandler }
+						placeholder="sans-serif"
 						type="text"
+						value={ data.aamd_cookies_font_family }
 					/>
 				</label>
 
 				<ColorInput
 					label={ __( 'Color', 'am-cookies' ) }
 					name="aamd_cookies_color"
-					value={ data.aamd_cookies_color || '#000000' }
 					onChange={ onChangeHandler }
+					value={ data.aamd_cookies_color || '#000000' }
 				/>
 
 				<ColorInput
 					label={ __( 'Accent Color', 'am-cookies' ) }
 					name="aamd_cookies_accent_color"
-					value={ data.aamd_cookies_accent_color || '#ffffff' }
 					onChange={ onChangeHandler }
+					value={ data.aamd_cookies_accent_color || '#ffffff' }
 				/>
 
 				<ColorInput
 					label={ __( 'Background Color', 'am-cookies' ) }
 					name="aamd_cookies_background_color"
-					value={ data.aamd_cookies_background_color || '#ffffff' }
 					onChange={ onChangeHandler }
+					value={ data.aamd_cookies_background_color || '#ffffff' }
 				/>
 
 				<label
@@ -66,15 +67,16 @@ export default function Layout( {
 					<input
 						id="aamd_cookies_border_width"
 						name="aamd_cookies_border_width"
-						value={ data.aamd_cookies_border_width ?? 2 }
 						onChange={ onChangeHandler }
 						type="number"
+						value={ data.aamd_cookies_border_width ?? 2 }
 					/>
 				</label>
 			</div>
 			<div>
 				<RadioControl
-					selected={ data.aamd_cookies_align }
+					label={ __( 'Align Cookie Prompt', 'am-cookies' ) }
+					name="aamd_cookies_align"
 					onChange={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -118,11 +120,11 @@ export default function Layout( {
 									},
 							  ]
 					}
-					name="aamd_cookies_align"
-					label={ __( 'Align Cookie Prompt', 'am-cookies' ) }
+					selected={ data.aamd_cookies_align }
 				/>
 				<RadioControl
-					selected={ data.aamd_cookies_format }
+					label={ __( 'Format of Cookie Prompt', 'am-cookies' ) }
+					name="aamd_cookies_format"
 					onChange={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -139,11 +141,11 @@ export default function Layout( {
 							value: Format.Banner,
 						},
 					] }
-					name="aamd_cookies_format"
-					label={ __( 'Format of Cookie Prompt', 'am-cookies' ) }
+					selected={ data.aamd_cookies_format }
 				/>
 				<RadioControl
-					selected={ `mini-${ data.aamd_cookies_align_mini }` }
+					label={ __( 'Align Mini Cookie Prompt', 'am-cookies' ) }
+					name="aamd_cookies_align_mini"
 					onChange={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -171,8 +173,7 @@ export default function Layout( {
 							value: `mini-${ Align.TopRight }`,
 						},
 					] }
-					name="aamd_cookies_align_mini"
-					label={ __( 'Align Mini Cookie Prompt', 'am-cookies' ) }
+					selected={ `mini-${ data.aamd_cookies_align_mini }` }
 				/>
 			</div>
 		</fieldset>

@@ -17,7 +17,8 @@
 		"react",
 		"react-hooks",
 		"@typescript-eslint",
-		"import"
+		"import",
+		"perfectionist"
 	],
 	"extends": [
 		"eslint:recommended",
@@ -56,7 +57,11 @@
 					"info"
 				]
 			}
-		]
+		],
+		"perfectionist/sort-imports": "warn",
+		"perfectionist/sort-interfaces": "warn",
+		"perfectionist/sort-jsx-props": "warn",
+		"perfectionist/sort-objects": "warn",
 	},
 	"globals": {
 		"JSX": true,

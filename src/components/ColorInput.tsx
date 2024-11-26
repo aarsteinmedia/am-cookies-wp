@@ -1,6 +1,7 @@
-import { useState } from '@wordpress/element';
-import { ColorIndicator, ColorPicker, Popover } from '@wordpress/components';
 import type { ChangeEvent, InputHTMLAttributes } from 'react';
+
+import { ColorIndicator, ColorPicker, Popover } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
 export default function ColorInput( {
 	label,
@@ -16,24 +17,24 @@ export default function ColorInput( {
 		<label
 			className="form-label"
 			htmlFor={ name }
-			onFocus={ () => setShowPicker( true ) }
 			onBlur={ () => setShowPicker( false ) }
+			onFocus={ () => setShowPicker( true ) }
 		>
 			{ label }
 			<div
 				style={ {
+					alignItems: 'center',
 					display: 'flex',
 					flexDirection: 'row',
 					gap: '.5em',
-					alignItems: 'center',
 				} }
 			>
 				<input
 					id={ name }
 					name={ name }
-					value={ value }
 					onChange={ onChange }
 					type="text"
+					value={ value }
 				/>
 				<ColorIndicator colorValue={ value as string } />
 				{ showPicker && (
@@ -45,7 +46,7 @@ export default function ColorInput( {
 									return;
 								}
 								onChange( {
-									target: { value: color, name },
+									target: { name, value: color },
 								} as ChangeEvent< HTMLInputElement > );
 							} }
 						/>

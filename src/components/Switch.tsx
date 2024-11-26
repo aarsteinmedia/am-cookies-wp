@@ -15,9 +15,9 @@ export default function SwitchLabel( {
 } ) {
 	return (
 		<BaseControl
-			id={ id }
-			help={ subTitle }
 			className={ 'am-switch-label' }
+			help={ subTitle }
+			id={ id }
 		>
 			<BaseControl.VisualLabel>{ title }</BaseControl.VisualLabel>
 			<FormToggle

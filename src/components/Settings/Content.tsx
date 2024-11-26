@@ -1,13 +1,14 @@
-import { __ } from '@wordpress/i18n';
-import TextEditor from '@/components/TextEditor';
 import type { Options, SettingsState } from '@/types';
+
+import TextEditor from '@/components/TextEditor';
+import { __ } from '@wordpress/i18n';
 
 export default function Content( {
 	data,
-	setData,
 	onChangeHandler,
-	state,
+	setData,
 	setState,
+	state,
 }: Readonly< {
 	data: Options;
 	setData: React.Dispatch< React.SetStateAction< Options > >;
@@ -17,9 +18,9 @@ export default function Content( {
 } > ) {
 	return (
 		<fieldset
-			id="content"
-			hidden={ state.tab !== 'content' }
 			className="aamd-cookies-fieldset"
+			hidden={ state.tab !== 'content' }
+			id="content"
 		>
 			<div>
 				<h3 style={ { marginTop: '0' } }>
@@ -33,7 +34,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_header"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.header }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -44,6 +44,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.header }
 					/>
 				</label>
 
@@ -55,7 +56,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_accept"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.accept }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -66,6 +66,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.accept }
 					/>
 				</label>
 				<label
@@ -76,7 +77,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_customize_label"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.customize.label }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -90,6 +90,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.customize.label }
 					/>
 				</label>
 				<h3>{ __( 'Mini-Cookie Prompt', 'am-cookies' ) }</h3>
@@ -101,7 +102,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_miniGDPR"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.miniGDPR }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -112,6 +112,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.miniGDPR }
 					/>
 				</label>
 			</div>
@@ -127,7 +128,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_customize_header"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.customize.header }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -141,6 +141,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.customize.header }
 					/>
 				</label>
 
@@ -148,7 +149,6 @@ export default function Content( {
 					id="aamd_cookies_text_customize_text"
 					label={ __( 'Main description', 'am-cookies' ) }
 					name="aamd_cookies_text"
-					value={ data.aamd_cookies_text.customize.text }
 					setValue={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -161,13 +161,13 @@ export default function Content( {
 							},
 						} ) )
 					}
+					value={ data.aamd_cookies_text.customize.text }
 				/>
 
 				<TextEditor
 					id="aamd_cookies_text_customize_retargeting"
 					label={ __( 'Retargeting description', 'am-cookies' ) }
 					name="aamd_cookies_text"
-					value={ data.aamd_cookies_text.customize.retargeting }
 					setValue={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -180,6 +180,7 @@ export default function Content( {
 							},
 						} ) )
 					}
+					value={ data.aamd_cookies_text.customize.retargeting }
 				/>
 
 				<label
@@ -190,7 +191,12 @@ export default function Content( {
 					<input
 						id="aamd_cookies_wp_privacy_policy_url"
 						name="aamd_cookies_wp_privacy_policy_url"
-						value={ data.aamd_cookies_wp_privacy_policy_url || '' }
+						onBlur={ () =>
+							setState( ( prev ) => ( {
+								...prev,
+								activeInput: '',
+							} ) )
+						}
 						onChange={ onChangeHandler }
 						onFocus={ () =>
 							setState( ( prev ) => ( {
@@ -199,13 +205,8 @@ export default function Content( {
 									'aamd_cookies_wp_privacy_policy_url',
 							} ) )
 						}
-						onBlur={ () =>
-							setState( ( prev ) => ( {
-								...prev,
-								activeInput: '',
-							} ) )
-						}
 						type="text"
+						value={ data.aamd_cookies_wp_privacy_policy_url || '' }
 					/>
 				</label>
 
@@ -213,7 +214,6 @@ export default function Content( {
 					id="aamd_cookies_text_customize_link"
 					label={ __( 'Privacy link description', 'am-cookies' ) }
 					name="aamd_cookies_text"
-					value={ data.aamd_cookies_text.customize.link }
 					setValue={ ( value ) =>
 						setData( ( prev ) => ( {
 							...prev,
@@ -226,6 +226,7 @@ export default function Content( {
 							},
 						} ) )
 					}
+					value={ data.aamd_cookies_text.customize.link }
 				/>
 
 				<label
@@ -236,7 +237,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_decline"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.decline }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -247,6 +247,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.decline }
 					/>
 				</label>
 
@@ -258,7 +259,6 @@ export default function Content( {
 					<input
 						id="aamd_cookies_text_accept_all"
 						name="aamd_cookies_text"
-						value={ data.aamd_cookies_text.acceptAll }
 						onChange={ ( { target: { value } } ) =>
 							setData( ( prev ) => ( {
 								...prev,
@@ -269,6 +269,7 @@ export default function Content( {
 							} ) )
 						}
 						type="text"
+						value={ data.aamd_cookies_text.acceptAll }
 					/>
 				</label>
 			</div>

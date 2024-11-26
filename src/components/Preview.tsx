@@ -1,3 +1,5 @@
+import type { Options } from '@/types';
+
 import {
 	useCallback,
 	useEffect,
@@ -5,14 +7,14 @@ import {
 	useRef,
 	useState,
 } from '@wordpress/element';
+
 import CookieIcon from './CookieIcon';
-import type { Options } from '@/types';
 
 export default function Preview( { data }: { data: Options } ) {
 	const [ state, setState ] = useState( {
+			dialogHeight: 0,
 			isCustomize: false,
 			isMinimized: false,
-			dialogHeight: 0,
 		} ),
 		dialogInner = useRef< HTMLDivElement >( null ),
 		isInitialLoad = useRef( true ),
@@ -90,8 +92,8 @@ export default function Preview( { data }: { data: Options } ) {
 					<dialog
 						open
 						style={ {
-							minHeight: `${ state.dialogHeight }px`,
 							maxHeight: `${ state.dialogHeight }px`,
+							minHeight: `${ state.dialogHeight }px`,
 						} }
 					>
 						<button
@@ -111,11 +113,11 @@ export default function Preview( { data }: { data: Options } ) {
 						</button>
 						<div
 							className="dialog-inner-box"
+							ref={ dialogInner }
 							style={ {
 								display: 'flex',
 								flexDirection: 'column',
 							} }
-							ref={ dialogInner }
 						>
 							<h3>
 								<figure
@@ -133,7 +135,6 @@ export default function Preview( { data }: { data: Options } ) {
 								</slot>
 							</h3>
 							<p
-								id="customize-text"
 								dangerouslySetInnerHTML={ {
 									__html: `${
 										data.aamd_cookies_text.customize.text
@@ -143,19 +144,21 @@ export default function Preview( { data }: { data: Options } ) {
 											: ''
 									}`,
 								} }
+								id="customize-text"
 							/>
 							<p
-								id="customize-link"
 								dangerouslySetInnerHTML={ {
 									__html: data.aamd_cookies_text.customize.link.replace(
 										'%URL%',
 										data.aamd_cookies_wp_privacy_policy_url
 									),
 								} }
+								id="customize-link"
 							/>
 
-							<div id="save-wrapper" className="button-wrapper">
+							<div className="button-wrapper" id="save-wrapper">
 								<button
+									className="button gdpr decline-all"
 									onClick={ () =>
 										setState( ( prev ) => ( {
 											...prev,
@@ -163,12 +166,12 @@ export default function Preview( { data }: { data: Options } ) {
 											isMinimized: true,
 										} ) )
 									}
-									className="button gdpr decline-all"
 									style={ { backgroundColor: 'transparent' } }
 								>
 									{ data.aamd_cookies_text.decline }
 								</button>
 								<button
+									className="button gdpr accept-all"
 									onClick={ () =>
 										setState( ( prev ) => ( {
 											...prev,
@@ -176,7 +179,6 @@ export default function Preview( { data }: { data: Options } ) {
 											isMinimized: true,
 										} ) )
 									}
-									className="button gdpr accept-all"
 								>
 									{ data.aamd_cookies_text.acceptAll }
 								</button>
@@ -184,28 +186,28 @@ export default function Preview( { data }: { data: Options } ) {
 
 							<div className="button-wrapper">
 								<SwitchButton
-									value={ true }
-									name="functional"
+									disabled
 									label={
 										data.aamd_cookies_text.functional.label
 									}
-									disabled
+									name="functional"
+									value={ true }
 								/>
 								<SwitchButton
-									value={ false }
-									name="statistical"
 									label={
 										data.aamd_cookies_text.statistical.label
 									}
+									name="statistical"
+									value={ false }
 								/>
 								{ hasRetargeting && (
 									<SwitchButton
-										value={ false }
-										name="marketing"
 										label={
 											data.aamd_cookies_text.marketing
 												.label
 										}
+										name="marketing"
+										value={ false }
 									/>
 								) }
 							</div>
@@ -232,7 +234,6 @@ export default function Preview( { data }: { data: Options } ) {
 						<div className="button-wrapper">
 							<button
 								className="button gdpr customize"
-								style={ { backgroundColor: 'transparent' } }
 								onClick={ () =>
 									setState( ( prev ) => ( {
 										...prev,
@@ -240,6 +241,7 @@ export default function Preview( { data }: { data: Options } ) {
 										isMinimized: false,
 									} ) )
 								}
+								style={ { backgroundColor: 'transparent' } }
 							>
 								{ data.aamd_cookies_text.customize.label }
 							</button>
@@ -260,9 +262,9 @@ export default function Preview( { data }: { data: Options } ) {
 			) }{ ' ' }
 			{ ! state.isCustomize && state.isMinimized && (
 				<button
+					aria-label={ data.aamd_cookies_text.miniGDPR }
 					className={ `mini-gdpr ${ data.aamd_cookies_align_mini }` }
 					data-hide="false"
-					aria-label={ data.aamd_cookies_text.miniGDPR }
 					onClick={ () =>
 						setState( ( prev ) => ( {
 							...prev,
@@ -281,8 +283,8 @@ export default function Preview( { data }: { data: Options } ) {
 
 function SwitchButton( {
 	disabled = false,
-	name,
 	label,
+	name,
 	value,
 }: {
 	disabled?: boolean;
@@ -307,8 +309,8 @@ function SwitchButton( {
 					disabled={ disabled }
 					id={ id }
 					name={ name }
-					type="checkbox"
 					onChange={ () => setChecked( ( prev ) => ! prev ) }
+					type="checkbox"
 				/>
 				<span className="slider"></span>
 			</label>

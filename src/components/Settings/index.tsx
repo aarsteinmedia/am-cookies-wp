@@ -1,40 +1,41 @@
-import { useCallback, useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-import apiFetch from '@wordpress/api-fetch';
+import type { Options, SettingsState } from '@/types';
+import type { ChangeEvent, FormEvent } from 'react';
+
 import Loading from '@/components/Loading';
 import Logo from '@/components/Logo';
-import { Align, Format } from '@/enums';
-import SwitchLabel from '@/components/Switch';
 import Preview from '@/components/Preview';
-import getTranslation from '@/i18n';
-import type { ChangeEvent, FormEvent } from 'react';
-import type { Options, SettingsState } from '@/types';
-import Tracking from '@/components/Settings/Tracking';
-import Layout from '@/components/Settings/Layout';
 import Content from '@/components/Settings/Content';
+import Layout from '@/components/Settings/Layout';
+import Tracking from '@/components/Settings/Tracking';
+import SwitchLabel from '@/components/Switch';
+import { Align, Format } from '@/enums';
+import getTranslation from '@/i18n';
+import apiFetch from '@wordpress/api-fetch';
+import { useCallback, useEffect, useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export default function Settings() {
 	const [ data, setData ] = useState< Options >( {
+			aamd_cookies_accent_color: '#ffffff',
+			aamd_cookies_align: Align.BottomLeft,
+			aamd_cookies_align_mini: Align.BottomLeft,
+			aamd_cookies_background_color: '#ffffff',
+			aamd_cookies_border_width: 2,
+			aamd_cookies_color: '#000000',
+			aamd_cookies_font_family: 'sans-serif',
+			aamd_cookies_format: Format.Box,
 			aamd_cookies_google_id: null,
 			aamd_cookies_meta_id: null,
 			aamd_cookies_snap_id: null,
-			aamd_cookies_tiktok_id: null,
-			aamd_cookies_align: Align.BottomLeft,
-			aamd_cookies_align_mini: Align.BottomLeft,
-			aamd_cookies_format: Format.Box,
-			aamd_cookies_font_family: 'sans-serif',
-			aamd_cookies_color: '#000000',
-			aamd_cookies_accent_color: '#ffffff',
-			aamd_cookies_background_color: '#ffffff',
-			aamd_cookies_border_width: 2,
 			aamd_cookies_text: getTranslation(),
+			aamd_cookies_tiktok_id: null,
 			aamd_cookies_wp_privacy_policy_url: 'privacy-policy',
 		} ),
 		[ state, setState ] = useState< SettingsState >( {
+			activeInput: '',
 			loading: false,
 			preview: true,
 			tab: 'tracking',
-			activeInput: '',
 		} ),
 		getData = useCallback( async () => {
 			const options = await apiFetch< Options >( {
@@ -62,9 +63,9 @@ export default function Settings() {
 			try {
 				setState( ( prev ) => ( { ...prev, loading: true } ) );
 				await apiFetch( {
-					path: 'am-cookies-settings/v1/options',
-					method: 'POST',
 					data,
+					method: 'POST',
+					path: 'am-cookies-settings/v1/options',
 				} );
 			} catch ( err ) {
 				console.error( err );
@@ -87,15 +88,15 @@ export default function Settings() {
 				<header>
 					<span
 						style={ {
+							alignItems: 'center',
 							display: 'flex',
 							gap: '.7em',
-							alignItems: 'center',
 						} }
 					>
 						<Logo
 							style={ {
-								width: '3em',
 								height: '3em',
+								width: '3em',
 							} }
 						/>
 						<h1 style={ { margin: '0' } }>
@@ -104,20 +105,20 @@ export default function Settings() {
 					</span>
 					<SwitchLabel
 						id="toggle-preview"
-						title={ __( 'Toggle Preview', 'am-cookies' ) }
-						value={ state.preview }
 						onChange={ () =>
 							setState( ( prev ) => ( {
 								...prev,
 								preview: ! prev.preview,
 							} ) )
 						}
+						title={ __( 'Toggle Preview', 'am-cookies' ) }
+						value={ state.preview }
 					/>
 				</header>
 				<nav>
 					<a
-						href="/#tracking"
 						data-active={ state.tab === 'tracking' }
+						href="/#tracking"
 						onClick={ ( e ) => {
 							e.preventDefault();
 							setState( ( prev ) => ( {
@@ -129,8 +130,8 @@ export default function Settings() {
 						{ __( 'Tracking', 'am-cookies' ) }
 					</a>
 					<a
-						href="/#layout"
 						data-active={ state.tab === 'layout' }
+						href="/#layout"
 						onClick={ ( e ) => {
 							e.preventDefault();
 							setState( ( prev ) => ( {
@@ -142,8 +143,8 @@ export default function Settings() {
 						{ __( 'Layout', 'am-cookies' ) }
 					</a>
 					<a
-						href="/#content"
 						data-active={ state.tab === 'content' }
+						href="/#content"
 						onClick={ ( e ) => {
 							e.preventDefault();
 							setState( ( prev ) => ( {
@@ -175,18 +176,18 @@ export default function Settings() {
 						/>
 						<Layout
 							data={ data }
-							setData={ setData }
 							onChangeHandler={ onChangeHandler }
+							setData={ setData }
 							state={ state }
 						/>
 						<Content
 							data={ data }
-							setData={ setData }
 							onChangeHandler={ onChangeHandler }
+							setData={ setData }
 							setState={ setState }
 							state={ state }
 						/>
-						<button type="submit" className="am-btn blue">
+						<button className="am-btn blue" type="submit">
 							{ state.loading ? (
 								<Loading />
 							) : (
