@@ -1,94 +1,91 @@
-import type { RichTextValue } from '@wordpress/rich-text';
+import type { RichTextValue } from '@wordpress/rich-text'
 
 // import Cursor from '@/utils/Cursor';
-import { RichText } from '@wordpress/block-editor';
-import { Toolbar, ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { useRef, useState } from '@wordpress/element';
-import { formatBold, formatItalic } from '@wordpress/icons';
-import classNames from 'classnames';
+import { RichText } from '@wordpress/block-editor'
+import { Toolbar, ToolbarGroup, ToolbarButton } from '@wordpress/components'
+import { useRef, useState } from '@wordpress/element'
+import { formatBold, formatItalic } from '@wordpress/icons'
+import classNames from 'classnames'
 
-export default function TextEditor( {
-	allowedFormats = [ 'core/bold', 'core/italic' ],
+export default function TextEditor({
+	allowedFormats = ['core/bold', 'core/italic'],
 	id,
 	label,
 	name,
 	setValue,
 	value: initialValue,
 }: {
-	allowedFormats?: string[];
-	id: string;
-	label: string;
-	name: string;
-	value: string;
-	setValue: ( val: string ) => void;
-} ) {
-	const [ state, setState ] = useState< {
-			isActive: boolean;
-			isBold: boolean;
-			isItalic: boolean;
-			element: Element | null;
-			html: string;
-			richText: null | RichTextValue;
-		} >( {
+	allowedFormats?: string[]
+	id: string
+	label: string
+	name: string
+	value: string
+	setValue: (val: string) => void
+}) {
+	const [state, setState] = useState<{
+			isActive: boolean
+			isBold: boolean
+			isItalic: boolean
+			element: Element | null
+			html: string
+			richText: null | RichTextValue
+		}>({
 			element: null,
 			html: '',
 			isActive: false,
 			isBold: false,
 			isItalic: false,
 			richText: null,
-		} ),
-		container = useRef< HTMLLabelElement >( null ),
-		paragaph = useRef< HTMLParagraphElement >( null ),
-		toggle = ( type: 'core/bold' | 'core/italic' ) => {
-			switch ( type ) {
+		}),
+		container = useRef<HTMLLabelElement>(null),
+		paragaph = useRef<HTMLParagraphElement>(null),
+		toggle = (type: 'core/bold' | 'core/italic') => {
+			switch (type) {
 				case 'core/bold':
-					setState( ( prev ) => ( {
+					setState((prev) => ({
 						...prev,
-						isBold: ! prev.isBold,
-					} ) );
-					break;
+						isBold: !prev.isBold,
+					}))
+					break
 				case 'core/italic':
-					setState( ( prev ) => ( {
+					setState((prev) => ({
 						...prev,
-						isItalic: ! prev.isItalic,
-					} ) );
+						isItalic: !prev.isItalic,
+					}))
 			}
 
-			if ( ! paragaph.current ) {
-				return;
+			if (!paragaph.current) {
+				return
 			}
 
-			const content = paragaph.current.cloneNode( true );
-			if ( ! ( content instanceof HTMLElement ) ) {
-				return;
+			const content = paragaph.current.cloneNode(true)
+			if (!(content instanceof HTMLElement)) {
+				return
 			}
 			const activeElement = content.querySelector(
 				'[data-rich-text-format-boundary="true"]'
-			);
+			)
 
-			paragaph.current.focus();
+			paragaph.current.focus()
 
-			const tagName = type === 'core/bold' ? 'strong' : 'em';
+			const tagName = type === 'core/bold' ? 'strong' : 'em'
 
-			if ( ( state.isBold || state.isItalic ) && activeElement ) {
-				const { innerHTML } = activeElement;
-				if ( activeElement?.tagName.toLowerCase() === tagName ) {
-					activeElement.insertAdjacentHTML(
-						'beforebegin',
-						innerHTML
-					);
-					activeElement.parentElement?.removeChild( activeElement );
+			if ((state.isBold || state.isItalic) && activeElement) {
+				const { innerHTML } = activeElement
+				if (activeElement?.tagName.toLowerCase() === tagName) {
+					activeElement.insertAdjacentHTML('beforebegin', innerHTML)
+					activeElement.parentElement?.removeChild(activeElement)
 				} else {
-					activeElement.innerHTML = `<${ tagName }>${ innerHTML }</${ tagName }>`;
+					activeElement.innerHTML = `<${tagName}>${innerHTML}</${tagName}>`
 				}
 
-				setValue( content.innerHTML );
-				return;
+				setValue(content.innerHTML)
+				return
 			}
 
-			const selection = getSelection();
+			const selection = getSelection()
 
-			if ( ! selection || selection.isCollapsed ) {
+			if (!selection || selection.isCollapsed) {
 				// if ( selection ) {
 				// 	const { anchorOffset: caretPosition } = selection,
 				// 		{ innerHTML: oldText } = content,
@@ -103,33 +100,29 @@ export default function TextEditor( {
 				// 	// setValue( newHTML );
 				// 	return;
 				// }
-				setValue( content.innerHTML );
-				return;
+				setValue(content.innerHTML)
+				return
 			}
 
-			const { anchorOffset, focusOffset } = selection;
+			const { anchorOffset, focusOffset } = selection
 			let start = anchorOffset,
-				end = focusOffset;
+				end = focusOffset
 			if (
 				'direction' in selection &&
 				typeof selection.direction === 'string' &&
 				selection.direction === 'backward'
 			) {
-				start = focusOffset;
-				end = anchorOffset;
+				start = focusOffset
+				end = anchorOffset
 			}
 			const { innerHTML: oldText } = content,
-				newHTML = `${ oldText
-					.substring( 0, start )
-					.trim() } <${ tagName }>${ oldText
-					.substring( start, end )
-					.trim() }</${ tagName }> ${ oldText
-					.substring( end )
-					.trim() }`;
+				newHTML = `${oldText.substring(0, start).trim()} <${tagName}>${oldText
+					.substring(start, end)
+					.trim()}</${tagName}> ${oldText.substring(end).trim()}`
 
-			content.innerHTML = newHTML;
+			content.innerHTML = newHTML
 
-			setValue( content.innerHTML );
+			setValue(content.innerHTML)
 
 			// const textNode = document.createTextNode( content.innerHTML ),
 			// 	range = document.createRange();
@@ -137,94 +130,93 @@ export default function TextEditor( {
 			// range.collapse( true );
 			// selection.removeAllRanges();
 			// selection.addRange( range );
-		};
+		}
 
 	return (
 		<label
 			className="form-label"
-			htmlFor={ id }
-			onBlur={ ( { relatedTarget } ) => {
-				if ( ! container.current?.contains( relatedTarget ) ) {
-					setState( ( prev ) => ( { ...prev, isActive: false } ) );
+			htmlFor={id}
+			onBlur={({ relatedTarget }) => {
+				if (!container.current?.contains(relatedTarget)) {
+					setState((prev) => ({ ...prev, isActive: false }))
 				}
-			} }
-			onFocus={ () => {
-				setState( ( prev ) => ( { ...prev, isActive: true } ) );
-			} }
-			ref={ container }
-			style={ { position: state.isActive ? 'relative' : 'initial' } }
+			}}
+			onFocus={() => {
+				setState((prev) => ({ ...prev, isActive: true }))
+			}}
+			ref={container}
+			style={{ position: state.isActive ? 'relative' : 'initial' }}
 		>
-			{ label }
+			{label}
 			<RichText
-				allowedFormats={ allowedFormats }
-				className={ classNames( 'aamd_cookies_textarea', {
+				allowedFormats={allowedFormats}
+				className={classNames('aamd_cookies_textarea', {
 					'is-selected': state.isActive,
-				} ) }
-				data-empty={ ! initialValue.length }
+				})}
+				data-empty={!initialValue.length}
 				data-title="Paragraph"
-				id={ id }
+				id={id}
 				inlineToolbar
 				key="editable"
-				name={ name }
-				onChange={ setValue }
-				onClick={ ( { target } ) => {
-					if ( ! ( target instanceof HTMLElement ) ) {
-						return;
+				name={name}
+				onChange={setValue}
+				onClick={({ target }) => {
+					if (!(target instanceof HTMLElement)) {
+						return
 					}
-					if ( target.dataset.richTextFormatBoundary === 'true' ) {
+					if (target.dataset.richTextFormatBoundary === 'true') {
 						if (
 							target.tagName.toLowerCase() === 'strong' ||
-							target.parentElement?.tagName.toLowerCase() ===
-								'strong'
+							target.parentElement?.tagName.toLowerCase() === 'strong'
 						) {
-							setState( ( prev ) => ( {
+							setState((prev) => ({
 								...prev,
 								isBold: true,
-							} ) );
+							}))
 						}
 
 						if (
 							target.tagName.toLowerCase() === 'em' ||
 							target.parentElement?.tagName.toLowerCase() === 'em'
 						) {
-							setState( ( prev ) => ( {
+							setState((prev) => ({
 								...prev,
 								isItalic: true,
-							} ) );
+							}))
 						}
-						return;
+						return
 					}
-					setState( ( prev ) => ( {
+					setState((prev) => ({
 						...prev,
 						isBold: false,
 						isItalic: false,
-					} ) );
-				} }
-				ref={ paragaph as unknown as React.LegacyRef< 'p' > }
+					}))
+				}}
+				ref={paragaph as unknown as React.LegacyRef<'p'>}
 				tagName="p"
 				type="core/paragraph"
-				value={ initialValue }
+				value={initialValue}
 			/>
-			{ state.isActive && (
+			{state.isActive && (
 				<Toolbar label="Options">
 					<ToolbarGroup>
 						<ToolbarButton
-							icon={ formatBold }
-							isActive={ state.isBold }
+							icon={formatBold}
+							isActive={state.isBold}
 							label="Bold"
-							onClick={ () => {
-								toggle( 'core/bold' );
-							} }
+							onClick={() => {
+								toggle('core/bold')
+							}}
 						/>
 						<ToolbarButton
-							icon={ formatItalic }
-							isActive={ state.isItalic }
+							icon={formatItalic}
+							isActive={state.isItalic}
 							label="Italic"
-							onClick={ () => toggle( 'core/italic' ) }
+							onClick={() => toggle('core/italic')}
 						/>
 					</ToolbarGroup>
 				</Toolbar>
-			) }
+			)}
 		</label>
-	);
+	)
 }

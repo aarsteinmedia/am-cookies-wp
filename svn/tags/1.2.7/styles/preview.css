@@ -8,7 +8,7 @@
 	height: 100%;
 	cursor: default;
 
-	p {
+	& p {
 		font-size: 16px;
 		color: var(--color);
 		margin: 0;
@@ -20,21 +20,21 @@
 		color: var(--background-color);
 	}
 
-	svg {
+	& svg {
 		width: auto;
 		height: auto;
 		display: inline-block;
 
-		path {
+		& path {
 			fill: var(--color);
 		}
 	}
 
-	h1,
+	& h1,
 	.h1,
-	h2,
+	& h2,
 	.h2,
-	h3,
+	& h3,
 	.h3 {
 		font-weight: 700;
 		font-size: 2.2em;
@@ -44,23 +44,23 @@
 		color: var(--color);
 	}
 
-	h2,
+	& h2,
 	.h2 {
 		font-size: 1.7em;
 	}
 
-	h3,
+	& h3,
 	.h3 {
 		font-size: 1.5em;
 
-		svg {
+		& svg {
 			height: 1.2em;
 			display: inline-block;
 			vertical-align: baseline;
 		}
 	}
 
-	// Cookie warning
+	/* Cookie warning */
 
 	.cookie-overlay {
 		position: fixed;
@@ -92,7 +92,7 @@
 		.content {
 			display: flex;
 
-			// align-items: center;
+			/* align-items: center; */
 			margin: 0;
 			font-size: 0.9em;
 			gap: 1em;
@@ -269,7 +269,7 @@
 			}
 		}
 
-		svg {
+		& svg {
 			height: 1em;
 		}
 
@@ -279,9 +279,9 @@
 		}
 	}
 
-	// End Cookie warning
+	/* End Cookie warning */
 
-	// Start PopUp
+	/* Start PopUp */
 
 	.pop-up {
 		position: fixed;
@@ -295,7 +295,7 @@
 		animation-name: fadeIn;
 		background-color: rgb(0 0 0 / 30%);
 
-		dialog {
+		& dialog {
 			position: absolute;
 			height: 90%;
 			max-width: 90%;
@@ -362,9 +362,9 @@
 		align-items: flex-start;
 	}
 
-	// End PopUp
+	/* End PopUp */
 
-	// Start Switch
+	/* Start Switch */
 
 	.container {
 		display: inline-flex;
@@ -435,9 +435,9 @@
 		}
 	}
 
-	// End Switch
+	/* End Switch */
 
-	// Start UI Button
+	/* Start UI Button */
 
 	.menu-button {
 		position: absolute;
@@ -503,15 +503,15 @@
 		}
 	}
 
-	// Ensd UI Button
+	/* End UI Button */
 
 	* {
 		box-sizing: border-box;
 	}
 
-	input,
-	textarea,
-	button {
+	& input,
+	& textarea,
+	& button {
 		color: inherit;
 		font-size: inherit;
 		font-family: inherit;
@@ -521,16 +521,16 @@
 		background-color: transparent;
 	}
 
-	button {
+	& button {
 		font-size: 16px;
 		background-color: var(--accent-color);
 		transition: transform 0.2s ease-in-out;
 	}
 
-	button,
-	input[type="submit"],
-	input[type="button"],
-	input[type="reset"] {
+	& button,
+	& input[type="submit"],
+	& input[type="button"],
+	& input[type="reset"] {
 		appearance: none;
 
 		* {
@@ -546,7 +546,7 @@
 		}
 	}
 
-	a {
+	& a {
 		color: var(--accent-color);
 		color: inherit;
 		font-weight: 700;

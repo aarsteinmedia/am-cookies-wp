@@ -1,27 +1,27 @@
 {
-  "settings": "Evästeasetukset",
-  "customize": {
-    "header": "Tietosi, valintasi",
-    "label": "Mukauttaa",
-    "text": "Käytämme <strong>toiminnallisia evästeitä</strong> navigointiin jne. Lisäksi käytämme <strong>tilastollisia evästeitä</strong> nähdäksesi, miten käyttäjät vuorovaikuttavat verkkosivuston kanssa.",
-    "retargeting": "Käytämme myös <strong>markkinointievästeitä.</strong>",
-    "link": "Katso <a href=\"/%URL%\">tietosuojakäytäntömme</a>"
-  },
-  "header": "Tämä verkkosivusto käyttää",
-  "miniGDPR": "Evästeasetukset",
-  "accept": "Ymmärrän",
-  "acceptAll": "Hyväksy kaikki",
-  "decline": "Vain toiminnalliset",
-  "close": "Sulje",
-  "save": "Tallenna asetukset",
-  "functional": {
-    "label": "Toiminnallinen"
-  },
-  "statistical": {
-    "label": "Tilastollinen"
-  },
-  "marketing": {
-    "label": "Markkinointi"
-  },
-  "policyUrl": "tietosuoja"
+	"settings": "Evästeasetukset",
+	"customize": {
+		"header": "Tietosi, valintasi",
+		"label": "Mukauttaa",
+		"text": "Käytämme <strong>toiminnallisia evästeitä</strong> navigointiin jne. Lisäksi käytämme <strong>tilastollisia evästeitä</strong> nähdäksesi, miten käyttäjät vuorovaikuttavat verkkosivuston kanssa.",
+		"retargeting": "Käytämme myös <strong>markkinointievästeitä.</strong>",
+		"link": "Katso <a href=\"/%URL%\">tietosuojakäytäntömme</a>"
+	},
+	"header": "Tämä verkkosivusto käyttää",
+	"miniGDPR": "Evästeasetukset",
+	"accept": "Ymmärrän",
+	"acceptAll": "Hyväksy kaikki",
+	"decline": "Vain toiminnalliset",
+	"close": "Sulje",
+	"save": "Tallenna asetukset",
+	"functional": {
+		"label": "Toiminnallinen"
+	},
+	"statistical": {
+		"label": "Tilastollinen"
+	},
+	"marketing": {
+		"label": "Markkinointi"
+	},
+	"policyUrl": "tietosuoja"
 }

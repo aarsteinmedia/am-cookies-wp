@@ -1,27 +1,27 @@
 {
-  "settings": "Paramètres des cookies",
-  "customize": {
-    "header": "Vos données, votre choix",
-    "label": "Personnaliser",
-    "text": "Nous utilisons des <strong>cookies fonctionnels</strong> pour la navigation, etc. De plus, nous utilisons des <strong>cookies statistiques</strong> pour voir comment les utilisateurs interagissent avec le site Web.",
-    "retargeting": "Nous utilisons également <strong>des cookies à des fins de marketing.</strong>",
-    "link": "Consultez notre <a href=\"/%URL%\">politique de confidentialité</a>"
-  },
-  "header": "Ce site Web est utilisé",
-  "miniGDPR": "Paramètres des cookies",
-  "accept": "Je comprends",
-  "acceptAll": "Accepter tout",
-  "decline": "Uniquement fonctionnel",
-  "close": "Fermer",
-  "save": "Enregistrer les préférences",
-  "functional": {
-    "label": "Fonctionnel"
-  },
-  "statistical": {
-    "label": "Calcul statistique"
-  },
-  "marketing": {
-    "label": "Commercialisation"
-  },
-  "policyUrl": "confidentialite"
+	"settings": "Paramètres des cookies",
+	"customize": {
+		"header": "Vos données, votre choix",
+		"label": "Personnaliser",
+		"text": "Nous utilisons des <strong>cookies fonctionnels</strong> pour la navigation, etc. De plus, nous utilisons des <strong>cookies statistiques</strong> pour voir comment les utilisateurs interagissent avec le site Web.",
+		"retargeting": "Nous utilisons également <strong>des cookies à des fins de marketing.</strong>",
+		"link": "Consultez notre <a href=\"/%URL%\">politique de confidentialité</a>"
+	},
+	"header": "Ce site Web est utilisé",
+	"miniGDPR": "Paramètres des cookies",
+	"accept": "Je comprends",
+	"acceptAll": "Accepter tout",
+	"decline": "Uniquement fonctionnel",
+	"close": "Fermer",
+	"save": "Enregistrer les préférences",
+	"functional": {
+		"label": "Fonctionnel"
+	},
+	"statistical": {
+		"label": "Calcul statistique"
+	},
+	"marketing": {
+		"label": "Commercialisation"
+	},
+	"policyUrl": "confidentialite"
 }

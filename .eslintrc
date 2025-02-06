@@ -5,7 +5,7 @@
 		"es6": true
 	},
 	"parserOptions": {
-		"ecmaVersion": 2021,
+		"ecmaVersion": 2022,
 		"ecmaFeatures": {
 			"jsx": true
 		},
@@ -16,6 +16,7 @@
 	"plugins": [
 		"react",
 		"react-hooks",
+		"react-refresh",
 		"@typescript-eslint",
 		"import",
 		"perfectionist"
@@ -61,7 +62,7 @@
 		"perfectionist/sort-imports": "warn",
 		"perfectionist/sort-interfaces": "warn",
 		"perfectionist/sort-jsx-props": "warn",
-		"perfectionist/sort-objects": "warn",
+		"perfectionist/sort-objects": "warn"
 	},
 	"globals": {
 		"JSX": true,

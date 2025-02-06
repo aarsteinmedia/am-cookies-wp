@@ -1,4 +1,4 @@
-import { Circle, G, SVG } from '@wordpress/components';
+import { Circle, G, SVG } from '@wordpress/components'
 
 export default function Loading() {
 	return (
@@ -36,10 +36,10 @@ export default function Loading() {
 				}
 			</style>
 			<G
-				style={ {
+				style={{
 					animation: 'spinner_zKoa 2s linear infinite',
 					transformOrigin: 'center',
-				} }
+				}}
 			>
 				<Circle
 					cx="11"
@@ -47,12 +47,12 @@ export default function Loading() {
 					fill="none"
 					r="9.5"
 					strokeWidth="3"
-					style={ {
+					style={{
 						animation: 'spinner_YpZS 1.5s ease-in-out infinite',
 						strokeLinecap: 'round',
-					} }
+					}}
 				/>
 			</G>
 		</SVG>
-	);
+	)
 }

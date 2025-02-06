@@ -56,7 +56,7 @@ class Frontend {
 			'am-cookies',
 			AAMD_COOKIES_URL . 'scripts/am-gdpr.min.js',
 			array(),
-			'2.0.0',
+			'2.0.1',
 			false
 		);
 

@@ -1,27 +1,27 @@
 {
-  "settings": "Cookie-indstillinger",
-  "customize": {
-    "header": "Dine data, dit valg",
-    "label": "Tilpas",
-    "text": "Vi bruger <strong>funktionelle cookies</strong> til navigation osv. Derudover bruger vi <strong>statistiske cookies</strong> til at se, hvordan brugere interagerer med websitet.",
-    "retargeting": "Vi bruger også <strong>cookies til marketing.</strong>",
-    "link": "Se vores <a href=\"/%URL%\">privatlivspolitik</a>"
-  },
-  "header": "Denne hjemmeside bruger",
-  "miniGDPR": "Cookie-indstillinger",
-  "accept": "Jeg forstår",
-  "acceptAll": "Accepter alle",
-  "decline": "Kun funktionelle",
-  "close": "Luk",
-  "save": "Gem præferencer",
-  "functional": {
-    "label": "Funktionel"
-  },
-  "statistical": {
-    "label": "Statistisk"
-  },
-  "marketing": {
-    "label": "Marketing"
-  },
-  "policyUrl": "privatliv"
+	"settings": "Cookie-indstillinger",
+	"customize": {
+		"header": "Dine data, dit valg",
+		"label": "Tilpas",
+		"text": "Vi bruger <strong>funktionelle cookies</strong> til navigation osv. Derudover bruger vi <strong>statistiske cookies</strong> til at se, hvordan brugere interagerer med websitet.",
+		"retargeting": "Vi bruger også <strong>cookies til marketing.</strong>",
+		"link": "Se vores <a href=\"/%URL%\">privatlivspolitik</a>"
+	},
+	"header": "Denne hjemmeside bruger",
+	"miniGDPR": "Cookie-indstillinger",
+	"accept": "Jeg forstår",
+	"acceptAll": "Accepter alle",
+	"decline": "Kun funktionelle",
+	"close": "Luk",
+	"save": "Gem præferencer",
+	"functional": {
+		"label": "Funktionel"
+	},
+	"statistical": {
+		"label": "Statistisk"
+	},
+	"marketing": {
+		"label": "Marketing"
+	},
+	"policyUrl": "privatliv"
 }

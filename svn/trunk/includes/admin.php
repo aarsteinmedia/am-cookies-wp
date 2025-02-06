@@ -53,13 +53,13 @@ class Admin {
 
 		wp_enqueue_style(
 			'aamd-cookies-backend-style',
-			AAMD_COOKIES_URL . 'styles/admin.css',
+			AAMD_COOKIES_URL . 'styles/dist/admin.min.css',
 			array(),
 			'1.0.0'
 		);
 		wp_enqueue_style(
 			'aamd-cookies-preview-style',
-			AAMD_COOKIES_URL . 'styles/preview.css',
+			AAMD_COOKIES_URL . 'styles/dist/preview.min.css',
 			array(),
 			'1.0.1'
 		);
@@ -72,7 +72,7 @@ class Admin {
 				'am-cookies-options',
 				AAMD_COOKIES_URL . 'build/settings.js',
 				$assets['dependencies'],
-				'1.0.0',
+				'1.0.1',
 				true
 			);
 		}

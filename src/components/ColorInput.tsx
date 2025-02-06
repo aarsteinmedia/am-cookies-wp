@@ -1,58 +1,58 @@
-import type { ChangeEvent, InputHTMLAttributes } from 'react';
+import type { ChangeEvent, InputHTMLAttributes } from 'react'
 
-import { ColorIndicator, ColorPicker, Popover } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { ColorIndicator, ColorPicker, Popover } from '@wordpress/components'
+import { useState } from '@wordpress/element'
 
-export default function ColorInput( {
+export default function ColorInput({
 	label,
 	name,
 	onChange,
 	value,
-}: InputHTMLAttributes< HTMLInputElement > & { label: string } ) {
-	if ( ! name || ! label ) {
-		throw new Error( 'Missing name or label' );
+}: InputHTMLAttributes<HTMLInputElement> & { label: string }) {
+	if (!name || !label) {
+		throw new Error('Missing name or label')
 	}
-	const [ showPicker, setShowPicker ] = useState( false );
+	const [showPicker, setShowPicker] = useState(false)
 	return (
 		<label
 			className="form-label"
-			htmlFor={ name }
-			onBlur={ () => setShowPicker( false ) }
-			onFocus={ () => setShowPicker( true ) }
+			htmlFor={name}
+			onBlur={() => setShowPicker(false)}
+			onFocus={() => setShowPicker(true)}
 		>
-			{ label }
+			{label}
 			<div
-				style={ {
+				style={{
 					alignItems: 'center',
 					display: 'flex',
 					flexDirection: 'row',
 					gap: '.5em',
-				} }
+				}}
 			>
 				<input
-					id={ name }
-					name={ name }
-					onChange={ onChange }
+					id={name}
+					name={name}
+					onChange={onChange}
 					type="text"
-					value={ value }
+					value={value}
 				/>
-				<ColorIndicator colorValue={ value as string } />
-				{ showPicker && (
+				<ColorIndicator colorValue={value as string} />
+				{showPicker && (
 					<Popover>
 						<ColorPicker
-							color={ value as string }
-							onChange={ ( color ) => {
-								if ( ! onChange ) {
-									return;
+							color={value as string}
+							onChange={(color) => {
+								if (!onChange) {
+									return
 								}
-								onChange( {
+								onChange({
 									target: { name, value: color },
-								} as ChangeEvent< HTMLInputElement > );
-							} }
+								} as ChangeEvent<HTMLInputElement>)
+							}}
 						/>
 					</Popover>
-				) }
+				)}
 			</div>
 		</label>
-	);
+	)
 }

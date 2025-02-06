@@ -1,27 +1,27 @@
 {
-  "settings": "Cookie-inställningar",
-  "customize": {
-    "header": "Dina uppgifter, ditt val",
-    "label": "Anpassa",
-    "text": "Vi använder <strong>funktionella cookies</strong> för navigering, etc. Dessutom använder vi <strong>statistiska cookies</strong> för att se hur användare interagerar med webbplatsen.",
-    "retargeting": "Vi använder också <strong>cookies för marknadsföring.</strong>",
-    "link": "Se vår <a href=\"/%URL%\">integritetspolicy</a>"
-  },
-  "header": "Denna webbplats använder",
-  "miniGDPR": "Cookie-inställningar",
-  "accept": "Jag förstår",
-  "acceptAll": "Acceptera allt",
-  "decline": "Endast funktionella",
-  "close": "Stäng",
-  "save": "Spara inställningar",
-  "functional": {
-    "label": "Funktionell"
-  },
-  "statistical": {
-    "label": "Statistisk"
-  },
-  "marketing": {
-    "label": "Marknadsföring"
-  },
-  "policyUrl": "integritet"
+	"settings": "Cookie-inställningar",
+	"customize": {
+		"header": "Dina uppgifter, ditt val",
+		"label": "Anpassa",
+		"text": "Vi använder <strong>funktionella cookies</strong> för navigering, etc. Dessutom använder vi <strong>statistiska cookies</strong> för att se hur användare interagerar med webbplatsen.",
+		"retargeting": "Vi använder också <strong>cookies för marknadsföring.</strong>",
+		"link": "Se vår <a href=\"/%URL%\">integritetspolicy</a>"
+	},
+	"header": "Denna webbplats använder",
+	"miniGDPR": "Cookie-inställningar",
+	"accept": "Jag förstår",
+	"acceptAll": "Acceptera allt",
+	"decline": "Endast funktionella",
+	"close": "Stäng",
+	"save": "Spara inställningar",
+	"functional": {
+		"label": "Funktionell"
+	},
+	"statistical": {
+		"label": "Statistisk"
+	},
+	"marketing": {
+		"label": "Marknadsföring"
+	},
+	"policyUrl": "integritet"
 }

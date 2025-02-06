@@ -1,17 +1,19 @@
-const defaults = require( '@wordpress/scripts/config/webpack.config' ),
-	{ resolve } = require( 'path' );
+const defaults = require('@wordpress/scripts/config/webpack.config'),
+	{ resolve } = require('path')
 
-
+/**
+ * @type {import('webpack').Configuration}
+ * */
 module.exports = {
 	...defaults,
 	entry: {
-		settings: './src/settings.tsx',
+		settings: resolve(__dirname, 'src', 'settings.tsx'),
 	},
 	resolve: {
 		...defaults.resolve,
 		alias: {
 			...defaults.resolve.alias,
-			'@': resolve( __dirname, 'src' ),
+			'@': resolve(__dirname, 'src'),
 		},
 	},
-};
+}

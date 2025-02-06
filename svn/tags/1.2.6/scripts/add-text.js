@@ -1,1 +1,1 @@
-var amCookiesElement = document.querySelector('am-cookies');
+var amCookiesElement = document.querySelector('am-cookies')
