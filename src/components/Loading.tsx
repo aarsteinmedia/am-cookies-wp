@@ -1,16 +1,18 @@
-import { Circle, G, SVG } from '@wordpress/components'
+import {
+  Circle, G, SVG
+} from '@wordpress/components'
 
 export default function Loading() {
-	return (
-		<SVG
-			height="22"
-			stroke="currentcolor"
-			width="22"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<style>
-				{
-					/* CSS */ `@keyframes spinner_zKoa {
+  return (
+    <SVG
+      height="22"
+      stroke="currentcolor"
+      width="22"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <style>
+        {
+          /* CSS */ `@keyframes spinner_zKoa {
             to {
               transform: rotate(360deg);
             }
@@ -33,26 +35,26 @@ export default function Loading() {
               stroke-dashoffset: -59;
             }
           }`
-				}
-			</style>
-			<G
-				style={{
-					animation: 'spinner_zKoa 2s linear infinite',
-					transformOrigin: 'center',
-				}}
-			>
-				<Circle
-					cx="11"
-					cy="11"
-					fill="none"
-					r="9.5"
-					strokeWidth="3"
-					style={{
-						animation: 'spinner_YpZS 1.5s ease-in-out infinite',
-						strokeLinecap: 'round',
-					}}
-				/>
-			</G>
-		</SVG>
-	)
+        }
+      </style>
+      <G
+        style={{
+          animation: 'spinner_zKoa 2s linear infinite',
+          transformOrigin: 'center',
+        }}
+      >
+        <Circle
+          cx="11"
+          cy="11"
+          fill="none"
+          r="9.5"
+          strokeWidth="3"
+          style={{
+            animation: 'spinner_YpZS 1.5s ease-in-out infinite',
+            strokeLinecap: 'round',
+          }}
+        />
+      </G>
+    </SVG>
+  )
 }

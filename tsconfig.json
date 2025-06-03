@@ -1,12 +1,16 @@
 {
 	"compilerOptions": {
 		"baseUrl": "./",
-		"rootDir": "./",
 		"outDir": "./build",
 		"target": "ES2022",
 		"jsx": "react-jsx",
 		"module": "ESNext",
-		"lib": ["DOM", "DOM.Iterable", "ES2021", "ESNext"],
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2021",
+			"ESNext"
+		],
 		"noImplicitAny": false,
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
@@ -14,7 +18,9 @@
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": [
+				"./src/*"
+			]
 		}
 	},
 	"ts-node": {
@@ -22,7 +28,10 @@
 			"module": "CommonJS"
 		}
 	},
-	"include": ["./src/**/*"],
+	"include": [
+		"./src/**/*",
+		"eslint.config.ts"
+	],
 	"exclude": [
 		"**/svn",
 		"**/build",

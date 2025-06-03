@@ -72,7 +72,7 @@ class Admin {
 				'am-cookies-options',
 				AAMD_COOKIES_URL . 'build/settings.js',
 				$assets['dependencies'],
-				'1.0.1',
+				'1.0.2',
 				true
 			);
 		}

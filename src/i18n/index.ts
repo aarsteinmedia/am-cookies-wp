@@ -8,43 +8,48 @@ import no from '@/i18n/no.json'
 import sv from '@/i18n/sv.json'
 
 export const languages = [
-		'de',
-		'dk',
-		'en',
-		'es',
-		'fin',
-		'fr',
-		'nb',
-		'no',
-		'sv',
-	] as const,
-	fallbackLanguage = 'en',
-	browserLanguage =
+    'de',
+    'dk',
+    'en',
+    'es',
+    'fin',
+    'fr',
+    'nb',
+    'no',
+    'sv',
+  ] as const,
+  fallbackLanguage = 'en',
+  browserLanguage =
 		document.documentElement.lang.toLowerCase() || fallbackLanguage,
-	translation =
+  translation =
 		languages.find((lang) => browserLanguage.includes(lang)) || fallbackLanguage
 
-/**
- *
- */
 export default function getTranslation() {
-	switch (translation) {
-		case 'de':
-			return de
-		case 'dk':
-			return dk
-		case 'es':
-			return es
-		case 'fin':
-			return fin
-		case 'fr':
-			return fr
-		case 'no':
-		case 'nb':
-			return no
-		case 'sv':
-			return sv
-		default:
-			return en
-	}
+  switch (translation) {
+    case 'de': {
+      return de
+    }
+    case 'dk': {
+      return dk
+    }
+    case 'es': {
+      return es
+    }
+    case 'fin': {
+      return fin
+    }
+    case 'fr': {
+      return fr
+    }
+    case 'no':
+    case 'nb': {
+      return no
+    }
+    case 'sv': {
+      return sv
+    }
+    default: {
+      return en
+    }
+  }
 }
