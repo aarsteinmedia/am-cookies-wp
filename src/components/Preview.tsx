@@ -1,7 +1,5 @@
-/* eslint-disable react-you-might-not-need-an-effect/you-might-not-need-an-effect */
 import {
   useCallback,
-  useEffect,
   useRef,
   useState,
 } from '@wordpress/element'
@@ -10,15 +8,16 @@ import type { Options } from '@/types'
 
 import CookieIcon from '@/components/CookieIcon'
 import SwitchButton from '@/components/SwitchButton'
+import useComponentDidUpdate from '@/hooks/useComponentDidUpdate'
+import useEventListener from '@/hooks/useEventListener'
 
 export default function Preview({ data }: { data: Options }) {
-  const [state, setState] = useState({
+  const dialogInner = useRef<HTMLDivElement>(null),
+    [state, setState] = useState({
       dialogHeight: 0,
       isCustomize: false,
       isMinimized: false,
     }),
-    dialogInner = useRef<HTMLDivElement>(null),
-    isInitialLoad = useRef(true),
     hasRetargeting =
 			data.aamd_cookies_google_id?.startsWith('GTM-') ||
 			Boolean(data.aamd_cookies_meta_id) ||
@@ -35,10 +34,7 @@ export default function Preview({ data }: { data: Options }) {
     },
     [state.isCustomize])
 
-  useEffect(() => {
-    if (!dialogInner.current) {
-      return
-    }
+  useComponentDidUpdate(() => {
     setState((prev) => ({
       ...prev,
       dialogHeight: prev.isCustomize
@@ -46,35 +42,24 @@ export default function Preview({ data }: { data: Options }) {
         : 0,
     }))
   }, [state.isCustomize])
-  useEffect(() => {
-    if (isInitialLoad.current) {
-      isInitialLoad.current = false
-    } else {
-      setState((prev) => ({
-        ...prev,
-        isCustomize: false,
-        isMinimized: true,
-      }))
-    }
-  }, [data.aamd_cookies_align_mini])
-  useEffect(() => {
-    if (isInitialLoad.current) {
-      isInitialLoad.current = false
-    } else {
-      setState((prev) => ({
-        ...prev,
-        isCustomize: false,
-        isMinimized: false,
-      }))
-    }
-  }, [data.aamd_cookies_align])
-  useEffect(() => {
-    addEventListener('keydown', esc)
 
-    return () => {
-      removeEventListener('keydown', esc)
-    }
-  }, [esc])
+  useComponentDidUpdate(() => {
+    setState((prev) => ({
+      ...prev,
+      isCustomize: false,
+      isMinimized: true,
+    }))
+  }, [data.aamd_cookies_align_mini])
+
+  useComponentDidUpdate(() => {
+    setState((prev) => ({
+      ...prev,
+      isCustomize: false,
+      isMinimized: false,
+    }))
+  }, [data.aamd_cookies_align])
+
+  useEventListener('keydown', esc)
 
   return (
     <div className="cookie-preview">

@@ -6,10 +6,12 @@ export default function Logo({ style }: { style?: CSSProperties }) {
   return (
     <SVG
       role="img"
-      style={style}
       viewBox="0 0 80 80"
       xmlns="http://www.w3.org/2000/svg"
-      xmlSpace="preserve"
+      style={{
+        whiteSpace: 'preserve',
+        ...style
+      }}
     >
       <style>
         {

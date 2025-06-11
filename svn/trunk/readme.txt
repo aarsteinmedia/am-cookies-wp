@@ -6,8 +6,8 @@ Plugin URI: https://wordpress.org/plugins/am-cookies/
 Tags: gdpr, cookies, analytics, retargetting, tracking
 Requires at least: 5.9
 Tested up to: 6.8
-Requires PHP: 7.0
-Stable Tag: 1.2.9
+Requires PHP: 7.2
+Stable Tag: 1.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,9 @@ Automatic installation is the easiest option — WordPress will handle the file 
 We'd love to [hear from you](mailto:johan@aarstein.media)!
 
 == Changelog ==
+
+= 1.2.10 - June 11 2025 =
+* Minor frontend optimizations
 
 = 1.2.9 - June 3 2025 =
 * Tested with WordPress 6.8
