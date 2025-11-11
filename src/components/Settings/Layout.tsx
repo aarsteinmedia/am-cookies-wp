@@ -4,9 +4,10 @@ import { __ } from '@wordpress/i18n'
 import type { Options, SettingsState } from '@/types'
 
 import ColorInput from '@/components/ColorInput'
-import { Align, Format } from '@/enums'
+import {
+  Align, Format, domain
+} from '@/enums'
 
-const domain = 'am-cookies'
 
 export default function Layout({
   data,

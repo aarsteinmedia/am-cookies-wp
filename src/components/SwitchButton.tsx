@@ -3,17 +3,19 @@ import {
   useState,
 } from '@wordpress/element'
 
+interface Props {
+  disabled?: boolean
+  label?: string
+  name: string
+  value: boolean
+}
+
 export default function SwitchButton({
   disabled = false,
   label,
   name,
   value,
-}: {
-  disabled?: boolean
-  name: string
-  label?: string
-  value: boolean
-}) {
+}: Props) {
   const id = useId(),
     [isChecked, setIsChecked] = useState(value)
 

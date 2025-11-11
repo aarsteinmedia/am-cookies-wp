@@ -11,6 +11,15 @@ import classNames from 'classnames'
 
 const coreItalic = 'core/italic'
 
+interface Props {
+  allowedFormats?: string[]
+  id: string
+  label: string
+  name: string
+  setValue: (val: string) => void
+  value: string
+}
+
 export default function TextEditor({
   allowedFormats = ['core/bold', coreItalic],
   id,
@@ -18,14 +27,7 @@ export default function TextEditor({
   name,
   setValue,
   value: initialValue,
-}: {
-  allowedFormats?: string[]
-  id: string
-  label: string
-  name: string
-  value: string
-  setValue: (val: string) => void
-}) {
+}: Props) {
   const [state, setState] = useState<{
       isActive: boolean
       isBold: boolean

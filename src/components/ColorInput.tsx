@@ -5,12 +5,14 @@ import {
 } from '@wordpress/components'
 import { useState } from '@wordpress/element'
 
+type Props = InputHTMLAttributes<HTMLInputElement> & { label: string }
+
 export default function ColorInput({
   label,
   name,
   onChange,
   value,
-}: InputHTMLAttributes<HTMLInputElement> & { label: string }) {
+}: Props) {
   if (!name || !label) {
     throw new Error('Missing name or label')
   }

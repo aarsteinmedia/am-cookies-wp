@@ -15,10 +15,11 @@ import Content from '@/components/Settings/Content'
 import Layout from '@/components/Settings/Layout'
 import Tracking from '@/components/Settings/Tracking'
 import SwitchLabel from '@/components/Switch'
-import { Align, Format } from '@/enums'
+import {
+  Align, Format, domain
+} from '@/enums'
 import getTranslation from '@/i18n'
 
-const domain = 'am-cookies'
 
 export default function Settings() {
   const [data, setData] = useState<Options>({

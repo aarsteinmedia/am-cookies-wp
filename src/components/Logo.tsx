@@ -1,8 +1,8 @@
-import type { CSSProperties } from 'react'
-
 import { Path, SVG } from '@wordpress/components'
 
-export default function Logo({ style }: { style?: CSSProperties }) {
+interface Props { style?: React.CSSProperties }
+
+export default function Logo({ style }: Props) {
   return (
     <SVG
       role="img"

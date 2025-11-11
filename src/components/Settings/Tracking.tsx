@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n'
 
 import type { Options, SettingsState } from '@/types'
 
-const domain = 'am-cookies'
+import { domain } from '@/enums'
 
 export default function Tracking({
   data,

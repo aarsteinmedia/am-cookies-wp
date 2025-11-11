@@ -11,7 +11,9 @@ import SwitchButton from '@/components/SwitchButton'
 import useComponentDidUpdate from '@/hooks/useComponentDidUpdate'
 import useEventListener from '@/hooks/useEventListener'
 
-export default function Preview({ data }: { data: Options }) {
+interface Props { data: Options }
+
+export default function Preview({ data }: Props) {
   const dialogInner = useRef<HTMLDivElement>(null),
     [state, setState] = useState({
       dialogHeight: 0,

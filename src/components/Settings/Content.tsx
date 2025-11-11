@@ -3,8 +3,7 @@ import { __ } from '@wordpress/i18n'
 import type { Options, SettingsState } from '@/types'
 
 import TextEditor from '@/components/TextEditor'
-
-const domain = 'am-cookies'
+import { domain } from '@/enums'
 
 export default function Content({
   data,

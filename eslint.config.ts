@@ -2,6 +2,7 @@ import {
   sheriff, type SheriffSettings, tseslint
 } from 'eslint-config-sheriff'
 import perfectionist from 'eslint-plugin-perfectionist'
+import { defineConfig } from 'eslint/config'
 
 const sheriffOptions: SheriffSettings = {
   astro: false,
@@ -15,7 +16,8 @@ const sheriffOptions: SheriffSettings = {
   vitest: false,
 }
 
-export default tseslint.config(
+export default defineConfig(
+  // @ts-expect-error types not working correctly
   sheriff(sheriffOptions),
   {
     files: ['**/*.{ts,tsx,mjs,js}'],

@@ -9,3 +9,5 @@ export enum Format {
   Banner = 'banner',
   Box = 'box',
 }
+
+export const domain = 'am-cookies'
