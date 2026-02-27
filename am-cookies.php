@@ -10,7 +10,7 @@
  * Plugin Name:       AM Cookies
  * Description:       Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
  * Requires at least: 5.9
- * Requires PHP:      7.0
+ * Requires PHP:      7.2
  * Version:           1.2.11
  * Author:            Aarstein Media
  * Author URI:        https://www.aarstein.media

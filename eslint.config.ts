@@ -17,7 +17,6 @@ const sheriffOptions: SheriffSettings = {
 }
 
 export default defineConfig(
-  // @ts-expect-error types not working correctly
   sheriff(sheriffOptions),
   {
     files: ['**/*.{ts,tsx,mjs,js}'],

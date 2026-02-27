@@ -1,5 +1,3 @@
-import type { ChangeEvent, FormEvent } from 'react'
-
 import apiFetch from '@wordpress/api-fetch'
 import {
   useCallback, useEffect, useState
@@ -59,13 +57,13 @@ export default function Settings() {
         return options
       })
     }, []),
-    onChangeHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
       setData((prev) => ({
         ...prev,
         [target.name]: target.value,
       }))
     },
-    saveChanges = async (e: FormEvent) => {
+    saveChanges = async (e: React.FormEvent) => {
       e.preventDefault()
 
       try {

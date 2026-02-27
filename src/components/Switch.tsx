@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function SwitchLabel({
-  id = '',
+  id,
   onChange,
   subTitle,
   title,

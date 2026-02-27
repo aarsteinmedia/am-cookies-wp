@@ -1,6 +1,8 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"baseUrl": "./",
+		"rootDir": "./",
 		"outDir": "./build",
 		"target": "ES2023",
 		"jsx": "react-jsx",
@@ -8,7 +10,7 @@
 		"lib": [
 			"DOM",
 			"DOM.Iterable",
-			"ESNext"
+			"ES2023"
 		],
 		"noImplicitAny": false,
 		"allowSyntheticDefaultImports": true,
@@ -16,6 +18,8 @@
 		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
 		"paths": {
 			"@/*": [
 				"./src/*"
@@ -28,8 +32,8 @@
 		}
 	},
 	"include": [
-		"./src/**/*",
-		"eslint.config.ts"
+		"**/*.ts",
+		"**/*.tsx"
 	],
 	"exclude": [
 		"**/svn",

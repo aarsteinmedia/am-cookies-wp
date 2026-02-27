@@ -1,11 +1,9 @@
-import type { ChangeEvent, InputHTMLAttributes } from 'react'
-
 import {
   ColorIndicator, ColorPicker, Popover
 } from '@wordpress/components'
 import { useState } from '@wordpress/element'
 
-type Props = InputHTMLAttributes<HTMLInputElement> & { label: string }
+type Props = React.InputHTMLAttributes<HTMLInputElement> & { label: string }
 
 export default function ColorInput({
   label,
@@ -55,7 +53,7 @@ export default function ColorInput({
                     name,
                     value: color
                   },
-                } as ChangeEvent<HTMLInputElement>)
+                } as React.ChangeEvent<HTMLInputElement>)
               }}
             />
           </Popover>
