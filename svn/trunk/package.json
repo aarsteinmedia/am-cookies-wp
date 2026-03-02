@@ -1,6 +1,6 @@
 {
 	"name": "am-cookies",
-	"version": "1.2.11",
+	"version": "1.2.12",
 	"description": "Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.",
 	"author": {
 		"name": "Aarstein Media",
@@ -34,7 +34,7 @@
 	"main": "build/settings.js",
 	"devDependencies": {
 		"@playwright/test": "^1.58.2",
-		"@types/node": "^25.3.2",
+		"@types/node": "^25.3.3",
 		"@types/react": "^18.3.28",
 		"@types/webpack": "^5.28.5",
 		"@types/wordpress__block-editor": "^15.0.5",

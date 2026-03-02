@@ -1,6 +1,5 @@
 import type { RichTextValue } from '@wordpress/rich-text'
 
-// import Cursor from '@/utils/Cursor';
 import { RichText } from '@wordpress/block-editor'
 import {
   Toolbar, ToolbarGroup, ToolbarButton
