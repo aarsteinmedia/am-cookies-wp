@@ -3,8 +3,6 @@ import type { Configuration } from 'webpack'
 import defaults from '@wordpress/scripts/config/webpack.config'
 import { resolve } from 'node:path'
 
-// const defaultAlias = defaults.resolve?.alias ?? []
-
 const config: Configuration = {
   ...defaults,
   entry: {
@@ -15,9 +13,15 @@ const config: Configuration = {
   resolve: {
     ...defaults.resolve,
     alias: {
-      // ...defaults.resolve?.alias ?? {},
+      // eslint-disable-next-line @typescript-eslint/no-misused-spread
+      ...defaults.resolve?.alias ?? [],
       '@': resolve(__dirname, 'src'),
     },
+    extensions: [
+      ...defaults.resolve?.extensions ?? [],
+      '.ts',
+      '.tsx'
+    ],
   },
 }
 
