@@ -1,17 +1,23 @@
-/* eslint-disable fsecond/valid-event-listener */
+
 import { useEffect, useRef } from '@wordpress/element'
 
 export type EventHandler<E extends Event = Event> = (event: E) => void
 
-type Options<T> = EventListenerOptions &
-  AddEventListenerOptions & {
-    element?:
-      | React.RefObject<T>
-      | Element
-      | null
-      | false
-    document?: boolean
-  }
+const isRefObject = <T>(value: unknown): value is React.RefObject<T> => {
+  return value !== null && typeof value === 'object' && 'current' in value
+}
+
+interface ElementOptions<T> {
+  element?:
+    | React.RefObject<T>
+    | Element
+    | Document
+    | null
+    | false
+}
+
+type EventOptions<T> = EventListenerOptions &
+  AddEventListenerOptions & ElementOptions<T> & { enabled?: boolean }
 
 /**
  * `useEventListener` is a custom React hook that adds an event listener to a specified element.
@@ -27,50 +33,102 @@ export default function useEventListener<
 >(
   eventType: string,
   callback: EventHandler<E>,
-  options: Options<T> = {}
+  options: EventOptions<T> = {}
 ) {
 
-  const callbackRef = useRef(callback),
-    targetElement = useRef<Element | Document | Window | null>(null)
+  const {
+      capture: isCapture, element: elementOptions, enabled: isEnabled = true, passive: isPassive
+    } = options,
 
-  if (!options.element) {
-    targetElement.current = window
-  }
+    element =
+      elementOptions === undefined ? window : elementOptions,
+
+    isElementRef = isRefObject(element),
+    resolvedElement = isElementRef ? element.current : element,
+
+    callbackRef = useRef(callback)
 
   useEffect(() => {
     callbackRef.current = callback
   }, [callback])
 
   useEffect(() => {
-
-    if (options.document) {
-      targetElement.current = document
-    } else if (options.element) {
-      if ('current' in options.element) {
-        targetElement.current = options.element.current
-      } else {
-        targetElement.current = options.element
-      }
-    }
-
-    if (!targetElement.current) {
+    if (!isEnabled) {
       return
     }
 
-    const handler = (e: E) => {
-      callbackRef.current(e)
+    let removeListener: (() => void) | undefined,
+      isCancelled = false,
+      frameId = 0
+
+    const attach = () => {
+      const targetElement = isElementRef ? element.current : element
+
+      if (!targetElement) {
+        return false
+      }
+
+      const listenerOptions = {
+          capture: isCapture,
+          passive: isPassive
+        },
+        handler = ((e: E) => {
+          callbackRef.current(e)
+        }) as EventListener
+
+        /* AnimationItem::addEventListener is not directly compatible
+        with standard Element::addEventListener, but not in a way that
+        will cause trouble */
+        ; (targetElement as Window).addEventListener(
+        eventType, handler, listenerOptions
+      )
+
+      removeListener = () => {
+        ; (targetElement as Window).removeEventListener(
+          eventType,
+          handler,
+          listenerOptions
+        )
+      }
+
+      return true
     }
 
-    targetElement.current.addEventListener(
-      eventType, handler as EventListener, options
-    )
+    if (!attach() && isElementRef) {
+      const waitForElement = () => {
+        if (isCancelled) {
+          return
+        }
+        if (attach()) {
+          return
+        }
+        frameId = requestAnimationFrame(waitForElement)
+      }
+
+      frameId = requestAnimationFrame(waitForElement)
+    }
 
     return () => {
-      targetElement.current?.removeEventListener(
-        eventType,
-        handler as EventListener,
-        options
-      )
+      isCancelled = true
+      cancelAnimationFrame(frameId)
+      removeListener?.()
     }
-  }, [eventType, options])
+  }, [
+    element,
+    eventType,
+    isCapture,
+    isElementRef,
+    isEnabled,
+    isPassive,
+    resolvedElement
+  ])
 }
+
+export const WINDOW_LISTENER_OPTS = {
+    capture: false,
+    passive: true
+  } as const,
+  SCROLL_LISTENER_OPTS = {
+    capture: true,
+    passive: true
+  } as const

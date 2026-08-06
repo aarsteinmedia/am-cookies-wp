@@ -34,7 +34,7 @@ function get_options() {
 /**
  * Returns the plugin path to a specified file.
  *
- * @param string $filename The specified file.
+ * @param string $path The specified file.
  * @return string
  */
 function get_path( $path = '' ) {
@@ -43,10 +43,42 @@ function get_path( $path = '' ) {
 }
 
 /**
+ * Get url of static file
+ *
+ * @param string      $type `'assets'|'build'|'scripts'|'styles'`
+ * @param string      $filename Name of file
+ * @param string|null $version Version of stylesheet
+ * @return string URL to script
+ */
+function get_static_url( $type, $filename = '', $version = null ) {
+	return AAMD_COOKIES_URL . "{$type}/" . \ltrim( $filename, '/' ) . ( $version ? '?ver=' . $version : '' );
+}
+
+/**
+ * Get URL of build script
+ *
+ * @param string      $filename Name of file
+ * @param string|null $version Version of stylesheet
+ * @return string URL to script
+ */
+function get_build( $filename = '', $version = null ) {
+	return get_static_url( 'build', $filename, $version );
+}
+
+/**
+ * Get path of build script
+ *
+ * @param string $filename Name of file
+ */
+function get_build_path( $filename = '' ) {
+	return AAMD_COOKIES_PATH . "build/{$filename}";
+}
+
+/**
  * Includes a file within the plugins includes folder
  *
- * @param string $filename The specified file.
- * @param mixed  $arg (optional)
+ * @param string $path The specified file.
+ * @param mixed  $args (optional)
  * @return void
  */
 function include_file( $path = '', $args = null ) {

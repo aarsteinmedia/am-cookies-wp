@@ -176,7 +176,7 @@ export default function TextEditor({
         id={id}
         key="editable"
         name={name}
-        ref={paragaph as unknown as React.LegacyRef<'p'>}
+        ref={paragaph as unknown as React.Ref<'p'>}
         tagName="p"
         type="core/paragraph"
         value={initialValue}

@@ -9,9 +9,6 @@ class Rest_API {
 
 	/**
 	 * Constructor
-	 *
-	 * @param void
-	 * @return void
 	 */
 	public function __construct() {
 		add_action(
@@ -31,7 +28,7 @@ class Rest_API {
 				'methods'             => 'GET',
 				'callback'            => array(
 					$this,
-					'options_read_rest_route_callback'
+					'options_read_rest_route_callback',
 				),
 				'permission_callback' => '__return_true',
 			)
@@ -44,7 +41,7 @@ class Rest_API {
 				'methods'             => 'POST',
 				'callback'            => array(
 					$this,
-					'options_write_rest_route_callback'
+					'options_write_rest_route_callback',
 				),
 				'permission_callback' => '__return_true',
 			)
@@ -57,11 +54,7 @@ class Rest_API {
 	public function options_read_rest_route_callback( $data ) {
 		try {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \WP_Error(
-					'rest_read_error',
-					__( 'Not allowed', 'am-cookies' ),
-					array( 'status' => 403 )
-				);
+				throw new \Error( __( 'Not allowed', 'am-cookies' ), 403 );
 			}
 
 			$response = array();
@@ -77,23 +70,22 @@ class Rest_API {
 			$response = new \WP_REST_Response( $response );
 
 			return $response;
-		} catch ( \Exception $e ) {
-			return $e;
+		} catch ( \Throwable $e ) {
+			$error = new \WP_Error();
+			$error->add( $e->getCode(), $e->getMessage() );
+
+			return $error;
 		}
 	}
 
 	/**
 	 * Callback function to write to Rest API
 	 */
-	public function options_write_rest_route_callback( $request ) {
+	public function options_write_rest_route_callback( \WP_REST_Request $request ) {
 		try {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \WP_Error(
-					'rest_write_error',
-					__( 'Not allowed', 'am-cookies' ),
-					array( 'status' => 403 )
-				);
+				throw new \Error( __( 'Not allowed', 'am-cookies' ), 403 );
 			}
 
 			$response = new \WP_REST_Response(
@@ -113,8 +105,11 @@ class Rest_API {
 			}
 
 			return $response;
-		} catch ( \Exception $e ) {
-			return $e;
+		} catch ( \Throwable $e ) {
+			$error = new \WP_Error();
+			$error->add( $e->getCode(), $e->getMessage() );
+
+			return $error;
 		}
 	}
 }

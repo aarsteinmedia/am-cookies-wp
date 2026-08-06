@@ -63,7 +63,7 @@ export default function Settings() {
         [target.name]: target.value,
       }))
     },
-    saveChanges = async (e: React.FormEvent) => {
+    saveChanges = async (e: React.SubmitEvent) => {
       e.preventDefault()
 
       try {

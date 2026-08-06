@@ -1,6 +1,8 @@
 <?php
 namespace AAMD_Cookies;
 
+use function AAMD_Cookies\Utils\get_build;
+use function AAMD_Cookies\Utils\get_build_path;
 use function AAMD_Cookies\Utils\get_options;
 
 defined( 'ABSPATH' ) || exit;
@@ -9,9 +11,6 @@ class Admin {
 
 	/**
 	 * Constructor
-	 *
-	 * @param void
-	 * @return void
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
@@ -49,7 +48,7 @@ class Admin {
 	/**
 	 * Enqueue JavaScript and CSS for backend
 	 */
-	public function enqueue_scripts( $page ) {
+	public function enqueue_scripts( string $page ) {
 
 		wp_enqueue_style(
 			'aamd-cookies-backend-style',
@@ -68,6 +67,17 @@ class Admin {
 		$assets = require AAMD_COOKIES_PATH . 'build/settings.asset.php';
 
 		if ( $page === 'toplevel_page_am-cookies' ) {
+			$runtime = get_build_path( 'runtime.js' );
+			if ( file_exists( $runtime ) ) {
+				wp_enqueue_script(
+					'am-cookies-runtime',
+					get_build( 'runtime.js' ),
+					array(),
+					filemtime( $runtime ),
+					true
+				);
+			}
+
 			wp_enqueue_script(
 				'am-cookies-options',
 				AAMD_COOKIES_URL . 'build/settings.js',
