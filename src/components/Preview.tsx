@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from '@wordpress/element'
@@ -8,7 +9,6 @@ import type { Options } from '@/types'
 
 import CookieIcon from '@/components/CookieIcon'
 import SwitchButton from '@/components/SwitchButton'
-import useComponentDidUpdate from '@/hooks/useComponentDidUpdate'
 import useEventListener from '@/hooks/useEventListener'
 
 interface Props { data: Options }
@@ -36,7 +36,8 @@ export default function Preview({ data }: Props) {
     },
     [state.isCustomize])
 
-  useComponentDidUpdate(() => {
+  useEffect(() => {
+    // eslint-disable-next-line react-you-might-not-need-an-effect/no-chain-state-updates
     setState((prev) => ({
       ...prev,
       dialogHeight: prev.isCustomize
@@ -45,7 +46,8 @@ export default function Preview({ data }: Props) {
     }))
   }, [state.isCustomize])
 
-  useComponentDidUpdate(() => {
+  useEffect(() => {
+    // eslint-disable-next-line react-you-might-not-need-an-effect/no-adjust-state-on-prop-change
     setState((prev) => ({
       ...prev,
       isCustomize: false,
@@ -53,7 +55,8 @@ export default function Preview({ data }: Props) {
     }))
   }, [data.aamd_cookies_align_mini])
 
-  useComponentDidUpdate(() => {
+  useEffect(() => {
+    // eslint-disable-next-line react-you-might-not-need-an-effect/no-adjust-state-on-prop-change
     setState((prev) => ({
       ...prev,
       isCustomize: false,
