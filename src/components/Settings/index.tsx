@@ -16,7 +16,7 @@ import SwitchLabel from '@/components/Switch'
 import {
   Align, Format, domain
 } from '@/enums'
-import getTranslation from '@/i18n'
+import { getTranslation } from '@/i18n'
 
 
 export default function Settings() {

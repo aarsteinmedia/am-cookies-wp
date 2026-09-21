@@ -26,7 +26,7 @@ export default function TextEditor({
   name,
   setValue,
   value: initialValue,
-}: Props) {
+}: Readonly<Props>) {
   const [state, setState] = useState<{
       isActive: boolean
       isBold: boolean
@@ -43,7 +43,7 @@ export default function TextEditor({
       richText: null,
     }),
     container = useRef<HTMLLabelElement>(null),
-    paragaph = useRef<HTMLParagraphElement>(null),
+    paragraph = useRef<HTMLParagraphElement>(null),
     toggle = (type: 'core/bold' | typeof coreItalic) => {
       switch (type) {
         case 'core/bold': {
@@ -61,18 +61,18 @@ export default function TextEditor({
         }
       }
 
-      if (!paragaph.current) {
+      if (!paragraph.current) {
         return
       }
 
-      const content = paragaph.current.cloneNode(true)
+      const content = paragraph.current.cloneNode(true)
 
       if (!(content instanceof HTMLElement)) {
         return
       }
       const activeElement: null | HTMLElement = content.querySelector('[data-rich-text-format-boundary="true"]')
 
-      paragaph.current.focus()
+      paragraph.current.focus()
 
       const tagName = type === 'core/bold' ? 'strong' : 'em'
 
@@ -134,7 +134,7 @@ export default function TextEditor({
 
       content.innerHTML = newHTML
 
-      // eslint-disable-next-line unicorn/consistent-destructuring
+
       setValue(content.innerHTML)
 
       // const textNode = document.createTextNode( content.innerHTML ),
@@ -176,7 +176,7 @@ export default function TextEditor({
         id={id}
         key="editable"
         name={name}
-        ref={paragaph as unknown as React.Ref<'p'>}
+        ref={paragraph as unknown as React.Ref<'p'>}
         tagName="p"
         type="core/paragraph"
         value={initialValue}

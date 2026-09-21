@@ -2,7 +2,7 @@ import { Path, SVG } from '@wordpress/components'
 
 interface Props { style?: React.CSSProperties }
 
-export default function Logo({ style }: Props) {
+export default function Logo({ style }: Readonly<Props>) {
   return (
     <SVG
       role="img"

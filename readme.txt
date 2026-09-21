@@ -3,11 +3,11 @@ Contributors: johanaarstein
 Donate link: https://www.paypal.com/donate/?hosted_button_id=E7C7DMN8KSQ6A
 Author URI: https://www.aarstein.media
 Plugin URI: https://wordpress.org/plugins/am-cookies/
-Tags: gdpr, cookies, analytics, retargetting, tracking
+Tags: gdpr, cookies, analytics, retargeting, tracking
 Requires at least: 5.9
-Tested up to: 7.0
-Requires PHP: 7.2
-Stable Tag: 1.2.13
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable Tag: 1.2.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Simple and versatile GDPR compatible Cookie Compliance Plugin for WordPress.
 
 AM Cookies for WordPress is easy to use, lightweight, and gives your visitors total control over what data they want to share with you.
 
-This plugin utilizes our own open source web component, `am-gpdr`, which is publicly available here: https://github.com/aarsteinmedia/am-gdpr.
+This plugin utilizes our own open source web component, `am-gdpr`, which is publicly available here: https://github.com/aarsteinmedia/am-gdpr.
 
 The purpose of this plugin is to give visitors to your website control over how their data is collected by third-party services such as Google, Meta, Snapchat, or TikTok. To use the plugin, simply input your tracking ID or pixel ID from any of these services – no coding is required. Our codebase includes links to sites like googletagmanager.com, gtm.com, facebook.net, sc-static.net, and tiktok.com, but none of these scripts are activated unless you choose to do so. When activated they will only collect data as per your configuration and with user consent. We do not collect any data through this plugin.
 
@@ -111,6 +111,6 @@ We'd love to [hear from you](mailto:johan@aarstein.media)!
 * Added languages
 
 = 1.0.2 - October 20 2024 =
-* Expanded browser compability
+* Expanded browser compatibility
 * Minor bugfixes
 * Minor stylistic changes

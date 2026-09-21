@@ -95,7 +95,7 @@ function include_file( $path = '', $args = null ) {
  * @param   string $str The string to convert.
  * @return  string
  */
-function idify( $str = '' ) {
+function aamd_idify( $str = '' ) {
 	return \str_replace( array( '][', '[', ']' ), array( '-', '-', '' ), \strtolower( $str ) );
 }
 

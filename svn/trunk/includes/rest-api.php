@@ -30,7 +30,9 @@ class Rest_API {
 					$this,
 					'options_read_rest_route_callback',
 				),
-				'permission_callback' => '__return_true',
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
 			)
 		);
 
@@ -43,7 +45,9 @@ class Rest_API {
 					$this,
 					'options_write_rest_route_callback',
 				),
-				'permission_callback' => '__return_true',
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
 			)
 		);
 	}
@@ -53,10 +57,6 @@ class Rest_API {
 	 */
 	public function options_read_rest_route_callback( $data ) {
 		try {
-			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \Error( __( 'Not allowed', 'am-cookies' ), 403 );
-			}
-
 			$response = array();
 
 			// Loop over options keys to get options
@@ -71,10 +71,13 @@ class Rest_API {
 
 			return $response;
 		} catch ( \Throwable $e ) {
-			$error = new \WP_Error();
-			$error->add( $e->getCode(), $e->getMessage() );
-
-			return $error;
+			return new \WP_Error(
+				$e->getCode(),
+				$e->getMessage(),
+				array(
+					'ok' => false,
+				)
+			);
 		}
 	}
 
@@ -83,11 +86,6 @@ class Rest_API {
 	 */
 	public function options_write_rest_route_callback( \WP_REST_Request $request ) {
 		try {
-
-			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \Error( __( 'Not allowed', 'am-cookies' ), 403 );
-			}
-
 			$response = new \WP_REST_Response(
 				array(
 					'success' => true,
@@ -106,10 +104,13 @@ class Rest_API {
 
 			return $response;
 		} catch ( \Throwable $e ) {
-			$error = new \WP_Error();
-			$error->add( $e->getCode(), $e->getMessage() );
-
-			return $error;
+			return new \WP_Error(
+				$e->getCode(),
+				$e->getMessage(),
+				array(
+					'ok' => false,
+				)
+			);
 		}
 	}
 }

@@ -10,7 +10,7 @@ export default function ColorInput({
   name,
   onChange,
   value,
-}: Props) {
+}: Readonly<Props>) {
   if (!name || !label) {
     throw new Error('Missing name or label')
   }

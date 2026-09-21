@@ -20,11 +20,11 @@ export const languages = [
   ] as const,
   fallbackLanguage = 'en',
   browserLanguage =
-		document.documentElement.lang.toLowerCase() || fallbackLanguage,
+    document.documentElement.lang.toLowerCase() || fallbackLanguage,
   translation =
-		languages.find((lang) => browserLanguage.includes(lang)) || fallbackLanguage
+    languages.find((lang) => browserLanguage.includes(lang)) || fallbackLanguage
 
-export default function getTranslation() {
+export function getTranslation() {
   switch (translation) {
     case 'de': {
       return de

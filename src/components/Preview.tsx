@@ -9,11 +9,11 @@ import type { Options } from '@/types'
 
 import CookieIcon from '@/components/CookieIcon'
 import SwitchButton from '@/components/SwitchButton'
-import useEventListener from '@/hooks/useEventListener'
+import { useEventListener } from '@/hooks/useEventListener'
 
 interface Props { data: Options }
 
-export default function Preview({ data }: Props) {
+export default function Preview({ data }: Readonly<Props>) {
   const dialogInner = useRef<HTMLDivElement>(null),
     [state, setState] = useState({
       dialogHeight: 0,
@@ -21,10 +21,10 @@ export default function Preview({ data }: Props) {
       isMinimized: false,
     }),
     hasRetargeting =
-			data.aamd_cookies_google_id?.startsWith('GTM-') ||
-			Boolean(data.aamd_cookies_meta_id) ||
-			Boolean(data.aamd_cookies_snap_id) ||
-			Boolean(data.aamd_cookies_tiktok_id),
+      data.aamd_cookies_google_id?.startsWith('GTM-') ||
+      Boolean(data.aamd_cookies_meta_id) ||
+      Boolean(data.aamd_cookies_snap_id) ||
+      Boolean(data.aamd_cookies_tiktok_id),
     esc = useCallback(({ key }: KeyboardEvent) => {
       if (!state.isCustomize || key !== 'Escape') {
         return

@@ -15,7 +15,7 @@ export default function SwitchButton({
   label,
   name,
   value,
-}: Props) {
+}: Readonly<Props>) {
   const id = useId(),
     [isChecked, setIsChecked] = useState(value)
 

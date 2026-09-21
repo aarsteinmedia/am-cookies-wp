@@ -27,7 +27,7 @@ type EventOptions<T> = EventListenerOptions &
  * @param callback - The function to execute when the event occurs.
  * @param options - The element to add the event listener to. Default is the window.
  */
-export default function useEventListener<
+export function useEventListener<
   E extends Event = Event,
   T extends Element | null = Element,
 >(

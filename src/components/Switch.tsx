@@ -14,7 +14,7 @@ export default function SwitchLabel({
   subTitle,
   title,
   value,
-}: Props) {
+}: Readonly<Props>) {
   return (
     <BaseControl className={'am-switch-label'} help={subTitle} id={id}>
       <BaseControl.VisualLabel>{title}</BaseControl.VisualLabel>
