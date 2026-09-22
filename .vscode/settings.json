@@ -1,0 +1,61 @@
+{
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit",
+	},
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	],
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[php]": {
+		"editor.defaultFormatter": "valeryanm.vscode-phpsab",
+		"editor.formatOnSave": true
+	},
+	"phpsab.snifferEnable": false,
+	"phpsab.autoRulesetSearch": false,
+	"extensions.ignoreRecommendations": true,
+	"phpsab.snifferShowSources": true,
+	"phpsab.standard": "WordPress",
+	"phpsab.allowedAutoRulesets": [
+		".phpcs.xml",
+		".phpcs.xml.dist",
+		"phpcs.xml",
+		"phpcs.xml.dist",
+		"phpcs.ruleset.xml",
+		"ruleset.xml"
+	],
+	"html.validate.styles": false,
+	"css.validate": false,
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"svn.delete.ignoredRulesForDeletedFiles": [
+		"tags/1.0.1",
+		"tags/1.0.2",
+		"tags/1.1.0",
+		"tags/1.2.0",
+		"tags/1.2.1",
+		"tags/1.2.2",
+		"tags/1.2.3",
+		"tags/1.2.4",
+		"tags/1.2.5",
+		"tags/1.2.6",
+		"tags/1.2.7",
+		"tags/1.2.8",
+		"tags/1.2.9",
+		"tags/1.2.10",
+		"tags/1.2.11",
+		"tags/1.2.12",
+		"tags/1.2.13",
+		"tags/1.2.14",
+		"tags/1.2.15",
+	],
+	"cSpell.words": [
+		"tagmanager"
+	]
+}
