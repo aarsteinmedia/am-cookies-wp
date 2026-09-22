@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=E7C7DMN8KSQ6A
 Author URI: https://www.aarstein.media
 Plugin URI: https://wordpress.org/plugins/am-cookies/
 Tags: gdpr, cookies, analytics, retargeting, tracking
-Requires at least: 5.9
+Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
 Stable Tag: 1.2.15

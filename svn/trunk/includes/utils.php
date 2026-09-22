@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Array with all options, with array of
- * default value and accociated methods for sanitizing
+ * default value and associated methods for sanitizing
  */
 function get_options() {
 	return array(

@@ -137,7 +137,7 @@ export default function Tracking({
         >
           <p>{__('Enter GA4 tag ID or Tag Manager ID.', domain)}</p>
           <p>
-            {__('If you\'ve already installed Analytics or Tag Manager on your page, please remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter. If you use Google Tag Manager, we reccomend you implement other tags, i. e. MetaPixel through that.',
+            {__('If you\'ve already installed Analytics or Tag Manager on your page, please remove it. This plugin adds either Google Analytics or Google Tag Manager, depending on which Google tracking ID you enter. If you use Google Tag Manager, we recommend you implement other tags, i. e. MetaPixel through that.',
               domain)}
           </p>
         </div>

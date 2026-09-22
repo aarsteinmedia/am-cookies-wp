@@ -34,7 +34,7 @@
 	],
 	"main": "build/settings.js",
 	"devDependencies": {
-		"@eslint-react/eslint-plugin": "^5.20.2",
+		"@eslint-react/eslint-plugin": "^5.20.4",
 		"@eslint/compat": "^2.1.1",
 		"@eslint/core": "^1.2.1",
 		"@eslint/js": "^10.0.1",
@@ -100,7 +100,7 @@
 		"lint:md:docs": "wp-scripts lint-md-docs",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
+		"zip": "pnpm build && wp-scripts plugin-zip",
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
